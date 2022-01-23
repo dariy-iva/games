@@ -1,0 +1,5 @@
+.menu__item_active {
+  padding: 16px 38px;
+  background-color: #6E4AFF;
+  border-radius: 40px;
+}

@@ -1,0 +1,4 @@
+.menu__list_content_nav {
+  grid-template-columns: repeat(4, minmax(min-content, max-content));
+  grid-gap: 50px;
+}

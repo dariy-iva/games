@@ -1,5 +1,13 @@
+@import url(./__logo/header__logo.css);
+@import url(./__text/header__text.css);
+@import url(./__text/_weight/header__text_weight_normal.css);
+@import url(./__text/_weight/header__text_weight_bold.css);
+@import url(./__text/_weight/header__text_weight_bolder.css);
+
 .header {
 	padding: 35px 0;
+	display: flex;
+	align-items: center;
 }
 /* @media (max-width: 767px) {
 	.header {

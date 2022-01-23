@@ -1,0 +1,4 @@
+.menu__list_content_auth {
+  grid-template-columns: repeat(2, minmax(min-content, max-content));
+  grid-gap: 40px;
+}

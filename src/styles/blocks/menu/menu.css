@@ -1,0 +1,12 @@
+@import url(./__item/menu__item.css);
+@import url(./__item/menu__item_active.css);
+@import url(./__list/menu__list.css);
+@import url(./__list/_content/menu__list_content_nav.css);
+@import url(./__list/_content/menu__list_content_auth.css);
+
+.menu {
+  margin-left: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
