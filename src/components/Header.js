@@ -4,6 +4,7 @@ import logo from "../images/logo.svg";
 export default function Header() {
   return (
     <header className="header">
+      <div className="header__menu">
       <a href="/">
         <img src={logo} alt="logo" className="header__logo link-hover" />
       </a>
@@ -67,6 +68,9 @@ export default function Header() {
           </li>
         </ul>
       </nav>
+      </div>      
+      <h1 className="header__title">More Than Matchmaking</h1>
+      <button type="button" className="header__button"></button>
     </header>
   );
 }

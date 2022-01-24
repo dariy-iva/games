@@ -1,0 +1,10 @@
+.header__menu {
+	display: flex;
+	align-items: center;
+}
+/* @media (max-width: 767px) {
+	.header__menu {
+		padding: 28px 0 30px;
+		margin: 0 -19px;
+	}
+} */
