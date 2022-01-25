@@ -1,9 +1,5 @@
 @import url(./__menu/header__menu.css);
 @import url(./__logo/header__logo.css);
-@import url(./__text/header__text.css);
-@import url(./__text/_weight/header__text_weight_normal.css);
-@import url(./__text/_weight/header__text_weight_bold.css);
-@import url(./__text/_weight/header__text_weight_bolder.css);
 @import url(./__title/header__title.css);
 @import url(./__button/header__button.css);
 

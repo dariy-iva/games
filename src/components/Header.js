@@ -10,7 +10,7 @@ export default function Header() {
       </a>
       <a
         href="/"
-        className="header__text header__text_weight_bolder link-hover"
+        className="menu__text menu__text_weight_bolder link-hover"
       >
         partie
       </a>
@@ -19,7 +19,7 @@ export default function Header() {
           <li className="menu__item">
             <a
               href="/"
-              className="header__text header__text_weight_normal link-hover"
+              className="menu__text menu__text_weight_normal link-hover"
             >
               Features
             </a>
@@ -27,7 +27,7 @@ export default function Header() {
           <li className="menu__item">
             <a
               href="/"
-              className="header__text header__text_weight_normal link-hover"
+              className="menu__text menu__text_weight_normal link-hover"
             >
               Partners
             </a>
@@ -35,7 +35,7 @@ export default function Header() {
           <li className="menu__item">
             <a
               href="/"
-              className="header__text header__text_weight_normal link-hover"
+              className="menu__text menu__text_weight_normal link-hover"
             >
               Contact
             </a>
@@ -43,7 +43,7 @@ export default function Header() {
           <li className="menu__item">
             <a
               href="/"
-              className="header__text header__text_weight_normal link-hover"
+              className="menu__text menu__text_weight_normal link-hover"
             >
               Help &amp; Support
             </a>
@@ -53,15 +53,15 @@ export default function Header() {
           <li className="menu__item">
             <a
               href="/"
-              className="header__text header__text_weight_bold link-hover"
+              className="menu__text menu__text_weight_bold link-hover"
             >
               Log In
             </a>
           </li>
-          <li className="header__text menu__item menu__item_active">
+          <li className="menu__text menu__item menu__item_active">
             <a
               href="/"
-              className="header__text header__text_weight_bold link-hover"
+              className="menu__text menu__text_weight_bold link-hover"
             >
               Sign Up
             </a>
