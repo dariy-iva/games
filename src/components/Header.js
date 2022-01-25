@@ -69,8 +69,8 @@ export default function Header() {
         </ul>
       </nav>
       </div>      
-      <h1 className="header__title">More Than Matchmaking</h1>
-      <button type="button" className="header__button"></button>
+      <h1 className="header__title translation">More Than Matchmaking</h1>
+      <button type="button" className="header__button translation"></button>
     </header>
   );
 }

@@ -1,0 +1,13 @@
+@keyframes translate {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.translation {
+  animation: translate 2s 1;
+
+}

@@ -5,6 +5,8 @@
 
 .header {
 	padding: 35px 0 232px;
+	height: 100%;
+	overflow: hidden;
 }
 /* @media (max-width: 767px) {
 	.header {

@@ -1,5 +1,6 @@
 @import url(./styles/vendor/normalize.css);
 @import url(./styles/vendor/fonts/Montserrat_Alternates/montserrat_alternates.css);
+@import url(./styles/blocks/animations/animations.css);
 @import url(./styles/blocks/link-hover/link-hover.css);
 @import url(./styles/blocks/body/body.css);
 @import url(./styles/blocks/page/page.css);

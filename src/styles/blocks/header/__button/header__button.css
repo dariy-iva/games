@@ -8,4 +8,9 @@
   border-radius: 50%;
   background: url(../../../../images/header_play_button.svg) no-repeat center;
   background-color: #6e4aff;
+  transition: opacity .3s;
+  cursor: pointer;
+}
+.header__button:hover {
+  opacity: .8;
 }
