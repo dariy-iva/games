@@ -7,7 +7,18 @@
   }
 }
 
+@keyframes translateLines {
+  from {
+    transform: translateY(-100vh);
+  }
+  to {
+    transform: translateY(100vh);
+  }
+}
+
 .translation {
   animation: translate 2s 1;
-
+}
+.translationLines {
+  animation: translateLines 40s linear infinite;
 }

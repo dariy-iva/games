@@ -1,6 +1,8 @@
 .page {
 	margin: 0 auto;
-	max-width: calc(1200px - 80px);
+	padding: 0 40px;
+	position: relative;
+	/* max-width: calc(1200px - 80px); */
 	box-sizing: border-box;
 	display: flex;
   flex-direction: column;
