@@ -8,11 +8,11 @@ for (let i = 0; i < 30; i++) {
   const line = {
     height: `${Math.round(Math.random() * (200 - 30) + 30)}px`,
     borderColor: `${colors[Math.round(Math.random() * (1 - 0) + 0)]}`,
-    opacity: `.${Math.round(Math.random() * (9 - 1) + 1)}`,
+    opacity: `.${Math.round(Math.random() * (9 - 3) + 3)}`,
     borderWidth: `${Math.round(Math.random() * (3 - 1) + 1)}px`,
-    top: `${Math.round(Math.random() * (100 - 0) + 0)}%`,
+    top: `${Math.round(Math.random() * (100 - (-100)) + -100)}%`,
     left: `${Math.round(Math.random() * (100 - 0) + 0)}%`,
-    animationDelay: `${Math.round(Math.random() * (20 - 0) + 0)}s`,
+    // animationDelay: `${Math.round(Math.random() * (10 - 0) + 0)}s`,
   };
   lines.push(line);
 }

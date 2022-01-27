@@ -8,11 +8,19 @@
 }
 
 @keyframes translateLines {
-  from {
+  0% {
     transform: translateY(-100vh);
   }
-  to {
-    transform: translateY(100vh);
+  100% {
+    transform: translateY(200vh);
+  }
+}
+@keyframes translateLines1 {
+  0% {
+    transform: translateY(-100vh);
+  }
+  100% {
+    transform: translateY(200vh);
   }
 }
 
@@ -20,5 +28,8 @@
   animation: translate 2s 1;
 }
 .translationLines {
-  animation: translateLines 40s linear infinite;
+  animation: translateLines 100s linear infinite;
+}
+.translationLines2 {
+  animation: translateLines 50s linear infinite;
 }
