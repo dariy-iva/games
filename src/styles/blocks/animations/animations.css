@@ -12,12 +12,12 @@
     transform: translateY(-100vh);
   }
   100% {
-    transform: translateY(200vh);
+    transform: translateY(100vh);
   }
 }
 @keyframes translateLines1 {
   0% {
-    transform: translateY(-100vh);
+    transform: translateY(0);
   }
   100% {
     transform: translateY(200vh);
@@ -30,6 +30,6 @@
 .translationLines {
   animation: translateLines 100s linear infinite;
 }
-.translationLines2 {
-  animation: translateLines 50s linear infinite;
+.translationLines1 {
+  animation: translateLines 100s linear 50s infinite;
 }

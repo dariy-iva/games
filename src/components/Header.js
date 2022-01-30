@@ -10,7 +10,7 @@ for (let i = 0; i < 30; i++) {
     borderColor: `${colors[Math.round(Math.random() * (1 - 0) + 0)]}`,
     opacity: `.${Math.round(Math.random() * (9 - 3) + 3)}`,
     borderWidth: `${Math.round(Math.random() * (3 - 1) + 1)}px`,
-    top: `${Math.round(Math.random() * (100 - (-100)) + -100)}%`,
+    top: `${Math.round(Math.random() * ((90 - 0) - 0) + 0)}%`,
     left: `${Math.round(Math.random() * (100 - 0) + 0)}%`,
     // animationDelay: `${Math.round(Math.random() * (10 - 0) + 0)}s`,
   };
@@ -73,15 +73,27 @@ export default function Header() {
           <button type="button" className="header__button translation"></button>
         </div>
       </header>
-      <ul className="overlay">
+      <div className="overlay">
+      <ul className="overlay__field translationLines">
         {lines.map((line) => (
           <li
-            className="overlay__line translationLines"
+            className="overlay__line"
             style={line}
             key={lines.indexOf(line)}
           ></li>
         ))}
       </ul>
+      <ul className="overlay__field translationLines1">
+        {lines.map((line) => (
+          <li
+            className="overlay__line"
+            style={line}
+            key={lines.indexOf(line)}
+          ></li>
+        ))}
+      </ul>
+      </div>
+      
     </>
   );
 }

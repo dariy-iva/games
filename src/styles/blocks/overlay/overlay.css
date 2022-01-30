@@ -1,15 +1,20 @@
 @import url(./__line/overlay__line.css);
 
+.overlay__field {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .overlay {
   position: absolute;
   z-index: -1;
   left: 0;
   top: 0;
   right: 0;
-  bottom: 0;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
+  bottom: 0; 
   overflow: hidden;
 }
