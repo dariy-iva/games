@@ -1,11 +1,12 @@
 import React from "react";
-import Header from "./Header";
+import './App.css';
+import MainPage from "../pages/MainPage.js";
 
 
 function App() {
   return (
     <div className="page">
-      <Header />
+      <MainPage />
     </div>
   );
 }

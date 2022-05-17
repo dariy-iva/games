@@ -1,9 +1,48 @@
 @import url(./styles/vendor/normalize.css);
 @import url(./styles/vendor/fonts/Montserrat_Alternates/montserrat_alternates.css);
-@import url(./styles/blocks/animations/animations.css);
-@import url(./styles/blocks/link-hover/link-hover.css);
-@import url(./styles/blocks/body/body.css);
-@import url(./styles/blocks/page/page.css);
-@import url(./styles/blocks/header/header.css);
 @import url(./styles/blocks/menu/menu.css);
-@import url(./styles/blocks/overlay/overlay.css);
+
+@keyframes translate {
+    from {
+        transform: translateY(100vh);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes translateLines {
+    0% {
+        transform: translateY(-100vh);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+}
+
+body {
+    background-color: #000;
+    font-family: 'Montserrat Alternates', Arial, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    min-width: 320px;
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    background-color: #141423;
+}
+
+.link-hover {
+    transition: opacity .3s;
+}
+.link-hover:hover {
+    opacity: .8;
+}
+
+.translation {
+    animation: translate 2s 1;
+}
