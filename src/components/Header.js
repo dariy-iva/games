@@ -4,11 +4,11 @@ import logo from "../images/logo.svg";
 const colors = ["#6E4AFF", "#9C42AB", "#184292", "#EB4335", "#077d07"];
 const lines = [];
 
-for (let i = 0; i < 30; i++) {
+for (let i = 0; i < 15; i++) {
   const line = {
     height: `${Math.round(Math.random() * (200 - 30) + 30)}px`,
     borderColor: `${colors[Math.round(Math.random() * (1 - 0) + 0)]}`,
-    opacity: `.${Math.round(Math.random() * (9 - 3) + 3)}`,
+    opacity: `.${Math.round(Math.random() * (9 - 1) + 1)}`,
     borderWidth: `${Math.round(Math.random() * (3 - 1) + 1)}px`,
     top: `${Math.round(Math.random() * ((90 - 0) - 0) + 0)}%`,
     left: `${Math.round(Math.random() * (100 - 0) + 0)}%`,
@@ -83,7 +83,7 @@ export default function Header() {
           ></li>
         ))}
       </ul>
-      <ul className="overlay__field translationLines1">
+      <ul className="overlay__field overlay__field_1 translationLines1">
         {lines.map((line) => (
           <li
             className="overlay__line"
