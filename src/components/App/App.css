@@ -1,0 +1,20 @@
+.page {
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+/* @media (max-width: 1100px) {
+	.page {
+		padding: 0 50px;
+	}
+}
+@media (max-width: 767px) {
+	.page {
+		padding: 0 19px;
+	}
+} */
