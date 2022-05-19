@@ -1,9 +1,9 @@
 import React from "react";
-import './Header.css';
-import logo from "../../images/logo.svg";
-import Menu from "../Menu/Menu.js";
+import './HeaderMainPage.css';
+import logo from "../../../images/logo.svg";
+import Menu from "../../Menu/Menu.js";
 
-export default function Header() {
+export default function HeaderMainPage() {
   return (
       <header className="header">
         <div className="header__menu">

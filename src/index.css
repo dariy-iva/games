@@ -22,7 +22,6 @@
 }
 
 body {
-  background-color: #000;
   font-family: 'Montserrat Alternates', Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -32,7 +31,17 @@ body {
   min-width: 320px;
   /* max-width: 1200px; */
   margin: 0 auto;
-  background-color: #141423;
+  --white: #fff;
+  --light-grey-text: #F8F6FF;
+  --light-yellow-text: #F5F5FA;
+  --dark-color-bcg: #141423;
+  --black-color-bcg: #000;
+  --violet-color: #6E4AFF;
+  --dark-pink-color: #9C42AB;
+  --dark-blue-color: #184292;
+  --red-color: #EB4335;
+  --green-color: #077d07;
+  background-color: var(--black-color-bcg);
 }
 
 .link-hover {

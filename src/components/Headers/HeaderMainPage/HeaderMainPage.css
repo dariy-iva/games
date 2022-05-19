@@ -15,10 +15,10 @@
   transition: box-shadow .3s;
 }
 .header__logo:hover {
-  box-shadow: 0 0 5px #6E4AFF,
-  0 0 25px #6E4AFF,
-  0 0 50px #6E4AFF,
-  0 0 200px #6E4AFF;
+  box-shadow: 0 0 5px var(--violet-color),
+  0 0 25px var(--violet-color),
+  0 0 50px var(--violet-color),
+  0 0 200px var(--violet-color);
 }
 
 .header__button {
@@ -29,16 +29,16 @@
   height: 78px;
   border: 0;
   border-radius: 50%;
-  background: url(../../images/header_play_button.svg) no-repeat center;
-  background-color: #6e4aff;
+  background: url(../../../images/header_play_button.svg) no-repeat center;
+  background-color:  var(--violet-color);
   transition: box-shadow .3s;
   cursor: pointer;
 }
 .header__button:hover {
-  box-shadow: 0 0 5px #6E4AFF,
-  0 0 25px #6E4AFF,
-  0 0 50px #6E4AFF,
-  0 0 200px #6E4AFF;
+  box-shadow: 0 0 5px  var(--violet-color),
+  0 0 25px var(--violet-color),
+  0 0 50px var(--violet-color),
+  0 0 200px var(--violet-color);
 }
 
 .header__content {
@@ -46,7 +46,7 @@
 }
 
 .header__text {
-  color: #F8F6FF;
+  color: var(--light-grey-text);
   font-size: 15px;
   font-weight: 900;
   line-height: 1.2;
@@ -54,10 +54,10 @@
   transition: text-shadow .3s;
 }
 .header__text:hover {
-  text-shadow: 0 0 5px #9C42AB,
-  0 0 25px #9C42AB,
-  0 0 50px #9C42AB,
-  0 0 200px #9C42AB;
+  text-shadow: 0 0 5px var(--dark-pink-color),
+  0 0 25px var(--dark-pink-color),
+  0 0 50px var(--dark-pink-color),
+  0 0 200px var(--dark-pink-color);
 }
 
 .header__title {
@@ -65,7 +65,7 @@
   padding: 188px 0 40px;
   max-width: 760px;
   text-align: center;
-  color: #F5F5FA;
+  color: var(--light-yellow-text);
   font-size: 88px;
   line-height: 1;
   letter-spacing: -0.01em;
