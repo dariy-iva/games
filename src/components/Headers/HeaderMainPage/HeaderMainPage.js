@@ -1,15 +1,13 @@
 import React from "react";
 import './HeaderMainPage.css';
-import logo from "../../../images/logo.svg";
+import Logo from "../../Logo/Logo.js";
 import Menu from "../../Menu/Menu.js";
 
 export default function HeaderMainPage() {
   return (
       <header className="header">
         <div className="header__menu">
-          <a href="/">
-            <img src={logo} alt="logo" className="header__logo"/>
-          </a>
+          <Logo isSmall={false}/>
           <a href="/" className="header__text">
             partie
           </a>

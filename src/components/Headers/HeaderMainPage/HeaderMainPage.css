@@ -10,17 +10,6 @@
   align-items: center;
 }
 
-.header__logo {
-  margin-right: 16px;
-  transition: box-shadow .3s;
-}
-.header__logo:hover {
-  box-shadow: 0 0 5px var(--violet-color),
-  0 0 25px var(--violet-color),
-  0 0 50px var(--violet-color),
-  0 0 200px var(--violet-color);
-}
-
 .header__button {
   display: block;
   margin: 0 auto;
@@ -46,6 +35,7 @@
 }
 
 .header__text {
+  margin-left: 16px;
   color: var(--light-grey-text);
   font-size: 15px;
   font-weight: 900;
