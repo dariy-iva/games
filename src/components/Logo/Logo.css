@@ -1,0 +1,25 @@
+.logo {
+  transition: box-shadow .3s;
+}
+
+.logo:hover {
+  box-shadow: 0 0 5px var(--violet-color),
+  0 0 25px var(--violet-color),
+  0 0 50px var(--violet-color),
+  0 0 200px var(--violet-color);
+}
+
+.logo_size_small {
+  width: 40px;
+  height: 40px;
+  border-radius: 16px;
+}
+
+.logo_size_large {
+  width: 50px;
+  height: 50px;
+}
+
+.logo__link {
+  display: flex;
+}
