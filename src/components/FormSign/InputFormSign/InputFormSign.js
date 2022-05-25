@@ -2,7 +2,7 @@ import React from "react";
 import "./InputFormSign.css";
 
 export default function InputFormSign({ value, onChange, config, error, pattern }) {
-  const { label, type, minLength = "", maxLength = "", name, placeholder } = config;
+  const { label, type, minLength = null, maxLength = null, name, placeholder } = config;
 
   return (
     <label className="input__field">

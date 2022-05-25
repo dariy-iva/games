@@ -11,7 +11,7 @@
   border: none;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .formSign__submit-button {
@@ -23,6 +23,8 @@
   background-color: var(--violet-color);
   border-radius: 20px;
   border: none;
+  transition: box-shadow .3s;
+  cursor: pointer;
 }
 
 .formSign__submit-button:hover {
@@ -35,6 +37,7 @@
 .formSign__submit-button:disabled {
   background-color: var(--dark-grey-text);
   opacity: .3;
+  cursor: default;
 }
 
 .formSign__submit-button:disabled:hover {
