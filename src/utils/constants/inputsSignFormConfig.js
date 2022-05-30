@@ -20,4 +20,25 @@ export const inputConfig = {
     name: "password",
     placeholder: 'At least 6 characters',
   },
+  monthBirth: {
+    type: "month",
+    label: "Month",
+    minLength: "6",
+    name: "month",
+    placeholder: 'Month',
+    options: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ]
+  },
 };

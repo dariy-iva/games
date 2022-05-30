@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+}
+
+.select {
+  position: relative;
+  width: 212px;
+  height: 52px;
+  margin: 0;
+  color: var(--grey-text);
+}
+
+.select[data-state="active"] .select__title::before {
+  transform: translate(-3px, -50%) rotate(-45deg);
+}
+
+.select[data-state="active"] .select__title::after {
+  transform: translate(3px, -50%) rotate(45deg);
+}
+
+
+.select[data-state="active"] .select__options {
+  opacity: 1;
+}
+
+.select[data-state="active"] .__select__label + .__select__input + .__select__label {
+  max-height: 40px;
+  border-top-width: 1px;
+}
+
+.select__title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 17px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  background: var(--dark-grey-bcg);
+  opacity: .4;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1;
+}
+
+.select__title:hover {
+  opacity: 1;
+}
+
+.select__title::before, .select__title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  display: block;
+  width: 10px;
+  height: 2px;
+  transition: all .3s ease-out;
+  background-color: var(--grey-text);
+  opacity: .4;
+}
+
+.select__title::before {
+  transform: translate(-3px, -50%) rotate(45deg);
+}
+
+.select__title::after {
+  transform: translate(3px, -50%) rotate(-45deg);
+}
+
+.select__title:hover .select__title::before, .select__title:hover .select__title::after {
+  opacity: 1;
+}
+
+.select__title_active, .select__title_active .select__title::before, .select__title_active .select__title::after {
+  opacity: 1;
+}
+
+.select__options {
+  position: absolute;
+  bottom: 62px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  background-color: var(--dark-grey-bcg);
+  border-radius: 20px;
+  transition: all 0.3s ease-out;
+  opacity: 0;
+  z-index: 8;
+  padding: 20px;
+  max-height: 230px;
+  overflow: auto;
+}
+
+.select__options::-webkit-scrollbar {
+  background-color: var(--dark-grey-bcg);
+}
+
+.select__options::-webkit-scrollbar-thumb {
+  display: block;
+  background-color: var(--grey-text);
+  opacity: .2;
+  border-radius: 30px;
+  max-width: 8px;
+  max-height: 56px;
+}
+
+.select__option {
+  display: none;
+}
+
+.select__option + label {
+  opacity: .7;
+}
+.select__option:checked + label {
+  opacity: 1;
+ }
+
+.select__label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  transition: all .2s ease-out;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.select__label:hover {
+   opacity: 1;
+ }

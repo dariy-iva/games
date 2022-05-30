@@ -4,6 +4,7 @@ import HeaderSign from "../Headers/HeaderSign/HeaderSign";
 import FormSign from "../FormSign/FormSign";
 import useFormValidator from "../../hooks/useFormValidator";
 import InputFormSign from "../FormSign/InputFormSign/InputFormSign";
+import SelectFormSign from "../FormSign/SelectFormSign/SelectFormSign";
 import {inputConfig} from "../../utils/constants/inputsSignFormConfig";
 
 export default function Register({handleRegister}) {
@@ -14,6 +15,7 @@ export default function Register({handleRegister}) {
     e.preventDefault();
     // handleRegister(values);
   }
+  console.log(values)
 
   return (
     <>
@@ -45,6 +47,14 @@ export default function Register({handleRegister}) {
               config={inputConfig.password}
               error={errors.password || ""}
             />
+          <fieldset className="register__fieldset">
+            <SelectFormSign
+              value={values.month || ""}
+              onChange={handleChange}
+              config={inputConfig.monthBirth}
+              error={errors.month || ""}
+            />
+          </fieldset>
         </FormSign>
       </main>
     </>
