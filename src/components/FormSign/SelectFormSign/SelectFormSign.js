@@ -2,7 +2,7 @@ import React from "react";
 import "./SelectFormSign.css";
 
 export default function SelectFormSign({value, onChange, config, error, pattern}) {
-  const {label, type, minLength = null, maxLength = null, name, placeholder, options} = config;
+  const {label, name, options} = config;
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -44,13 +44,15 @@ export default function SelectFormSign({value, onChange, config, error, pattern}
       <div className={`select ${name === 'month' ? 'select_name_month' : 'select_name_day-year'}`} data-state={state}>
         <div className={`select__title ${state === 'active' ? 'select__title_active' : ''}`} data-default="Option 0"
              onClick={handleSelectClick}>{currentValueText}</div>
-        <div className="select__options">
-          {options.map( (option, index) => (
-            <div key={option}>
-              <input id={`name-${index}`} className="select__option" type="radio" name={name}/>
-              <label htmlFor={`name-${index}`} className="select__label" onClick={handleLabelClick}>{option}</label>
-            </div>
-          ) )}
+        <div className="select__container">
+          <div className="select__options">
+            {options.map( (option, index) => (
+              <div key={option}>
+                <input id={`name-${index}`} className="select__option" type="radio" name={name}/>
+                <label htmlFor={`name-${index}`} className="select__label" onClick={handleLabelClick}>{option}</label>
+              </div>
+            ) )}
+          </div>
         </div>
       </div>
     </>

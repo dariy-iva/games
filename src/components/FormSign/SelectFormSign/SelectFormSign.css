@@ -26,10 +26,6 @@
 }
 
 
-.select[data-state="active"] .select__options {
-  opacity: 1;
-}
-
 .select[data-state="active"] .__select__label + .__select__input + .__select__label {
   max-height: 40px;
   border-top-width: 1px;
@@ -82,23 +78,32 @@
 .select__title_active, .select__title_active .select__title::before, .select__title_active .select__title::after {
   opacity: 1;
 }
-
-.select__options {
+.select__container {
   position: absolute;
   bottom: 62px;
   left: 0;
+  width: 100%;
+  border-radius: 20px;
+  transition: all 0.3s ease-out;
+  opacity: 0;
+  z-index: 8;
+  padding: 20px 5px 20px 20px;
+  max-height: 230px;
+  background-color: var(--dark-grey-bcg);
+}
+
+.select[data-state="active"] .select__container {
+  opacity: 1;
+}
+
+.select__options {
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 100%;
-  background-color: var(--dark-grey-bcg);
-  border-radius: 20px;
-  /*border-radius: 20px 0 0 20px;*/
   transition: all 0.3s ease-out;
-  opacity: 0;
   z-index: 8;
-  padding: 20px;
-  max-height: 230px;
+  max-height: calc(230px - 40px);
   overflow: auto;
 }
 
@@ -106,8 +111,6 @@
   background-color: var(--dark-grey-bcg);
   width: 8px;
   max-height: calc(230px - 40px);
-  /*border-radius: 0 20px 20px 0;*/
-  /*border-radius: 20px;*/
 }
 .select__options::-webkit-scrollbar-track {
   border-radius: 20px;
@@ -126,9 +129,18 @@
 .select__option + label {
   opacity: .7;
 }
+
 .select__option:checked + label {
   opacity: 1;
  }
+
+.select__option:checked + label::after {
+  content: url("../../../images/checked_icon.svg");
+  width: 13px;
+  height: 15px;
+  margin-left: auto;
+  margin-right: 14px;
+}
 
 .select__label {
   display: flex;

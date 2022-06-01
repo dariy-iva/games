@@ -54,6 +54,18 @@ export default function Register({handleRegister}) {
               config={inputConfig.monthBirth}
               error={errors.month || ""}
             />
+            <SelectFormSign
+              value={values.day || ""}
+              onChange={handleChange}
+              config={inputConfig.dayBirth}
+              error={errors.day || ""}
+            />
+            <SelectFormSign
+              value={values.year || ""}
+              onChange={handleChange}
+              config={inputConfig.yearBirth}
+              error={errors.year || ""}
+            />
           </fieldset>
         </FormSign>
       </main>
