@@ -47,6 +47,7 @@ export default function Register({handleRegister}) {
               config={inputConfig.password}
               error={errors.password || ""}
             />
+          <p className="input__field register__label">Date of Birth</p>
           <fieldset className="register__fieldset">
             <SelectFormSign
               value={values.month || ""}

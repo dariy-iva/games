@@ -43,16 +43,26 @@ export const inputConfig = {
     type: "number",
     label: "Day",
     name: "day",
-    options: [
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
-    ]
+    get options() {
+      const daysList = [];
+      for (let i = 1; i < 32; i++) {
+        daysList.push( i );
+      }
+      return daysList;
+    },
   },
   yearBirth: {
     type: "number",
     label: "Year",
     name: "year",
-    options: [
-      1950, 1960, 1970, 1980, 1990, 2000
-    ]
+    get options() {
+      const now = new Date();
+      const nowYear = now.getFullYear();
+      const yearsList = [];
+      for (let i = 0; i < (nowYear - 1950 - 18); i++) {
+        yearsList.push( 1950 + i );
+      }
+      return yearsList.reverse();
+    },
   },
 };

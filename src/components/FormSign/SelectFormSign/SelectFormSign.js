@@ -4,6 +4,7 @@ import "./SelectFormSign.css";
 export default function SelectFormSign({value, onChange, config, error, pattern}) {
   const {label, name, options} = config;
 
+
   function handleSubmit(e) {
     e.preventDefault();
     // handleRegister(values);
@@ -26,30 +27,30 @@ export default function SelectFormSign({value, onChange, config, error, pattern}
 //   reset.addEventListener('click', () => {
 //     selectSingle_title.textContent = selectSingle_title.getAttribute('data-default');
 //   });
-  const [state, setState] = React.useState( '' );
+  const [stateSelect, setStateSelect] = React.useState( '' );
   const [currentValueText, setCurrentValueText] = React.useState( label );
 
   function handleSelectClick() {
-    state === 'active' ? setState( '' ) : setState( 'active' );
+    stateSelect === 'active' ? setStateSelect( '' ) : setStateSelect( 'active' );
   }
 
   function handleLabelClick(e) {
     setCurrentValueText( e.target.textContent );
-    setState( '' );
+    setStateSelect( '' );
   }
 
 
   return (
     <>
-      <div className={`select ${name === 'month' ? 'select_name_month' : 'select_name_day-year'}`} data-state={state}>
-        <div className={`select__title ${state === 'active' ? 'select__title_active' : ''}`} data-default="Option 0"
+      <div className={`select ${name === 'month' ? 'select_name_month' : 'select_name_day-year'}`} data-state={stateSelect}>
+        <div className={`select__title ${stateSelect === 'active' ? 'select__title_active' : ''}`} data-default="Option 0"
              onClick={handleSelectClick}>{currentValueText}</div>
         <div className="select__container">
           <div className="select__options">
             {options.map( (option, index) => (
               <div key={option}>
-                <input id={`name-${index}`} className="select__option" type="radio" name={name}/>
-                <label htmlFor={`name-${index}`} className="select__label" onClick={handleLabelClick}>{option}</label>
+                <input id={`${name + '-' + index}`} className="select__option" type="radio" name={name}/>
+                <label htmlFor={`${name + '-' + index}`} className="select__label" onClick={handleLabelClick}>{option}</label>
               </div>
             ) )}
           </div>

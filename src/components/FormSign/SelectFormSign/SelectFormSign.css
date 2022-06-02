@@ -79,31 +79,33 @@
   opacity: 1;
 }
 .select__container {
+  padding: 20px 5px 20px 20px;
+  max-height: 230px;
+  width: 100%;
   position: absolute;
   bottom: 62px;
   left: 0;
-  width: 100%;
   border-radius: 20px;
   transition: all 0.3s ease-out;
   opacity: 0;
+  visibility: hidden;
   z-index: 8;
-  padding: 20px 5px 20px 20px;
-  max-height: 230px;
   background-color: var(--dark-grey-bcg);
 }
 
 .select[data-state="active"] .select__container {
   opacity: 1;
+  visibility: visible;
 }
 
 .select__options {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  max-height: calc(230px - 40px);
   width: 100%;
   transition: all 0.3s ease-out;
   z-index: 8;
-  max-height: calc(230px - 40px);
   overflow: auto;
 }
 
