@@ -59,7 +59,7 @@ export const inputConfig = {
       const now = new Date();
       const nowYear = now.getFullYear();
       const yearsList = [];
-      for (let i = 0; i < (nowYear - 1950 - 18); i++) {
+      for (let i = 0; i < (nowYear - 1950 - 16); i++) {
         yearsList.push( 1950 + i );
       }
       return yearsList.reverse();

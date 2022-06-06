@@ -1,12 +1,9 @@
-* {
-  box-sizing: border-box;
-}
-
 .select {
   position: relative;
   height: 52px;
   margin: 0;
   color: var(--grey-text);
+  box-sizing: border-box;
 }
 
 .select_name_month {
@@ -44,6 +41,7 @@
   font-weight: 400;
   font-size: 17px;
   line-height: 1;
+  box-sizing: border-box;
 }
 
 .select__title:hover {
@@ -91,6 +89,7 @@
   visibility: hidden;
   z-index: 8;
   background-color: var(--dark-grey-bcg);
+  box-sizing: border-box;
 }
 
 .select[data-state="active"] .select__container {
