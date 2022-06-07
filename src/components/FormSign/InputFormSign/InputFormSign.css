@@ -17,13 +17,19 @@
 .input:focus {
   border-color: var(--violet-color);
 }
+
 .input::placeholder {
   color: var(--grey-text);
   opacity: .3;
 }
-/*.input:invalid {*/
-/*  border-color: var(--red-text);*/
-/*}*/
+
+.input:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: var(--red-text);
+}
+
+.input:valid {
+  background: url("../../../images/valid_input_icon.svg") calc(100% - 24px) / 11px 100% no-repeat;
+}
 
 .input__field {
   font-weight: 500;

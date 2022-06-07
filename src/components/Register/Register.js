@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./Register.css";
 import HeaderSign from "../Headers/HeaderSign/HeaderSign";
 import FormSign from "../FormSign/FormSign";
@@ -12,16 +13,23 @@ export default function Register({handleRegister}) {
     useFormValidator( {} );
   const [activeSelect, setActiveSelect] = React.useState( null );
 
+  React.useEffect( () => {
+    window.addEventListener( 'click', handleWindowClick );
+    return () => window.removeEventListener( 'click', handleWindowClick );
+  }, );
+
+  function handleWindowClick(e) {
+    (e.target.id !== 'month' && e.target.id !== 'day' && e.target.id !== 'year') && setActiveSelect( null );
+  }
+
   function selectOnClick(selectId) {
-    setActiveSelect(selectId);
+    setActiveSelect( selectId );
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    // handleRegister(values);
+    handleRegister(values);
   }
-
-  console.log( values )
 
   return (
     <>
@@ -53,10 +61,9 @@ export default function Register({handleRegister}) {
             config={inputConfig.password}
             error={errors.password || ""}
           />
-          <p className="input__field register__label">Date of Birth</p>
+          <p className="register__label">Date of Birth</p>
           <fieldset className="register__fieldset">
             <SelectFormSign
-              value={values.month || ""}
               onChange={handleChange}
               selectOnClick={selectOnClick}
               activeSelect={activeSelect}
@@ -64,7 +71,6 @@ export default function Register({handleRegister}) {
               error={errors.month || ""}
             />
             <SelectFormSign
-              value={values.day || ""}
               onChange={handleChange}
               selectOnClick={selectOnClick}
               activeSelect={activeSelect}
@@ -72,7 +78,6 @@ export default function Register({handleRegister}) {
               error={errors.day || ""}
             />
             <SelectFormSign
-              value={values.year || ""}
               onChange={handleChange}
               selectOnClick={selectOnClick}
               activeSelect={activeSelect}
