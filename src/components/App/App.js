@@ -10,18 +10,18 @@ function App() {
 
   function handleRegister(dataUser) {
     console.log( dataUser );
-    history( "/" );
+    history( "/games" );
   }
 
   return (
     <div className="page">
       <Routes>
-        <Route exact path="/" element={<MainPage/>}/>
+        <Route exact path="/games" element={<MainPage/>}/>
         <Route
-          path="/signup"
+          path="/games/signup"
           element={<Register handleRegister={handleRegister}/>}
         />
-        <Route path="/signin" element={<Login handleLogin={""}/>}/>
+        <Route path="/games/signin" element={<Login handleLogin={""}/>}/>
       </Routes>
     </div>
   );
