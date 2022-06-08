@@ -9,7 +9,7 @@ export default function HeaderMainPage() {
         <div className="header__menu">
           <Logo isSmall={false}/>
           <a href="/" className="header__text">
-            partie
+            games
           </a>
           <Menu/>
         </div>
