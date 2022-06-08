@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/games/static/css/main.e2abbbb5.css",
-    "main.js": "/games/static/js/main.38666338.js",
+    "main.js": "/games/static/js/main.38af29f1.js",
     "static/js/787.10ea8b41.chunk.js": "/games/static/js/787.10ea8b41.chunk.js",
     "static/media/MontserratAlternates-BlackItalic.eot": "/games/static/media/MontserratAlternates-BlackItalic.a7f045e701f13b4359ba.eot",
     "static/media/MontserratAlternates-BlackItalic.ttf": "/games/static/media/MontserratAlternates-BlackItalic.04389f0e9fca8bd05e19.ttf",
@@ -63,11 +63,11 @@
     "static/media/checked_icon.svg": "/games/static/media/checked_icon.5ec666f065eb223eee30.svg",
     "static/media/header_play_button.svg": "/games/static/media/header_play_button.6f52eef0f839086683a5.svg",
     "main.e2abbbb5.css.map": "/games/static/css/main.e2abbbb5.css.map",
-    "main.38666338.js.map": "/games/static/js/main.38666338.js.map",
+    "main.38af29f1.js.map": "/games/static/js/main.38af29f1.js.map",
     "787.10ea8b41.chunk.js.map": "/games/static/js/787.10ea8b41.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e2abbbb5.css",
-    "static/js/main.38666338.js"
+    "static/js/main.38af29f1.js"
   ]
 }
