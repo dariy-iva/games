@@ -43,12 +43,12 @@
    },
    "repository": {
       "type": "git",
-      "url": "git+https://github.com/dariy-iva/partie.git"
+      "url": "git+https://github.com/dariy-iva/games.git"
    },
    "author": "Daria Ivanova",
    "license": "ISC",
    "bugs": {
-      "url": "https://github.com/dariy-iva/partie/issues"
+      "url": "https://github.com/dariy-iva/games/issues"
    },
-   "homepage": "https://github.com/partie/#readme"
+   "homepage": "https://github.com/games/#readme"
 }
