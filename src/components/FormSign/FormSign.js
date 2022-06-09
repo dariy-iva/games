@@ -2,7 +2,7 @@ import React from "react";
 import "./FormSign.css";
 
 export default function FormSign(props) {
-  const { name, buttonSubmitText, children, onSubmit, isValid } =
+  const {name, buttonSubmitText, children, onSubmit, isValid} =
     props;
 
   return (

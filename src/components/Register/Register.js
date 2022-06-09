@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./Register.css";
 import HeaderSign from "../Headers/HeaderSign/HeaderSign";
 import FormSign from "../FormSign/FormSign";
@@ -28,7 +27,7 @@ export default function Register({handleRegister}) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleRegister(values);
+    handleRegister( values );
   }
 
   return (

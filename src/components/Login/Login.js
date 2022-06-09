@@ -1,46 +1,74 @@
 import React from "react";
 import "./Login.css";
-// import useFormValidator from "../../hooks/useFormValidator";
-// import FormSign from "../FormSign/FormSign";
-// import InputFormSign from "../FormSign/InputFormSign/InputFormSign";
-// import { inputConfig } from "../../utils/constants/inputsConfig";
-// import Logo from "../Logo/Logo";
+import HeaderSign from "../Headers/HeaderSign/HeaderSign";
+import FormSign from "../FormSign/FormSign";
+import InputFormSign from "../FormSign/InputFormSign/InputFormSign";
+import {inputConfig} from "../../utils/constants/inputsSignFormConfig";
+import {pathsConfig} from "../../utils/constants/stringConstants";
+import useFormValidator from "../../hooks/useFormValidator";
 
-export default function Login({ handleLogin }) {
-  // const { values, handleChange, errors, isValid } =
-  //   useFormValidator({});
-  //
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   handleLogin(values);
-  // }
+export default function Login({handleLogin}) {
+  const {values, handleChange, errors, isValid} =
+    useFormValidator( {} );
+
+  const socialLinkConfig = [{text: 'Log in with Apple', label: 'apple'}, {
+    text: 'Log in with Google',
+    label: 'google'
+  }, {text: 'Connect with Facebook', label: 'fb'}];
+
+  const [allButtonIsShow, setAllButtonIsShow] = React.useState( false );
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    handleLogin( values );
+  }
+
+  function handleOpenAllButtonClick() {
+    setAllButtonIsShow( true );
+  }
 
   return (
     <>
+      <HeaderSign/>
       <main className="login">
-        {/*<Logo />*/}
-        {/*<FormSign*/}
-        {/*  name="login"*/}
-        {/*  title="Рады видеть!"*/}
-        {/*  buttonSubmit="Войти"*/}
-        {/*  onSubmit={handleSubmit}*/}
-        {/*  isNewUser={false}*/}
-        {/*  isValid={isValid}*/}
-        {/*>*/}
-        {/*  <InputFormSign*/}
-        {/*    value={values.email || ""}*/}
-        {/*    onChange={handleChange}*/}
-        {/*    config={inputConfig.email}*/}
-        {/*    error={errors.email || ""}*/}
-        {/*    pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$"*/}
-        {/*  />*/}
-        {/*  <InputFormSign*/}
-        {/*    value={values.password || ""}*/}
-        {/*    onChange={handleChange}*/}
-        {/*    config={inputConfig.password}*/}
-        {/*    error={errors.password || ""}*/}
-        {/*  />*/}
-        {/*</FormSign>*/}
+        <FormSign
+          name="login"
+          buttonSubmitText="Log in"
+          onSubmit={handleSubmit}
+          isValid={isValid}
+        >
+          <InputFormSign
+            value={values.name || ""}
+            onChange={handleChange}
+            config={inputConfig.name}
+            error={errors.name || ""}
+            pattern="^[a-zA-Zа-яёА-ЯЁ\-\s]+$"
+          />
+          <InputFormSign
+            value={values.password || ""}
+            onChange={handleChange}
+            config={inputConfig.password}
+            error={errors.password || ""}
+          />
+          <a href={pathsConfig.resetPassword} className="login__text login__link login__link_path_reset link-hover">Forgot
+            password?</a>
+        </FormSign>
+
+        <a href={pathsConfig.contacts} className="login__text login__link link-hover login__link_path_contact"
+           target="_blank">Need help? Contact
+          Us</a>
+        <span className="login__line">or</span>
+        <div className="login__buttons-container">
+          {socialLinkConfig.map( (item, index) => (
+            <button
+              className={`login__button login__button_content_${item.label} login__text ${!allButtonIsShow && index > 0 ? 'login__button_hidden' : ''}`}
+              type="button">{item.text}
+            </button>
+          ) )}
+          {!allButtonIsShow && (
+            <span className="login__text login__link login__link_path_show-icon link-hover"
+                  onClick={handleOpenAllButtonClick}>Show all</span>)}
+        </div>
       </main>
     </>
   );
