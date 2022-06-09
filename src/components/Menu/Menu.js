@@ -1,7 +1,8 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
 import './Menu.css';
 import {menuItems} from '../../utils/constants/menuItemMainPageConfig.js'
-import {NavLink} from "react-router-dom";
+import {pathsConfig} from "../../utils/constants/stringConstants.js";
 
 export default function Menu() {
   return (
@@ -24,13 +25,13 @@ export default function Menu() {
       </ul>
       <ul className="menu__list menu__list_content_auth">
         <li className="menu__item">
-          <a href="/signin" className="menu__text menu__text_weight_bold">
+          <a href={pathsConfig.login} className="menu__text menu__text_weight_bold">
             Log In
           </a>
         </li>
         <li className="menu__text menu__item">
           <a
-            href="/signup"
+            href={pathsConfig.register}
             className="menu__text menu__text_weight_bold menu__item_active"
           >
             Sign Up

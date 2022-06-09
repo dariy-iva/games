@@ -2,6 +2,7 @@ import React from "react";
 import {Link, NavLink} from "react-router-dom";
 import './HeaderSign.css';
 import Logo from '../../Logo/Logo.js';
+import {pathsConfig} from "../../../utils/constants/stringConstants.js";
 
 export default function HeaderSign() {
   return (
@@ -9,7 +10,7 @@ export default function HeaderSign() {
       <Logo isSmall={true}/>
       <nav className="header-sign-page__nav">
         <NavLink
-          to="/signin"
+          to={pathsConfig.login}
           end
           className={(props) =>
             props.isActive
@@ -19,7 +20,7 @@ export default function HeaderSign() {
           Log In
         </NavLink>
         <NavLink
-          to="/signup"
+          to={pathsConfig.register}
           end
           className={(props) =>
             props.isActive

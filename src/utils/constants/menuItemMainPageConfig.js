@@ -1,14 +1,16 @@
+import {pathsConfig} from "./stringConstants.js";
+
 export const menuItems = [
    {
       text: 'Features',
-      link: '/features'
+      link: pathsConfig.features
    }, {
    text: 'Partners',
-      link: '/partners'
+      link: pathsConfig.partners
    }, {
-   text: 'Contact',
-      link: '/contact'
+   text: 'Contacts',
+      link: pathsConfig.contacts
    }, {
    text: `Help & Support`,
-      link: '/help'
+      link: pathsConfig.support
 }]

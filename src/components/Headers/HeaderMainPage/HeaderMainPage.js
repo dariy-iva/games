@@ -2,13 +2,14 @@ import React from "react";
 import './HeaderMainPage.css';
 import Logo from "../../Logo/Logo.js";
 import Menu from "../../Menu/Menu.js";
+import {pathsConfig} from "../../../utils/constants/stringConstants.js";
 
 export default function HeaderMainPage() {
   return (
       <header className="header">
         <div className="header__menu">
           <Logo isSmall={false}/>
-          <a href="/" className="header__text">
+          <a href={pathsConfig.main} className="header__text">
             games
           </a>
           <Menu/>
