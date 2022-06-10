@@ -62,7 +62,7 @@ export default function Login({handleLogin}) {
           {socialLinkConfig.map( (item, index) => (
             <button
               className={`login__button login__button_content_${item.label} login__text ${!allButtonIsShow && index > 0 ? 'login__button_hidden' : ''}`}
-              type="button">{item.text}
+              type="button" key={item.label}>{item.text}
             </button>
           ) )}
           {!allButtonIsShow && (

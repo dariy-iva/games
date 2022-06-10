@@ -52,3 +52,13 @@
   position: absolute;
   left: 0;
 }
+
+.input__tooltip {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--light-grey-text);
+  opacity: .5;
+  display: block;
+  padding-top: 20px;
+}
