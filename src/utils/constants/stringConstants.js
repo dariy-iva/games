@@ -3,6 +3,7 @@ export const pathsConfig = {
   register: '/games/signup',
   login: '/games/signin',
   resetPassword: '/games/recovery',
+  platforms : 'games/platforms',
   features: '/games/features',
   partners: '/games/partners',
   contacts: '/games/contacts',

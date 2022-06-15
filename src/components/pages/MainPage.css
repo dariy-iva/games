@@ -1,0 +1,38 @@
+.splash-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.splash-screen__title {
+  margin: 0 auto;
+  padding: 0 0 40px;
+  max-width: 760px;
+  text-align: center;
+  color: var(--light-yellow-text);
+  font-size: 88px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.splash-screen__button {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  width: 78px;
+  height: 78px;
+  border: 0;
+  border-radius: 50%;
+  background: url(../../images/splash-screen_button.svg) no-repeat center;
+  background-color:  var(--violet-color);
+  transition: box-shadow .3s;
+  cursor: pointer;
+}
+.splash-screen__button:hover {
+  box-shadow: 0 0 5px  var(--violet-color),
+  0 0 25px var(--violet-color),
+  0 0 50px var(--violet-color),
+  0 0 200px var(--violet-color);
+}

@@ -1,10 +1,9 @@
 import React from "react";
-import './HeaderMainPage.css';
+import './HeaderMain.css';
 import Logo from "../../Logo/Logo.js";
-import Menu from "../../Menu/Menu.js";
 import {pathsConfig} from "../../../utils/constants/stringConstants.js";
 
-export default function HeaderMainPage() {
+export default function HeaderMain({children}) {
   return (
       <header className="header">
         <div className="header__menu">
@@ -12,11 +11,7 @@ export default function HeaderMainPage() {
           <a href={pathsConfig.main} className="header__text">
             games
           </a>
-          <Menu/>
-        </div>
-        <div className="header__content">
-          <h1 className="header__title translation">More Than Matchmaking</h1>
-          <button type="button" className="header__button translation"></button>
+          {children}
         </div>
       </header>
   );

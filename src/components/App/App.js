@@ -4,6 +4,8 @@ import './App.css';
 import MainPage from "../pages/MainPage.js";
 import Register from "../Register/Register.js";
 import Login from "../Login/Login.js";
+import PasswordRecoveryPage from '../pages/PasswordRecoveryPage/PasswordRecoveryPage.js';
+import UserGameConfigPage from "../pages/UserGameConfigPage/UserGameConfigPage";
 import {pathsConfig} from "../../utils/constants/stringConstants.js";
 
 function App() {
@@ -11,7 +13,11 @@ function App() {
 
   function handleRegister(dataUser) {
     console.log( dataUser );
-    history( pathsConfig.main );
+    history( pathsConfig.login );
+  }
+
+  function handleLogin() {
+    history( pathsConfig.platforms );
   }
 
   return (
@@ -22,7 +28,9 @@ function App() {
           path={pathsConfig.register}
           element={<Register handleRegister={handleRegister}/>}
         />
-        <Route path={pathsConfig.login} element={<Login handleLogin={""}/>}/>
+        <Route path={pathsConfig.login} element={<Login handleLogin={handleLogin}/>}/>
+        <Route path={pathsConfig.resetPassword} element={<PasswordRecoveryPage handleResetPassword={""}/>}/>
+        <Route path={pathsConfig.platforms} element={<UserGameConfigPage />}/>
       </Routes>
     </div>
   );

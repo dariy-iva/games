@@ -1,0 +1,69 @@
+.platforms {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  color: var(--grey-text);
+}
+
+.platforms__title {
+  max-width: 350px;
+  margin: 0 0 20px;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.2;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: var(--grey-text);
+}
+
+.platform__text {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.3;
+  text-align: center;
+  opacity: .5;
+}
+
+.platform__description {
+  max-width: 225px;
+  margin: 0 0 40px;
+}
+
+.platforms__items {
+  max-width: 860px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.platforms__button {
+  margin-top: 35px;
+  padding: 20px 40px;
+  background: var(--violet-color);
+  border: none;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--grey-text);
+  transition: all .3s;
+  cursor: pointer;
+}
+
+.platforms__button:hover {
+  box-shadow: 0 0 5px var(--violet-color),
+  0 0 25px var(--violet-color),
+  0 0 50px var(--violet-color),
+  0 0 200px var(--violet-color);
+}
+
+.platforms__button_visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.platforms__button_hidden {
+  visibility: hidden;
+  opacity: 0;
+}
