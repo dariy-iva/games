@@ -15,10 +15,15 @@ export default function UserGameConfigPage({handleResetPassword}) {
   const [checkedItems, setCheckedItems] = React.useState( [] );
 
   function handleChangeInput(e) {
-    e.target.checked
-      ? setCheckedItems( [e.target.name, ...checkedItems] )
-      : setCheckedItems( checkedItems.filter( item => item !== e.target.name ) );
-    console.log( checkedItems )
+    if (e.target.checked) {
+      setCheckedItems( [e.target.name, ...checkedItems] );
+    } else {
+      setCheckedItems( checkedItems.filter( item => item !== e.target.name ) );
+    }
+  }
+
+  function checkItemStatus(itemName) {
+    return checkedItems.includes( itemName ) ? 'checked' : 'not-checked';
   }
 
   function handleCheckedPlatformsSubmit() {
@@ -30,21 +35,21 @@ export default function UserGameConfigPage({handleResetPassword}) {
       <HeaderMain/>
       <main className="platforms">
         <h1 className="platforms__title">Where do you play?</h1>
-        <p className="platform__description platform__text">You can select multiply choices</p>
+        <p className="platforms__description platforms__text">You can select multiply choices</p>
         <div className="platforms__items">
           {platformsInputsConfig.map( platform => (
-            <label className="platforms__label platform__text" key={platform.name}>
+            <label className={`platforms__label platforms__label_content_${platform.name}`} key={platform.name}
+                   status={checkItemStatus( platform.name )}>
               <input
                 type="checkbox"
                 className="platforms__input"
                 name={platform.name}
                 onChange={handleChangeInput}
               />
-              {platform.label}
+              <span className="platforms__text">{platform.label}</span>
             </label>
           ) )}
         </div>
-        {}
         <button type="button"
                 className={`platforms__button ${checkedItems.length > 0 ? 'platforms__button_visible' : 'platforms__button_hidden'}`}
                 onClick={handleCheckedPlatformsSubmit}>Continue
