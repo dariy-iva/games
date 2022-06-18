@@ -6,6 +6,9 @@
   right: 0;
   bottom: 0;
   overflow: hidden;
+}
+
+.overlay_color {
   background-color: var(--dark-color-bcg);
 }
 
@@ -20,22 +23,20 @@
   opacity: 0;
 }
 
-.overlay__field_back {
-  z-index: -2;
-}
-
 .overlay__line {
   display: block;
   position: absolute;
   list-style-type: none;
   border-style: solid;
   border-radius: 4px;
+  transition: all .5s;
 }
 
 .overlay__animation_no-delay {
-  animation: translateLines 100s linear infinite;
+  animation: translateLines 50s linear infinite;
 }
 
 .overlay__animation_delay {
-  animation: translateLines 100s linear 50s infinite;
+  animation: translateLines 50s linear 25s infinite;
+  z-index: -2;
 }

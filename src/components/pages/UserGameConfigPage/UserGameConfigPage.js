@@ -2,23 +2,28 @@ import React from "react";
 // import {useNavigate } from "react-router-dom";
 import "./UserGameConfigPage.css";
 import HeaderMain from "../../Headers/HeaderMain/HeaderMain.js";
+import AnimationOverlay from "../../AnimationOverlay/AnimationOverlay";
 import {pathsConfig} from "../../../utils/constants/stringConstants";
 
 export default function UserGameConfigPage({handleResetPassword}) {
   const platformsInputsConfig = [
-    {label: 'PC', name: 'pc',},
-    {label: 'Playstation', name: 'ps',},
-    {label: 'XBOX', name: 'xbox',},
-    {label: 'Switch', name: 'switch',},
-    {label: 'Mobile', name: 'mobile',},
+    {label: 'PC', name: 'pc', color: '#9C42AB'},
+    {label: 'Playstation', name: 'ps', color: '#184292'},
+    {label: 'XBOX', name: 'xbox', color: '#077d07'},
+    {label: 'Switch', name: 'switch', color: '#EB4335'},
+    {label: 'Mobile', name: 'mobile', color: '#6E4AFF'},
   ];
+  const [colorsForOverlay, setColorsForOverlay] = React.useState( [] );
   const [checkedItems, setCheckedItems] = React.useState( [] );
 
   function handleChangeInput(e) {
+    const platform = platformsInputsConfig.find( item => item.name === e.target.name );
     if (e.target.checked) {
-      setCheckedItems( [e.target.name, ...checkedItems] );
+      setCheckedItems( [platform.name, ...checkedItems] );
+      setColorsForOverlay( [platform.color, ...colorsForOverlay] );
     } else {
-      setCheckedItems( checkedItems.filter( item => item !== e.target.name ) );
+      setCheckedItems( checkedItems.filter( item => item !== platform.name ) );
+      setColorsForOverlay( colorsForOverlay.filter( item => item !== platform.color ) );
     }
   }
 
@@ -55,6 +60,7 @@ export default function UserGameConfigPage({handleResetPassword}) {
                 onClick={handleCheckedPlatformsSubmit}>Continue
         </button>
       </main>
+      <AnimationOverlay colors={colorsForOverlay}/>
     </>
   );
 }

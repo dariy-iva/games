@@ -5,6 +5,7 @@ import Menu from "../Menu/Menu.js";
 import AnimationOverlay from "../AnimationOverlay/AnimationOverlay.js";
 
 export default function MainPage() {
+  const colorsForOverlay = ["#6E4AFF", "#9C42AB"];
   return (
     <>
       <HeaderMain>
@@ -14,7 +15,7 @@ export default function MainPage() {
         <h1 className="splash-screen__title translation">More Than Matchmaking</h1>
         <button type="button" className="splash-screen__button translation"/>
       </main>
-      <AnimationOverlay/>
+      <AnimationOverlay colors={colorsForOverlay} isOverlayColor={true}/>
     </>
   );
 }
