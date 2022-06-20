@@ -30,7 +30,7 @@ function App() {
         />
         <Route path={pathsConfig.login} element={<Login handleLogin={handleLogin}/>}/>
         <Route path={pathsConfig.resetPassword} element={<PasswordRecoveryPage handleResetPassword={""}/>}/>
-        <Route path={pathsConfig.platforms} element={<UserGameConfigPage />}/>
+        <Route path={pathsConfig.platforms} element={<UserGameConfigPage/>}/>
       </Routes>
     </div>
   );
