@@ -27,7 +27,7 @@ export default function UserGameConfigPage({}) {
   return (
     <>
       <HeaderMain/>
-      <main className="user-game-config">
+      <main className={`user-game-config ${platformsIsChecked ? 'user-game-config_slim' : ''}`}>
         <h1
           className="user-game-config__title">{!platformsIsChecked ? 'Where do you play?' : 'What games do you play?'}</h1>
         <p

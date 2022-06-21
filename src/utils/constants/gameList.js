@@ -12,46 +12,46 @@ export const gameList = [
   {
     name: 'apex',
     image: apexImage,
-    title: 'Apex Legends',
+    label: 'Apex Legends',
   },
   {
     name: 'call-of-duty',
     image: callOfDutyImage,
-    title: 'Call of Duty',
+    label: 'Call of Duty',
   },
   {
     name: 'fall-guys-image',
     image: fallGuysImage,
-    title: 'Fall GUYS',
+    label: 'Fall GUYS',
   },
   {
     name: 'fortnite',
     image: fortniteImage,
-    title: 'Fortnite',
+    label: 'Fortnite',
   },
   {
     name: 'ghost',
     image: ghostImage,
-    title: 'GHOST',
+    label: 'GHOST',
   },
   {
     name: 'league-of-legends',
     image: legaueOfLegendsImage,
-    title: 'League of Legends',
+    label: 'League of Legends',
   },
   {
     name: 'overwatch',
     image: overwatchImage,
-    title: 'Overwatch',
+    label: 'Overwatch',
   },
   {
     name: 'rainbow',
     image: rainbowImage,
-    title: 'Rainbow SIX | Siege',
+    label: 'Rainbow SIX | Siege',
   },
   {
     name: 'valorant',
     image: valorantImage,
-    title: 'Valorant',
+    label: 'Valorant',
   },
 ];
