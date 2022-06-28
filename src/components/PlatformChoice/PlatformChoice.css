@@ -100,23 +100,7 @@
 
 .platforms__button {
   margin-top: 35px;
-  padding: 20px 40px;
-  background: var(--violet-color);
-  border: none;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1;
-  color: var(--grey-text);
-  transition: all .3s;
-  cursor: pointer;
-}
-
-.platforms__button:hover {
-  box-shadow: 0 0 5px var(--violet-color),
-  0 0 25px var(--violet-color),
-  0 0 50px var(--violet-color),
-  0 0 200px var(--violet-color);
+  min-width: 146px;
 }
 
 .platforms__button_visible {

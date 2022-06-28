@@ -1,10 +1,16 @@
 .games {
-  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: calc(40px + 86px);
+  position: relative;
+  width: 100%;
 }
 
 .games__search {
   display: block;
   position: relative;
+  width: 100%;
 }
 
 .games__search::after {
@@ -104,4 +110,20 @@
 
 .games__input-check {
   display: none;
+}
+
+.games__button {
+  position: fixed;
+  bottom: 40px;
+  min-width: 146px;
+}
+
+.games__button_visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.games__button_hidden {
+  visibility: hidden;
+  opacity: 0;
 }

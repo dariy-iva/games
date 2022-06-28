@@ -9,7 +9,8 @@
 }
 
 .user-game-config_slim {
-  max-width: 490px;
+  width: 660px;
+  justify-content: flex-start;
 }
 
 .user-game-config__title {

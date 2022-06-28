@@ -3,6 +3,7 @@ import "./Login.css";
 import HeaderSign from "../Headers/HeaderSign/HeaderSign";
 import FormSign from "../FormSign/FormSign";
 import InputFormSign from "../FormSign/InputFormSign/InputFormSign";
+import Button from "../Button/Button";
 import {inputConfig} from "../../utils/constants/inputsSignFormConfig";
 import {pathsConfig} from "../../utils/constants/stringConstants";
 import useFormValidator from "../../hooks/useFormValidator";
