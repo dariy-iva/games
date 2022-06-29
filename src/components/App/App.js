@@ -5,19 +5,27 @@ import MainPage from "../pages/MainPage.js";
 import Register from "../Register/Register.js";
 import Login from "../Login/Login.js";
 import PasswordRecoveryPage from '../pages/PasswordRecoveryPage/PasswordRecoveryPage.js';
-import UserGameConfigPage from "../pages/UserGameConfigPage/UserGameConfigPage";
+import PlatformChoicePage from "../pages/PlatformChoicePage/PlatformChoicePage";
+import GamesChoicePage from "../pages/GamesChoicePage/GamesChoicePage";
 import {pathsConfig} from "../../utils/constants/stringConstants.js";
 
 function App() {
   const history = useNavigate();
 
   function handleRegister(dataUser) {
-    console.log( dataUser );
     history( pathsConfig.login );
   }
 
   function handleLogin() {
-    history( pathsConfig.platforms );
+    history( pathsConfig.platformsChoice );
+  }
+
+  function handleChoicePlatforms() {
+    history( pathsConfig.gamesChoice );
+  }
+
+  function handleChoiceGames() {
+    history( pathsConfig.gamesChoice );
   }
 
   return (
@@ -30,7 +38,8 @@ function App() {
         />
         <Route path={pathsConfig.login} element={<Login handleLogin={handleLogin}/>}/>
         <Route path={pathsConfig.resetPassword} element={<PasswordRecoveryPage handleResetPassword={""}/>}/>
-        <Route path={pathsConfig.platforms} element={<UserGameConfigPage/>}/>
+        <Route path={pathsConfig.platformsChoice} element={<PlatformChoicePage onSubmit={handleChoicePlatforms}/>}/>
+        <Route path={pathsConfig.gamesChoice} element={<GamesChoicePage onSubmit={handleChoiceGames}/>}/>
       </Routes>
     </div>
   );
