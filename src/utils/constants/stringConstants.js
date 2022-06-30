@@ -1,3 +1,5 @@
+import SubscriptionPage from "../../components/pages/SubscriptionPage/SubscriptionPage";
+
 export const pathsConfig = {
   main: '/games',
   register: '/games/signup',
@@ -9,4 +11,5 @@ export const pathsConfig = {
   partners: '/games/partners',
   contacts: '/games/contacts',
   support: '/games/support',
+  subscription: '/games/subscription',
 }

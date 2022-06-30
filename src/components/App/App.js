@@ -7,6 +7,7 @@ import Login from "../Login/Login.js";
 import PasswordRecoveryPage from '../pages/PasswordRecoveryPage/PasswordRecoveryPage.js';
 import PlatformChoicePage from "../pages/PlatformChoicePage/PlatformChoicePage";
 import GamesChoicePage from "../pages/GamesChoicePage/GamesChoicePage";
+import SubscriptionPage from "../pages/SubscriptionPage/SubscriptionPage";
 import {pathsConfig} from "../../utils/constants/stringConstants.js";
 
 function App() {
@@ -25,7 +26,11 @@ function App() {
   }
 
   function handleChoiceGames() {
-    history( pathsConfig.gamesChoice );
+    history( pathsConfig.subscription );
+  }
+
+  function handleChoiceSubscription() {
+    history();
   }
 
   return (
@@ -40,6 +45,7 @@ function App() {
         <Route path={pathsConfig.resetPassword} element={<PasswordRecoveryPage handleResetPassword={""}/>}/>
         <Route path={pathsConfig.platformsChoice} element={<PlatformChoicePage onSubmit={handleChoicePlatforms}/>}/>
         <Route path={pathsConfig.gamesChoice} element={<GamesChoicePage onSubmit={handleChoiceGames}/>}/>
+        <Route path={pathsConfig.subscription} element={<SubscriptionPage onSubmit={handleChoiceSubscription}/>}/>
       </Routes>
     </div>
   );
