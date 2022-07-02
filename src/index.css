@@ -32,6 +32,7 @@ body {
   /* max-width: 1200px; */
   margin: 0 auto;
   --white: #fff;
+  --black: #000;
   --light-grey-text: #F8F6FF;
   --grey-text: #EBEBF5;
   --dark-grey-text: #504D60;
@@ -39,13 +40,13 @@ body {
   --red-text: #F45365;
   --dark-grey-bcg: #1E1D24;
   --dark-color-bcg: #141423;
-  --black-color-bcg: #000;
   --violet-color: #6E4AFF;
   --dark-pink-color: #9C42AB;
   --dark-blue-color: #184292;
   --red-color: #EB4335;
   --green-color: #077d07;
-  background-color: var(--black-color-bcg);
+  --yellow-color: #D2C867;
+  background-color: var(--black);
 }
 
 .link-hover {

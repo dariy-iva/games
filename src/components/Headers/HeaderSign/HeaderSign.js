@@ -2,7 +2,7 @@ import React from "react";
 import {NavLink, useLocation} from "react-router-dom";
 import './HeaderSign.css';
 import Logo from '../../Logo/Logo.js';
-import {pathsConfig} from "../../../utils/constants/stringConstants.js";
+import {pathsConfig} from "../../../utils/constants/pathList.js";
 
 export default function HeaderSign({onBackButtonClick}) {
   const location = useLocation();

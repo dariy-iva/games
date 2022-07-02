@@ -1,7 +1,7 @@
 import React from "react";
 import './Logo.css';
 import logo from "../../images/logo.svg";
-import {pathsConfig} from "../../utils/constants/stringConstants";
+import {pathsConfig} from "../../utils/constants/pathList";
 
 export default function Logo({isSmall}) {
   return (

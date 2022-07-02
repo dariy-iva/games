@@ -8,7 +8,7 @@ import PasswordRecoveryPage from '../pages/PasswordRecoveryPage/PasswordRecovery
 import PlatformChoicePage from "../pages/PlatformChoicePage/PlatformChoicePage";
 import GamesChoicePage from "../pages/GamesChoicePage/GamesChoicePage";
 import SubscriptionPage from "../pages/SubscriptionPage/SubscriptionPage";
-import {pathsConfig} from "../../utils/constants/stringConstants.js";
+import {pathsConfig} from "../../utils/constants/pathList.js";
 
 function App() {
   const history = useNavigate();

@@ -1,0 +1,124 @@
+.subscription {
+  width: 423px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.subscription__title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.2;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: var(--grey-text);
+  text-transform: capitalize;
+  margin: 0 0 40px;
+}
+
+.subscription__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.subscription__fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  margin: 0 0 20px;
+  border: none;
+}
+
+.subscription__label {
+  padding: 15px 30px 15px 20px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.subscription__label[status="checked"] {
+  background-color: var(--yellow-color);
+  color: var(--black);
+}
+
+.subscription__label[status="not-checked"] {
+  background-color: var(--black);
+  color: var(--white);
+  transition: background-color .3s;
+}
+
+.subscription__label[status="not-checked"]:hover {
+  background-color: var(--dark-grey-bcg);
+}
+
+.subscription__label::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-right: 19px;
+}
+
+.subscription__label[status="checked"]::before {
+  background: url("../../../images/checked_icon_black.svg") center / auto no-repeat;
+}
+
+.subscription__label[status="not-checked"]::before {
+  background-color: var(--dark-grey-bcg);
+  border-radius: 20px;
+}
+
+.subscription__input {
+  display: none;
+}
+
+.subscription__price-container {
+  margin-left: auto;
+}
+
+.subscription__price {
+  font-weight: 500;
+  margin: 0 0 6px;
+  text-align: end;
+}
+
+.subscription__period {
+  font-weight: 500;
+  font-size: 13px;
+  opacity: .4;
+  margin: 0;
+  text-align: end;
+}
+
+.subscription__descriptions {
+  margin: 0 0 40px;
+  padding: 0 0 0 29px;
+  list-style-type: none;
+  display: grid;
+  grid-gap: 9px;
+}
+
+.subscription__description {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(235, 235, 245, .5);
+  /*color: var(--grey-text);*/
+  /*opacity: .5;*/
+}
+
+.subscription__description::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: url("../../../images/checked_icon_yellow.svg") center / auto no-repeat;
+  margin-right: 20px;
+}

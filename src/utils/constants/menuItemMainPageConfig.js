@@ -1,4 +1,4 @@
-import {pathsConfig} from "./stringConstants.js";
+import {pathsConfig} from "./pathList.js";
 
 export const menuItems = [
    {

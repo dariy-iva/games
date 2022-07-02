@@ -1,7 +1,7 @@
 import React from "react";
 import './HeaderMain.css';
 import Logo from "../../Logo/Logo.js";
-import {pathsConfig} from "../../../utils/constants/stringConstants.js";
+import {pathsConfig} from "../../../utils/constants/pathList.js";
 
 export default function HeaderMain({children}) {
   return (

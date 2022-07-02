@@ -2,7 +2,7 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import './Menu.css';
 import {menuItems} from '../../utils/constants/menuItemMainPageConfig.js'
-import {pathsConfig} from "../../utils/constants/stringConstants.js";
+import {pathsConfig} from "../../utils/constants/pathList.js";
 
 export default function Menu() {
   return (

@@ -23,10 +23,10 @@
 }
 
 
-.select[data-state="active"] .__select__label + .__select__input + .__select__label {
-  max-height: 40px;
-  border-top-width: 1px;
-}
+/*.select[data-state="active"] .__select__label + .__select__input + .__select__label {*/
+/*  max-height: 40px;*/
+/*  border-top-width: 1px;*/
+/*}*/
 
 .select__title {
   display: flex;
@@ -136,7 +136,7 @@
  }
 
 .select__option:checked + label::after {
-  content: url("../../../images/checked_icon.svg");
+  content: url("../../../images/checked_icon_white.svg");
   width: 13px;
   height: 15px;
   margin-left: auto;

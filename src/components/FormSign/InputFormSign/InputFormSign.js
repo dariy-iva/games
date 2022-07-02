@@ -1,7 +1,7 @@
 import React from "react";
 import "./InputFormSign.css";
 import {useLocation} from "react-router-dom";
-import {pathsConfig} from "../../../utils/constants/stringConstants";
+import {pathsConfig} from "../../../utils/constants/pathList";
 
 export default function InputFormSign({value, onChange, config, error, pattern}) {
   const {label, type, minLength = null, maxLength = null, name, placeholder} = config;

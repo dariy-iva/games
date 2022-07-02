@@ -5,7 +5,7 @@ import FormSign from "../FormSign/FormSign";
 import InputFormSign from "../FormSign/InputFormSign/InputFormSign";
 import Button from "../Button/Button";
 import {inputConfig} from "../../utils/constants/inputsSignFormConfig";
-import {pathsConfig} from "../../utils/constants/stringConstants";
+import {pathsConfig} from "../../utils/constants/pathList";
 import useFormValidator from "../../hooks/useFormValidator";
 
 export default function Login({handleLogin}) {

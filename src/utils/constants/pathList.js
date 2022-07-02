@@ -1,5 +1,3 @@
-import SubscriptionPage from "../../components/pages/SubscriptionPage/SubscriptionPage";
-
 export const pathsConfig = {
   main: '/games',
   register: '/games/signup',

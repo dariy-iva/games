@@ -6,7 +6,7 @@ import FormSign from "../../FormSign/FormSign";
 import InputFormSign from "../../FormSign/InputFormSign/InputFormSign";
 import useFormValidator from "../../../hooks/useFormValidator";
 import {inputConfig} from "../../../utils/constants/inputsSignFormConfig";
-import {pathsConfig} from "../../../utils/constants/stringConstants";
+import {pathsConfig} from "../../../utils/constants/pathList";
 
 export default function PasswordRecoveryPage({handleResetPassword}) {
   const {values, handleChange, errors, isValid} =
