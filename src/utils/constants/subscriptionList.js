@@ -14,3 +14,16 @@ export const subscriptionList = [
     checked: false,
   },
 ];
+
+export const paymentMethodsList = [
+  {
+    label: 'Credit card',
+    value: 'card',
+    checked: false,
+  },
+  {
+    label: 'Paypal',
+    value: 'paypal',
+    checked: false,
+  },
+];

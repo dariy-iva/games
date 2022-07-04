@@ -25,14 +25,21 @@
 
 .subscription__fieldset {
   display: flex;
-  flex-direction: column;
   gap: 10px;
   padding: 0;
   margin: 0 0 20px;
   border: none;
 }
 
-.subscription__label {
+.subscription__fieldset_content_variants {
+  flex-direction: column;
+}
+
+.subscription__fieldset_content_payment {
+
+}
+
+.subscription__variant {
   padding: 15px 30px 15px 20px;
   border-radius: 20px;
   font-weight: 700;
@@ -43,22 +50,22 @@
   cursor: pointer;
 }
 
-.subscription__label[status="checked"] {
+.subscription__variant[status="checked"] {
   background-color: var(--yellow-color);
   color: var(--black);
 }
 
-.subscription__label[status="not-checked"] {
+.subscription__variant[status="not-checked"] {
   background-color: var(--black);
   color: var(--white);
   transition: background-color .3s;
 }
 
-.subscription__label[status="not-checked"]:hover {
+.subscription__variant[status="not-checked"]:hover {
   background-color: var(--dark-grey-bcg);
 }
 
-.subscription__label::before {
+.subscription__variant::before {
   content: '';
   display: block;
   width: 32px;
@@ -66,11 +73,11 @@
   margin-right: 19px;
 }
 
-.subscription__label[status="checked"]::before {
+.subscription__variant[status="checked"]::before {
   background: url("../../../images/checked_icon_black.svg") center / auto no-repeat;
 }
 
-.subscription__label[status="not-checked"]::before {
+.subscription__variant[status="not-checked"]::before {
   background-color: var(--dark-grey-bcg);
   border-radius: 20px;
 }
@@ -121,4 +128,43 @@
   height: 14px;
   background: url("../../../images/checked_icon_yellow.svg") center / auto no-repeat;
   margin-right: 20px;
+}
+
+.subscription__payment-method {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  text-align: center;
+  color: var(--grey-text);
+  padding: 19px 20px;
+  border-radius: 20px;
+  background-color: var(--dark-grey-bcg);
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  transition: background-color .3s;
+}
+
+.subscription__payment-method:hover {
+  background-color: var(--violet-color);
+}
+
+.subscription__payment-method::before {
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+.subscription__payment-method_content_card::before {
+  width: 24px;
+  height: 17px;
+  background: url("../../../images/credit-card_icon.svg") center / auto no-repeat;
+  top: 18px;
+}
+
+.subscription__payment-method_content_paypal::before {
+  width: 19px;
+  height: 22px;
+  background: url("../../../images/paypal_icon.svg") center / auto no-repeat;
+  top: 15px;
 }
