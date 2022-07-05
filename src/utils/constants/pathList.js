@@ -10,4 +10,5 @@ export const pathsConfig = {
   contacts: '/games/contacts',
   support: '/games/support',
   subscription: '/games/subscription',
+  payment: '/games/payment',
 }

@@ -29,9 +29,15 @@ function App() {
     history( pathsConfig.subscription );
   }
 
-  function handleChoiceSubscription() {
-    history();
+  function handleChoiceSubscription(subscriptionData) {
+    if (subscriptionData.payment === 'paypal') {
+      window.open('https://www.paypal.com');
+    }
+    if (subscriptionData.payment === 'card') {
+
+    }
   }
+
 
   return (
     <div className="page">

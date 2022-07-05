@@ -9,12 +9,8 @@ export default function SubscriptionPage({onSubmit}) {
   const colorsForOverlay = ['#6E4AFF', '#D2C867'];
   const [checkedSubscription, setCheckedSubscription] = React.useState('');
   const [checkedPaymentMethod, setCheckedPaymentMethod] = React.useState('');
+  const [paymentVariantIsOpen, setPaymentVariantIsOpen] = React.useState(false);
   const [isPayment, setIsPayment] = React.useState(false);
-
-  const eventSubmit = new Event("submit", {
-    cancelable: true
-  });
-  let eventClick = new Event("click");
 
   function handleChangeSubscriptionInput(e) {
     e.target.checked && setCheckedSubscription(e.target.value);
@@ -22,11 +18,6 @@ export default function SubscriptionPage({onSubmit}) {
 
   function handleChangePaymentMethodInput(e) {
     e.target.checked && setCheckedPaymentMethod(e.target.value);
-
-    document.querySelector("#test").dispatchEvent(eventClick)
-    let input = document.forms['subscription'].elements['subscription'][1]
-    console.log(document.forms['subscription'].dispatchEvent(eventSubmit), eventSubmit)
-    input.dispatchEvent(eventClick);
   }
 
   function checkInputStatus(inputValue) {
@@ -34,13 +25,20 @@ export default function SubscriptionPage({onSubmit}) {
   }
 
   function handleFreePeriodButtonClick() {
-    setIsPayment(true);
+    setPaymentVariantIsOpen(true);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    console.log(1)
-    onSubmit();
+  function handleSubscriptionSubmit(e) {
+    e.preventDefault();
+    const formData = {
+      payment: checkedPaymentMethod,
+      subscription: checkedSubscription,
+    };
+    onSubmit(formData);
+  }
+
+  function handlePaymentSubmit(e) {
+    e.preventDefault();
   }
 
   React.useEffect(() => {
@@ -49,12 +47,18 @@ export default function SubscriptionPage({onSubmit}) {
     })
   }, []);
 
+  React.useEffect(() => {
+    checkedPaymentMethod && setIsPayment(true);
+    // document.forms['subscription'].requestSubmit()
+  }, [checkedPaymentMethod]);
+
   return (
     <>
       <HeaderMain/>
       <section className="subscription">
-        <h1 className="subscription__title">games subscriptions</h1>
-        <form name="subscription" className="subscription__form" onSubmit={handleSubmit}>
+        <h1 className="subscription__title">{isPayment ? 'Add a Credit card' : 'Games Subscriptions'}</h1>
+        {isPayment && (<p className="subscription__text">Few words about privacy and something like that and Privacy Policy.</p>)}
+        {!isPayment && (<form name="subscription" className="subscription__form" onSubmit={handleSubscriptionSubmit}>
           <fieldset className="subscription__fieldset subscription__fieldset_content_variants">
             {subscriptionList.map(item => (
               <label className={`subscription__variant`} key={item.value}
@@ -75,16 +79,16 @@ export default function SubscriptionPage({onSubmit}) {
             ))}
           </fieldset>
           <ul className="subscription__descriptions">
-            <li className="subscription__description" id='test' onClick={() => console.log('test1')}>Ad free</li>
+            <li className="subscription__description">Ad free</li>
             <li className="subscription__description">Unlock the full games experience</li>
             <li className="subscription__description">Unlimited games</li>
             <li className="subscription__description">Personal customize your games</li>
           </ul>
-          {!isPayment && <Button type="button" className={''} text={'Start 30 day trial'} disabled={false}
-                                 onClick={handleFreePeriodButtonClick}/>}
-          {isPayment && (
+          {!paymentVariantIsOpen && <Button type="button" className={''} text={'Start 30 day trial'} disabled={false}
+                                            onClick={handleFreePeriodButtonClick}/>}
+          {paymentVariantIsOpen && (
 
-            <fieldset className="subscription__fieldset">
+            <fieldset className="subscription__fieldset subscription__fieldset_content_payment">
               <label className="subscription__payment-method subscription__payment-method_content_card">
                 <input
                   type="radio"
@@ -105,11 +109,14 @@ export default function SubscriptionPage({onSubmit}) {
                 />
                 Paypal
               </label>
-              {/*<button type="submit" className="subscription__button">Credit card</button>*/}
-              {/*<a href="https://www.paypal.com" target="_blank" className="subscription__button">Paypal</a>*/}
             </fieldset>
           )}
-        </form>
+        </form>)}
+        {isPayment && (
+          <form name="payment" className="payment-form" onSubmit={handlePaymentSubmit}>
+            
+          </form>
+        )}
 
       </section>
       <AnimationOverlay colors={colorsForOverlay}/>
