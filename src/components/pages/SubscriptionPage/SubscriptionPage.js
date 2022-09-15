@@ -3,7 +3,7 @@ import "./SubscriptionPage.css";
 import HeaderMain from "../../Headers/HeaderMain/HeaderMain";
 import AnimationOverlay from "../../AnimationOverlay/AnimationOverlay";
 import Button from "../../Button/Button";
-import InputFormSign from "../../FormSign/InputFormSign/InputFormSign";
+import InputFormSign from "../../Forms/Sign/InputFormSign/InputFormSign";
 import useFormValidator from "../../../hooks/useFormValidator";
 import SubscriptionForm from "../../Forms/Subscription/SubscriptionForm";
 

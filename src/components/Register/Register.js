@@ -1,10 +1,10 @@
 import React from "react";
 import "./Register.css";
 import HeaderSign from "../Headers/HeaderSign/HeaderSign";
-import FormSign from "../FormSign/FormSign";
+import SignForm from "../Forms/Sign/SignForm";
 import useFormValidator from "../../hooks/useFormValidator";
-import InputFormSign from "../FormSign/InputFormSign/InputFormSign";
-import SelectFormSign from "../FormSign/SelectFormSign/SelectFormSign";
+import InputFormSign from "../Forms/Sign/InputFormSign/InputFormSign";
+import SelectFormSign from "../Forms/Sign/SelectFormSign/SelectFormSign";
 import {inputConfig} from "../../utils/constants/inputsSignFormConfig";
 
 export default function Register({handleRegister}) {
@@ -34,7 +34,7 @@ export default function Register({handleRegister}) {
     <>
       <HeaderSign/>
       <main className="register">
-        <FormSign
+        <SignForm
           name="register"
           buttonSubmitText="Sign up"
           onSubmit={handleSubmit}
@@ -84,7 +84,7 @@ export default function Register({handleRegister}) {
               error={errors.year || ""}
             />
           </fieldset>
-        </FormSign>
+        </SignForm>
         <p className="register__text">By signing up, your agree to Partie’s &nbsp;
           <a href="/" target="_blank" className="register__link">Terms and
             Conditions</a>, End-User License Agreement and

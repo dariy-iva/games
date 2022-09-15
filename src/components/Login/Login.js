@@ -1,8 +1,8 @@
 import React from "react";
 import "./Login.css";
 import HeaderSign from "../Headers/HeaderSign/HeaderSign";
-import FormSign from "../FormSign/FormSign";
-import InputFormSign from "../FormSign/InputFormSign/InputFormSign";
+import SignForm from "../Forms/Sign/SignForm";
+import InputFormSign from "../Forms/Sign/InputFormSign/InputFormSign";
 import Button from "../Button/Button";
 import {inputConfig} from "../../utils/constants/inputsSignFormConfig";
 import {pathsConfig} from "../../utils/constants/pathList";
@@ -32,7 +32,7 @@ export default function Login({handleLogin}) {
     <>
       <HeaderSign/>
       <main className="login">
-        <FormSign
+        <SignForm
           name="login"
           buttonSubmitText="Log in"
           onSubmit={handleSubmit}
@@ -53,7 +53,7 @@ export default function Login({handleLogin}) {
           />
           <a href={pathsConfig.resetPassword} className="login__text login__link login__link_path_reset link-hover">Forgot
             password?</a>
-        </FormSign>
+        </SignForm>
 
         <a href={pathsConfig.contacts} className="login__text login__link link-hover login__link_path_contact"
            target="_blank">Need help? Contact

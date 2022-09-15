@@ -136,7 +136,7 @@
  }
 
 .select__option:checked + label::after {
-  content: url("../../../images/checked_icon_white.svg");
+  content: url("../../../../images/checked_icon_white.svg");
   width: 13px;
   height: 15px;
   margin-left: auto;

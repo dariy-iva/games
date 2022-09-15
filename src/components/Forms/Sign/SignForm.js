@@ -1,8 +1,8 @@
 import React from "react";
-import "./FormSign.css";
-import Button from "../Button/Button";
+import "./SignForm.css";
+import Button from "../../Button/Button";
 
-export default function FormSign(props) {
+export default function SignForm(props) {
   const {name, buttonSubmitText, children, onSubmit, isValid} =
     props;
 

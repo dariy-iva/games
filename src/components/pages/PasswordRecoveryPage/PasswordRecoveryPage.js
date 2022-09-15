@@ -2,8 +2,8 @@ import React from "react";
 import {useNavigate } from "react-router-dom";
 import "./PasswordRecoveryPage.css";
 import HeaderSign from "../../Headers/HeaderSign/HeaderSign";
-import FormSign from "../../FormSign/FormSign";
-import InputFormSign from "../../FormSign/InputFormSign/InputFormSign";
+import SignForm from "../../Forms/Sign/SignForm";
+import InputFormSign from "../../Forms/Sign/InputFormSign/InputFormSign";
 import useFormValidator from "../../../hooks/useFormValidator";
 import {inputConfig} from "../../../utils/constants/inputsSignFormConfig";
 import {pathsConfig} from "../../../utils/constants/pathList";
@@ -34,7 +34,7 @@ export default function PasswordRecoveryPage({handleResetPassword}) {
             <p className="recovery__description">{`An email was sent to ${values.email || ''}, tap to link to create new Partie password`}</p>
           </section>
         )}
-        <FormSign
+        <SignForm
           name="recovery"
           buttonSubmitText={isSubmitPassword ? 'Dismiss' : 'Reset Password'}
           onSubmit={handleSubmit}
@@ -48,7 +48,7 @@ export default function PasswordRecoveryPage({handleResetPassword}) {
             pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$"
           />)}
 
-        </FormSign>
+        </SignForm>
         <a href={pathsConfig.contacts} className="login__text login__link link-hover login__link_path_contact"
            target="_blank">Need help? Contact
           Us</a>
