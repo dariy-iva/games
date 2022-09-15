@@ -30,12 +30,7 @@ function App() {
   }
 
   function handleChoiceSubscription(subscriptionData) {
-    if (subscriptionData.payment === 'paypal') {
-      window.open('https://www.paypal.com');
-    }
-    if (subscriptionData.payment === 'card') {
 
-    }
   }
 
 

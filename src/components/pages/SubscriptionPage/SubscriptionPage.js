@@ -9,7 +9,6 @@ import SubscriptionForm from "../../Forms/Subscription/SubscriptionForm";
 
 export default function SubscriptionPage({onSubmit}) {
   const colorsForOverlay = ['#6E4AFF', '#D2C867'];
-  const [checkedPaymentMethod, setCheckedPaymentMethod] = React.useState('');
   const [isPayment, setIsPayment] = React.useState(false);
   const {values, handleChange, errors, isValid} =
     useFormValidator({});
@@ -50,18 +49,20 @@ export default function SubscriptionPage({onSubmit}) {
   };
 
   function handleSubmitSubscriptionForm(data) {
-    data.payment === 'card' && setIsPayment(true);
+    switch (data.payment) {
+      case 'card':
+        setIsPayment(true);
+        break;
+      case 'paypal':
+        window.open('https://www.paypal.com');
+        onSubmit();
+        break;
+    }
   }
 
   function handlePaymentSubmit(e) {
     e.preventDefault();
   }
-
-  React.useEffect(() => {
-    checkedPaymentMethod === 'card' && setIsPayment(true);
-    document.forms['subscription'].requestSubmit()
-  }, [checkedPaymentMethod]);
-
 
   function handleChangeCardNumberInput(e) {
     const cardNumber = e.target.value.split(' ').join('');
@@ -72,7 +73,6 @@ export default function SubscriptionPage({onSubmit}) {
   }
 
   function handleBackButtonClick() {
-    setCheckedPaymentMethod('');
     setIsPayment(false);
   }
 
@@ -83,7 +83,7 @@ export default function SubscriptionPage({onSubmit}) {
         <h1 className="subscription__title">{isPayment ? 'Add a Credit card' : 'Games Subscriptions'}</h1>
         {isPayment && (
           <p className="subscription__text">Few words about privacy and something like that and Privacy Policy.</p>)}
-        {!isPayment && <SubscriptionForm onSubmit={handleSubmitSubscriptionForm} />}
+        {!isPayment && <SubscriptionForm onSubmit={handleSubmitSubscriptionForm}/>}
         {isPayment && (
           <form name="payment" className="payment-form" onSubmit={handlePaymentSubmit}>
             <InputFormSign
@@ -113,7 +113,7 @@ export default function SubscriptionPage({onSubmit}) {
               error={errors.code || ""}
               pattern="^[0-9]{3}$"
             />
-            <Button type="submit" className={''} text="Confirm" disabled={!isValid} />
+            <Button type="submit" className={''} text="Confirm" disabled={!isValid}/>
           </form>
         )}
       </section>
