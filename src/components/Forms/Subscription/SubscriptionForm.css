@@ -1,0 +1,149 @@
+.subscription-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.subscription-form__fieldset {
+  display: flex;
+  gap: 10px;
+  padding: 0;
+  border: none;
+}
+
+.subscription-form__fieldset_content_variants {
+  flex-direction: column;
+  margin: 0 0 20px;
+}
+
+.subscription-form__fieldset_content_payment {
+  margin: 0;
+}
+
+.subscription-form__variant {
+  padding: 15px 30px 15px 20px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.subscription-form__variant[status="checked"] {
+  background-color: var(--yellow-color);
+  color: var(--black);
+}
+
+.subscription-form__variant[status="not-checked"] {
+  background-color: var(--black);
+  color: var(--white);
+  transition: background-color .3s;
+}
+
+.subscription-form__variant[status="not-checked"]:hover {
+  background-color: var(--dark-grey-bcg);
+}
+
+.subscription-form__variant::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-right: 19px;
+}
+
+.subscription-form__variant[status="checked"]::before {
+  background: url("../../../images/checked_icon_black.svg") center / auto no-repeat;
+}
+
+.subscription-form__variant[status="not-checked"]::before {
+  background-color: var(--dark-grey-bcg);
+  border-radius: 20px;
+}
+
+.subscription-form__input {
+  display: none;
+}
+
+.subscription-form__price-container {
+  margin-left: auto;
+}
+
+.subscription-form__price {
+  font-weight: 500;
+  margin: 0 0 6px;
+  text-align: end;
+}
+
+.subscription-form__period {
+  font-weight: 500;
+  font-size: 13px;
+  opacity: .4;
+  margin: 0;
+  text-align: end;
+}
+
+.subscription-form__descriptions {
+  margin: 0 0 40px;
+  padding: 0 0 0 29px;
+  list-style-type: none;
+  display: grid;
+  grid-gap: 9px;
+}
+
+.subscription-form__description {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(235, 235, 245, .5);
+}
+
+.subscription-form__description::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: url("../../../images/checked_icon_yellow.svg") center / auto no-repeat;
+  margin-right: 20px;
+}
+
+.subscription-form__payment-method {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  text-align: center;
+  color: var(--grey-text);
+  padding: 20px;
+  border-radius: 20px;
+  background-color: var(--dark-grey-bcg);
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  transition: background-color .3s;
+}
+
+.subscription-form__payment-method:hover {
+  background-color: var(--violet-color);
+}
+
+.subscription-form__payment-method::before {
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+.subscription-form__payment-method_content_card::before {
+  width: 24px;
+  height: 17px;
+  background: url("../../../images/credit-card_icon.svg") center / auto no-repeat;
+  top: 18px;
+}
+
+.subscription-form__payment-method_content_paypal::before {
+  width: 19px;
+  height: 22px;
+  background: url("../../../images/paypal_icon.svg") center / auto no-repeat;
+  top: 15px;
+}

@@ -85,7 +85,7 @@ export default function Register({handleRegister}) {
             />
           </fieldset>
         </FormSign>
-        <p className="register__text">By signing up, your agree to Partie’s&nbsp;
+        <p className="register__text">By signing up, your agree to Partie’s &nbsp;
           <a href="/" target="_blank" className="register__link">Terms and
             Conditions</a>, End-User License Agreement and
           Privacy Policy.</p>
