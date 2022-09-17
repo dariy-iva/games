@@ -1,7 +1,6 @@
 .subscription-form {
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
 }
 
 .subscription-form__fieldset {

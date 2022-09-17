@@ -14,6 +14,10 @@
   transition: border-color .3s;
 }
 
+.input_not-label {
+  margin-top: 0;
+}
+
 .input:focus {
   border-color: var(--violet-color);
 }

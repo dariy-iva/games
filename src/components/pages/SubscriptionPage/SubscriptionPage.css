@@ -18,6 +18,10 @@
   max-width: 350px;
 }
 
+.subscription__title_not-description {
+  margin-bottom: 40px;
+}
+
 .subscription__text {
   font-weight: 400;
   font-size: 17px;
@@ -26,7 +30,7 @@
   color: var(--grey-text);
   opacity: .5;
   max-width: 350px;
-  margin: 20px auto 0;
+  margin: 20px auto 40px;
 }
 
 .button-back {
