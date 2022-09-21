@@ -25,10 +25,13 @@ export default function PaymentCardForm({onSubmit}) {
       maxLength: '30',
       name: 'name',
       placeholder: 'Name on the card',
+      inputMode: 'latin-name'
     },
     date: {
       label: '',
       type: 'text',
+      minLength: '5',
+      maxLength: '5',
       name: 'date',
       inputMode: 'numeric',
       placeholder: 'Date',
@@ -50,10 +53,52 @@ export default function PaymentCardForm({onSubmit}) {
   }
 
   function handleChangeCardNumberInput(e) {
-    const cardNumber = e.target.value.split(' ').join('');
-    if (cardNumber.length % 4 === 0 && e.target.value.length < 19 && e.target.value[e.target.value.length - 1] !== ' ') {
-      e.target.value = e.target.value + ' ';
+    e.target.value = e.target.value.replace(/[^\d]/g, '');
+    const value = e.target.value;
+    const blocks = Math.floor(value.length / 4);
+
+    if (value && blocks) {
+      const count = blocks > 3 ? 3 : blocks;
+      let items = e.target.value.split('');
+
+      for (let i = 0; i < count; i++) {
+        let index = 4 * (1 + i) + i;
+        items.splice(index, 0, ' ');
+      }
+      items = items.join('');
+
+      e.target.value = values.number.length > items.length && items[items.length - 1] === ' '
+        ? items.slice(0, items.length - 1)
+        : items;
     }
+
+    handleChange(e);
+  }
+
+  function handleChangeCardNameInput(e) {
+    e.target.value = e.target.value.replace(/[^a-zA-Z\s]/gi, '').toUpperCase();
+
+    handleChange(e);
+  }
+
+  function handleChangeCardDateInput(e) {
+    let value = e.target.value.replace(/[^\d]/g, '');
+
+    if (value.length > 1) {
+      value = value.slice(0, 2) + '/' + value.slice(2,);
+
+      value = values.date.length > value.length && value[value.length - 1] === '/'
+        ? value.slice(0, value.length - 1)
+        : value;
+    }
+    e.target.value = value;
+
+    handleChange(e);
+  }
+
+  function handleChangeCardCodInput(e) {
+    e.target.value = e.target.value.replace(/[^\d]/g, '').toUpperCase();
+
     handleChange(e);
   }
 
@@ -65,31 +110,32 @@ export default function PaymentCardForm({onSubmit}) {
           onChange={handleChangeCardNumberInput}
           config={inputConfig.number}
           error={errors.number || ""}
-          pattern="\d{4}\s\d{4}\s\d{4}\s\d{4}"
+          pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}"
           autoComplete="off"
           notLable={true}
         />
         <InputFormSign
           value={values.name || ""}
-          onChange={handleChange}
+          onChange={handleChangeCardNameInput}
           config={inputConfig.name}
           error={errors.name || ""}
-          pattern="^[A-Za-z]{2,} [A-Za-z]{2,}$"
+          pattern="[A-Za-z]{2,} [A-Za-z]{2,}$"
           autoComplete="off"
           notLable={true}
         />
         <div className="payment-form__container">
           <InputFormSign
             value={values.date || ""}
-            onChange={handleChange}
+            onChange={handleChangeCardDateInput}
             config={inputConfig.date}
             error={errors.date || ""}
+            pattern="^[0-9]{2}\/[0-9]{2}$"
             autoComplete="off"
             notLable={true}
           />
           <InputFormSign
             value={values.code || ""}
-            onChange={handleChange}
+            onChange={handleChangeCardCodInput}
             config={inputConfig.code}
             error={errors.code || ""}
             pattern="^[0-9]{3}$"
