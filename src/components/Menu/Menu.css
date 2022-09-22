@@ -31,14 +31,6 @@
   padding: 16px 38px;
   background-color: var(--violet-color);
   border-radius: 40px;
-  transition: box-shadow .3s !important;
-}
-
-.menu__item_active:hover {
-  box-shadow: 0 0 5px var(--violet-color),
-  0 0 25px var(--violet-color),
-  0 0 50px var(--violet-color),
-  0 0 200px var(--violet-color);
 }
 
 .menu__text {
@@ -46,6 +38,9 @@
   font-size: 15px;
   line-height: 1.2;
   text-decoration: none;
+}
+
+.menu__text:not(.menu__item_active) {
   transition: text-shadow .3s, color .3s;
 }
 

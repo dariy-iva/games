@@ -7,15 +7,8 @@
     font-size: 14px;
     line-height: 1;
     color: var(--grey-text);
-    transition: all .3s;
+    transition: all .5s;
     cursor: pointer;
-}
-
-.button:hover {
-    box-shadow: 0 0 5px var(--violet-color),
-    0 0 25px var(--violet-color),
-    0 0 50px var(--violet-color),
-    0 0 200px var(--violet-color);
 }
 
 .button:disabled {

@@ -6,7 +6,7 @@ export default function Button(props) {
 
   return (
     <button type={type}
-            className={`button ${className}`}
+            className={`button neon-box-shadow ${className}`}
             onClick={onClick} disabled={disabled}>{text}
     </button>
   );

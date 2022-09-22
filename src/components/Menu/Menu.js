@@ -32,7 +32,7 @@ export default function Menu() {
         <li className="menu__text menu__item">
           <a
             href={pathsConfig.register}
-            className="menu__text menu__text_weight_bold menu__item_active"
+            className="menu__text menu__text_weight_bold menu__item_active neon-box-shadow"
           >
             Sign Up
           </a>

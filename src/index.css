@@ -1,12 +1,21 @@
 @import url(./styles/vendor/normalize.css);
 @import url(./styles/vendor/fonts/Montserrat_Alternates/montserrat_alternates.css);
 
-@keyframes translate {
+@keyframes translateDownToCenter {
   from {
     transform: translateY(100vh);
   }
   to {
     transform: translateY(0);
+  }
+}
+
+@keyframes translateCenterToUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100vh);
   }
 }
 
@@ -57,6 +66,21 @@ body {
   opacity: .8;
 }
 
-.translation {
-  animation: translate 2s 1;
+.neon-box-shadow {
+  transition: box-shadow .5s;
+}
+
+.neon-box-shadow:hover {
+  box-shadow: 0 0 5px  var(--violet-color),
+  0 0 25px var(--violet-color),
+  0 0 50px var(--violet-color),
+  0 0 200px var(--violet-color);
+}
+
+.translationDownToCenter {
+  animation: translateDownToCenter 2s 1;
+}
+
+.translationCenterToUp {
+  animation: translateCenterToUp 2s 1 forwards;
 }

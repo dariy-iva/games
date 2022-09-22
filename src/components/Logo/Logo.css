@@ -1,12 +1,5 @@
 .logo {
-  transition: box-shadow .3s;
-}
 
-.logo:hover {
-  box-shadow: 0 0 5px var(--violet-color),
-  0 0 25px var(--violet-color),
-  0 0 50px var(--violet-color),
-  0 0 200px var(--violet-color);
 }
 
 .logo_size_small {
