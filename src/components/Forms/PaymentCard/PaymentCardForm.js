@@ -1,51 +1,13 @@
 import React from "react";
 import "./PaymentCardForm.css";
-
 import Button from "../../Button/Button";
 import InputFormSign from "../../Forms/Sign/InputFormSign/InputFormSign";
 import useFormValidator from "../../../hooks/useFormValidator";
+import {inputsPaymentFormConfig as inputConfig} from "../../../utils/constants/inputsConfigs";
 
 export default function PaymentCardForm({onSubmit}) {
   const {values, handleChange, errors, isValid} =
     useFormValidator({});
-  const inputConfig = {
-    number: {
-      label: '',
-      type: 'text',
-      minLength: '19',
-      maxLength: '19',
-      name: 'number',
-      placeholder: 'Card number',
-      inputMode: 'numeric',
-    },
-    name: {
-      label: '',
-      type: 'text',
-      minLength: '5',
-      maxLength: '30',
-      name: 'name',
-      placeholder: 'Name on the card',
-      inputMode: 'latin-name'
-    },
-    date: {
-      label: '',
-      type: 'text',
-      minLength: '5',
-      maxLength: '5',
-      name: 'date',
-      inputMode: 'numeric',
-      placeholder: 'Date',
-    },
-    code: {
-      label: '',
-      type: 'password',
-      minLength: '3',
-      maxLength: '3',
-      name: 'code',
-      inputMode: 'numeric',
-      placeholder: 'CVC',
-    },
-  };
 
   function handleFormSubmit(e) {
     e.preventDefault();
@@ -77,11 +39,11 @@ export default function PaymentCardForm({onSubmit}) {
 
   function handleChangeCardNameInput(e) {
     e.target.value = e.target.value.replace(/[^a-zA-Z\s]/gi, '').toUpperCase();
-
     handleChange(e);
   }
 
   function handleChangeCardDateInput(e) {
+    e.target.setCustomValidity("")
     let value = e.target.value.replace(/[^\d]/g, '');
 
     if (value.length > 1) {
@@ -91,6 +53,16 @@ export default function PaymentCardForm({onSubmit}) {
         ? value.slice(0, value.length - 1)
         : value;
     }
+
+    if (value.length === 5) {
+      const month = value.slice(0, 2) - 1;
+      const year = +('20' + value.slice(3,));
+      const date = new Date(year, month);
+      const nowDate = new Date(new Date().getFullYear(), new Date().getMonth());
+
+      nowDate > date && e.target.setCustomValidity('The card has expired');
+      (month > 11 || year > new Date().getFullYear() + 10) && e.target.setCustomValidity('Incorrect card expiration date');
+    }
     e.target.value = value;
 
     handleChange(e);
@@ -98,7 +70,6 @@ export default function PaymentCardForm({onSubmit}) {
 
   function handleChangeCardCodInput(e) {
     e.target.value = e.target.value.replace(/[^\d]/g, '').toUpperCase();
-
     handleChange(e);
   }
 
@@ -110,18 +81,24 @@ export default function PaymentCardForm({onSubmit}) {
           onChange={handleChangeCardNumberInput}
           config={inputConfig.number}
           error={errors.number || ""}
+          minLength='19'
+          maxLength='19'
           pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}"
+          inputMode='numeric'
           autoComplete="off"
-          notLable={true}
+          notLabel={true}
         />
         <InputFormSign
           value={values.name || ""}
           onChange={handleChangeCardNameInput}
           config={inputConfig.name}
           error={errors.name || ""}
+          minLength='5'
+          maxLength='30'
           pattern="[A-Za-z]{2,} [A-Za-z]{2,}$"
+          inputMode='latin-name'
           autoComplete="off"
-          notLable={true}
+          notLabel={true}
         />
         <div className="payment-form__container">
           <InputFormSign
@@ -129,18 +106,24 @@ export default function PaymentCardForm({onSubmit}) {
             onChange={handleChangeCardDateInput}
             config={inputConfig.date}
             error={errors.date || ""}
-            pattern="^[0-9]{2}\/[0-9]{2}$"
+            minLength='5'
+            maxLength='5'
+            pattern="^[0-1][0-9]\/[0-9]{2}$"
+            inputMode='numeric'
             autoComplete="off"
-            notLable={true}
+            notLabel={true}
           />
           <InputFormSign
             value={values.code || ""}
             onChange={handleChangeCardCodInput}
             config={inputConfig.code}
             error={errors.code || ""}
+            minLength='3'
+            maxLength='3'
             pattern="^[0-9]{3}$"
+            inputMode='numeric'
             autoComplete="off"
-            notLable={true}
+            notLabel={true}
           />
         </div>
       </fieldset>

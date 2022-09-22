@@ -5,7 +5,7 @@ import SignForm from "../Forms/Sign/SignForm";
 import useFormValidator from "../../hooks/useFormValidator";
 import InputFormSign from "../Forms/Sign/InputFormSign/InputFormSign";
 import SelectFormSign from "../Forms/Sign/SelectFormSign/SelectFormSign";
-import {inputConfig} from "../../utils/constants/inputsSignFormConfig";
+import {inputsSignFormConfig as inputConfig} from "../../utils/constants/inputsConfigs";
 
 export default function Register({handleRegister}) {
   const {values, handleChange, errors, isValid} =
@@ -45,7 +45,9 @@ export default function Register({handleRegister}) {
             onChange={handleChange}
             config={inputConfig.name}
             error={errors.name || ""}
-            pattern="^[a-zA-Zа-яёА-ЯЁ\-\s]+$"
+            minLength="2"
+            maxLength="30"
+            pattern="^[a-zA-Z\-\s]+$"
           />
           <InputFormSign
             value={values.email || ""}
@@ -59,6 +61,7 @@ export default function Register({handleRegister}) {
             onChange={handleChange}
             config={inputConfig.password}
             error={errors.password || ""}
+            minLength="6"
           />
           <p className="register__label">Date of Birth</p>
           <fieldset className="register__fieldset">

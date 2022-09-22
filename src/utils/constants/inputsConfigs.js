@@ -1,9 +1,7 @@
-export const inputConfig = {
+export const inputsSignFormConfig = {
   name: {
     type: "text",
     label: "Username",
-    minLength: "2",
-    maxLength: "30",
     name: "name",
     placeholder: 'Enter username',
   },
@@ -16,7 +14,6 @@ export const inputConfig = {
   password: {
     type: "password",
     label: "Password",
-    minLength: "6",
     name: "password",
     placeholder: 'At least 6 characters',
   },
@@ -64,5 +61,32 @@ export const inputConfig = {
       }
       return yearsList.reverse();
     },
+  },
+};
+
+export const inputsPaymentFormConfig = {
+  number: {
+    label: '',
+    type: 'text',
+    name: 'number',
+    placeholder: 'Card number',
+  },
+  name: {
+    label: '',
+    type: 'text',
+    name: 'name',
+    placeholder: 'Name on the card',
+  },
+  date: {
+    label: '',
+    type: 'text',
+    name: 'date',
+    placeholder: 'Date',
+  },
+  code: {
+    label: '',
+    type: 'password',
+    name: 'code',
+    placeholder: 'CVC',
   },
 };

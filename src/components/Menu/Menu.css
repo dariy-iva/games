@@ -33,6 +33,7 @@
   border-radius: 40px;
   transition: box-shadow .3s !important;
 }
+
 .menu__item_active:hover {
   box-shadow: 0 0 5px var(--violet-color),
   0 0 25px var(--violet-color),
@@ -45,13 +46,15 @@
   font-size: 15px;
   line-height: 1.2;
   text-decoration: none;
-  transition: text-shadow .3s;
+  transition: text-shadow .3s, color .3s;
 }
-.menu__text:hover {
+
+.menu__text:hover:not(.menu__item_active) {
   text-shadow: 0 0 5px var(--dark-pink-color),
   0 0 25px var(--dark-pink-color),
   0 0 50px var(--dark-pink-color),
   0 0 200px var(--dark-pink-color);
+  color: var(--dark-pink-color);
 }
 
 .menu__text_active {

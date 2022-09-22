@@ -1,23 +1,23 @@
 import React from "react";
-import {useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import "./PasswordRecoveryPage.css";
 import HeaderSign from "../../Headers/HeaderSign/HeaderSign";
 import SignForm from "../../Forms/Sign/SignForm";
 import InputFormSign from "../../Forms/Sign/InputFormSign/InputFormSign";
 import useFormValidator from "../../../hooks/useFormValidator";
-import {inputConfig} from "../../../utils/constants/inputsSignFormConfig";
+import {inputsSignFormConfig as inputConfig} from "../../../utils/constants/inputsConfigs";
 import {pathsConfig} from "../../../utils/constants/pathList";
 
 export default function PasswordRecoveryPage({handleResetPassword}) {
   const {values, handleChange, errors, isValid} =
-    useFormValidator( {} );
+    useFormValidator({});
   const history = useNavigate();
-  const [isSubmitPassword, setIsSubmitPassword] = React.useState( false );
+  const [isSubmitPassword, setIsSubmitPassword] = React.useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
     // handleResetPassword( values );
-    setIsSubmitPassword( true );
+    setIsSubmitPassword(true);
   }
 
   function handleBackButtonClick() {
@@ -31,7 +31,8 @@ export default function PasswordRecoveryPage({handleResetPassword}) {
         {isSubmitPassword && (
           <section className="recovery__info">
             <h1 className="recovery__title">Check your email</h1>
-            <p className="recovery__description">{`An email was sent to ${values.email || ''}, tap to link to create new Partie password`}</p>
+            <p
+              className="recovery__description">{`An email was sent to ${values.email || ''}, tap to link to create new Partie password`}</p>
           </section>
         )}
         <SignForm
