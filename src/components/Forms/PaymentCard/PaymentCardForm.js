@@ -1,7 +1,7 @@
 import React from "react";
 import "./PaymentCardForm.css";
 import Button from "../../Button/Button";
-import InputFormSign from "../../Forms/Sign/InputFormSign/InputFormSign";
+import InputForm from "../InputForm/InputForm";
 import useFormValidator from "../../../hooks/useFormValidator";
 import {inputsPaymentFormConfig as inputConfig} from "../../../utils/constants/inputsConfigs";
 
@@ -11,10 +11,10 @@ export default function PaymentCardForm({onSubmit}) {
 
   function handleFormSubmit(e) {
     e.preventDefault();
-
   }
 
   function handleChangeCardNumberInput(e) {
+    e.target.setCustomValidity("");
     e.target.value = e.target.value.replace(/[^\d]/g, '');
     const value = e.target.value;
     const blocks = Math.floor(value.length / 4);
@@ -34,16 +34,20 @@ export default function PaymentCardForm({onSubmit}) {
         : items;
     }
 
+    e.target.validity.patternMismatch && e.target.setCustomValidity('The card number must contain 12 digits');
+
     handleChange(e);
   }
 
   function handleChangeCardNameInput(e) {
+    e.target.setCustomValidity("");
+    e.target.value > e.target.value.replace(/[^a-zA-Z\s]/gi, '') && e.target.setCustomValidity('The name on the card must contain only latin letters');
     e.target.value = e.target.value.replace(/[^a-zA-Z\s]/gi, '').toUpperCase();
     handleChange(e);
   }
 
   function handleChangeCardDateInput(e) {
-    e.target.setCustomValidity("")
+    e.target.setCustomValidity("");
     let value = e.target.value.replace(/[^\d]/g, '');
 
     if (value.length > 1) {
@@ -76,7 +80,7 @@ export default function PaymentCardForm({onSubmit}) {
   return (
     <form name="payment" className="payment-form" onSubmit={handleFormSubmit}>
       <fieldset className="payment-form__fieldset">
-        <InputFormSign
+        <InputForm
           value={values.number || ""}
           onChange={handleChangeCardNumberInput}
           config={inputConfig.number}
@@ -88,7 +92,7 @@ export default function PaymentCardForm({onSubmit}) {
           autoComplete="off"
           notLabel={true}
         />
-        <InputFormSign
+        <InputForm
           value={values.name || ""}
           onChange={handleChangeCardNameInput}
           config={inputConfig.name}
@@ -101,7 +105,7 @@ export default function PaymentCardForm({onSubmit}) {
           notLabel={true}
         />
         <div className="payment-form__container">
-          <InputFormSign
+          <InputForm
             value={values.date || ""}
             onChange={handleChangeCardDateInput}
             config={inputConfig.date}
@@ -113,7 +117,7 @@ export default function PaymentCardForm({onSubmit}) {
             autoComplete="off"
             notLabel={true}
           />
-          <InputFormSign
+          <InputForm
             value={values.code || ""}
             onChange={handleChangeCardCodInput}
             config={inputConfig.code}

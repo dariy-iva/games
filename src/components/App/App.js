@@ -2,8 +2,8 @@ import React from "react";
 import {Route, Routes, useNavigate} from "react-router-dom";
 import './App.css';
 import MainPage from "../pages/MainPage.js";
-import Register from "../Register/Register.js";
-import Login from "../Login/Login.js";
+import RegisterPage from "../pages/RegisterPage/RegisterPage.js";
+import LoginPage from "../pages/LoginPage/LoginPage.js";
 import PasswordRecoveryPage from '../pages/PasswordRecoveryPage/PasswordRecoveryPage.js';
 import PlatformChoicePage from "../pages/PlatformChoicePage/PlatformChoicePage";
 import GamesChoicePage from "../pages/GamesChoicePage/GamesChoicePage";
@@ -40,9 +40,9 @@ function App() {
         <Route exact path="/games" element={<MainPage/>}/>
         <Route
           path={pathsConfig.register}
-          element={<Register handleRegister={handleRegister}/>}
+          element={<RegisterPage handleRegister={handleRegister}/>}
         />
-        <Route path={pathsConfig.login} element={<Login handleLogin={handleLogin}/>}/>
+        <Route path={pathsConfig.login} element={<LoginPage handleLogin={handleLogin}/>}/>
         <Route path={pathsConfig.resetPassword} element={<PasswordRecoveryPage handleResetPassword={""}/>}/>
         <Route path={pathsConfig.platformsChoice} element={<PlatformChoicePage onSubmit={handleChoicePlatforms}/>}/>
         <Route path={pathsConfig.gamesChoice} element={<GamesChoicePage onSubmit={handleChoiceGames}/>}/>

@@ -1,9 +1,9 @@
 import React from "react";
-import "./InputFormSign.css";
+import "./InputForm.css";
 import {useLocation} from "react-router-dom";
-import {pathsConfig} from "../../../../utils/constants/pathList";
+import {pathsConfig} from "../../../utils/constants/pathList";
 
-export default function InputFormSign(props) {
+export default function InputForm(props) {
   const {value, onChange, config, error, notLabel = false, ...otherAttr} = props;
   const {label, type, name, placeholder} = config;
   const location = useLocation();

@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import "./PasswordRecoveryPage.css";
 import HeaderSign from "../../Headers/HeaderSign/HeaderSign";
 import SignForm from "../../Forms/Sign/SignForm";
-import InputFormSign from "../../Forms/Sign/InputFormSign/InputFormSign";
+import InputForm from "../../Forms/InputForm/InputForm";
 import useFormValidator from "../../../hooks/useFormValidator";
 import {inputsSignFormConfig as inputConfig} from "../../../utils/constants/inputsConfigs";
 import {pathsConfig} from "../../../utils/constants/pathList";
@@ -41,7 +41,7 @@ export default function PasswordRecoveryPage({handleResetPassword}) {
           onSubmit={handleSubmit}
           isValid={isValid}
         >
-          {!isSubmitPassword && (<InputFormSign
+          {!isSubmitPassword && (<InputForm
             value={values.email || ""}
             onChange={handleChange}
             config={inputConfig.email}

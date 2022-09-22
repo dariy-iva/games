@@ -110,15 +110,15 @@
 }
 
 .login__button_content_apple::before {
-  background-image: url("../../images/apple_icon.svg");
+  background-image: url("../../../images/apple_icon.svg");
 }
 
 .login__button_content_google::before {
-  background-image: url("../../images/google_icon.svg");
+  background-image: url("../../../images/google_icon.svg");
 }
 
 .login__button_content_fb::before {
-  background-image: url("../../images/fb_icon.svg");
+  background-image: url("../../../images/fb_icon.svg");
 }
 
 /*@media (max-width: 1023px) {*/

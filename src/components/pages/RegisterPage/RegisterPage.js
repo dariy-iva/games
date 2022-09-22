@@ -1,13 +1,13 @@
 import React from "react";
-import "./Register.css";
-import HeaderSign from "../Headers/HeaderSign/HeaderSign";
-import SignForm from "../Forms/Sign/SignForm";
-import useFormValidator from "../../hooks/useFormValidator";
-import InputFormSign from "../Forms/Sign/InputFormSign/InputFormSign";
-import SelectFormSign from "../Forms/Sign/SelectFormSign/SelectFormSign";
-import {inputsSignFormConfig as inputConfig} from "../../utils/constants/inputsConfigs";
+import "./RegisterPage.css";
+import HeaderSign from "../../Headers/HeaderSign/HeaderSign";
+import SignForm from "../../Forms/Sign/SignForm";
+import useFormValidator from "../../../hooks/useFormValidator";
+import InputForm from "../../Forms/InputForm/InputForm";
+import SelectFormSign from "../../Forms/Sign/SelectFormSign/SelectFormSign";
+import {inputsSignFormConfig as inputConfig} from "../../../utils/constants/inputsConfigs";
 
-export default function Register({handleRegister}) {
+export default function RegisterPage({handleRegister}) {
   const {values, handleChange, errors, isValid} =
     useFormValidator( {} );
   const [activeSelect, setActiveSelect] = React.useState( null );
@@ -40,23 +40,23 @@ export default function Register({handleRegister}) {
           onSubmit={handleSubmit}
           isValid={isValid}
         >
-          <InputFormSign
+          <InputForm
             value={values.name || ""}
             onChange={handleChange}
             config={inputConfig.name}
             error={errors.name || ""}
             minLength="2"
             maxLength="30"
-            pattern="^[a-zA-Z\-\s]+$"
+            pattern="^[\w\-\s]+$"
           />
-          <InputFormSign
+          <InputForm
             value={values.email || ""}
             onChange={handleChange}
             config={inputConfig.email}
             error={errors.email || ""}
             pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$"
           />
-          <InputFormSign
+          <InputForm
             value={values.password || ""}
             onChange={handleChange}
             config={inputConfig.password}
@@ -89,7 +89,7 @@ export default function Register({handleRegister}) {
           </fieldset>
         </SignForm>
         <p className="register__text">By signing up, your agree to Partie’s &nbsp;
-          <a href="/" target="_blank" className="register__link">Terms and
+          <a href="/src/components/pages" target="_blank" className="register__link">Terms and
             Conditions</a>, End-User License Agreement and
           Privacy Policy.</p>
       </main>

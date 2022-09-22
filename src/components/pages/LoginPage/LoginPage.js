@@ -1,13 +1,13 @@
 import React from "react";
-import "./Login.css";
-import HeaderSign from "../Headers/HeaderSign/HeaderSign";
-import SignForm from "../Forms/Sign/SignForm";
-import InputFormSign from "../Forms/Sign/InputFormSign/InputFormSign";
-import {inputsSignFormConfig as inputConfig} from "../../utils/constants/inputsConfigs";
-import {pathsConfig} from "../../utils/constants/pathList";
-import useFormValidator from "../../hooks/useFormValidator";
+import "./LoginPage.css";
+import HeaderSign from "../../Headers/HeaderSign/HeaderSign";
+import SignForm from "../../Forms/Sign/SignForm";
+import InputForm from "../../Forms/InputForm/InputForm";
+import {inputsSignFormConfig as inputConfig} from "../../../utils/constants/inputsConfigs";
+import {pathsConfig} from "../../../utils/constants/pathList";
+import useFormValidator from "../../../hooks/useFormValidator";
 
-export default function Login({handleLogin}) {
+export default function LoginPage({handleLogin}) {
   const {values, handleChange, errors, isValid} =
     useFormValidator({});
 
@@ -37,16 +37,16 @@ export default function Login({handleLogin}) {
           onSubmit={handleSubmit}
           isValid={isValid}
         >
-          <InputFormSign
+          <InputForm
             value={values.name || ""}
             onChange={handleChange}
             config={inputConfig.name}
             error={errors.name || ""}
             minLength="2"
             maxLength="30"
-            pattern="^[a-zA-Z\-\s]+$"
+            pattern="^[\w\-\s]+$"
           />
-          <InputFormSign
+          <InputForm
             value={values.password || ""}
             onChange={handleChange}
             config={inputConfig.password}
