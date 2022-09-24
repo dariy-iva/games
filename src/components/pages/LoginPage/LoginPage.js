@@ -11,10 +11,10 @@ export default function LoginPage({handleLogin}) {
   const {values, handleChange, errors, isValid} =
     useFormValidator({});
 
-  const socialLinkConfig = [{text: 'Log in with Apple', label: 'apple'}, {
-    text: 'Log in with Google',
-    label: 'google'
-  }, {text: 'Connect with Facebook', label: 'fb'}];
+  const socialLinkConfig = [
+    {text: 'Log in with Apple', label: 'apple', link: 'https://appleid.apple.com/',},
+    {text: 'Log in with Google', label: 'google', link: 'https://myaccount.google.com',},
+    {text: 'Connect with Facebook', label: 'fb', link: 'https://www.facebook.com/',}];
 
   const [allButtonIsShow, setAllButtonIsShow] = React.useState(false);
 
@@ -25,6 +25,12 @@ export default function LoginPage({handleLogin}) {
 
   function handleOpenAllButtonClick() {
     setAllButtonIsShow(true);
+  }
+
+  function handleLoginWithTokenAuthentication(e) {
+    const link = socialLinkConfig.find(item => item.label === e.target.id).link;
+    window.open(link);
+    handleLogin();
   }
 
   return (
@@ -65,7 +71,7 @@ export default function LoginPage({handleLogin}) {
           {socialLinkConfig.map((item, index) => (
             <button
               className={`login__button login__button_content_${item.label} login__text ${!allButtonIsShow && index > 0 ? 'login__button_hidden' : ''}`}
-              type="button" key={item.label}>{item.text}
+              type="button" key={item.label} id={item.label} onClick={handleLoginWithTokenAuthentication}>{item.text}
             </button>
           ))}
           {!allButtonIsShow && (
