@@ -37,7 +37,7 @@ function App() {
   return (
     <div className="page">
       <Routes>
-        <Route exact path="/games" element={<MainPage/>}/>
+        <Route exact path="/" element={<MainPage/>}/>
         <Route
           path={pathsConfig.register}
           element={<RegisterPage handleRegister={handleRegister}/>}
