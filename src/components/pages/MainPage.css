@@ -35,6 +35,15 @@
   display: none;
 }
 
+.splash-screen__register {
+  margin-bottom: 10px;
+}
+
+button.splash-screen__login {
+  margin-bottom: 20px;
+  background-color: var(--dark-grey-button);
+}
+
 @media (max-width: 767px) {
   .splash-screen {
     padding-top: 154px;
@@ -49,6 +58,7 @@
   }
 
   .splash-screen__container {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 }
