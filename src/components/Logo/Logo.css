@@ -1,5 +1,8 @@
 .logo {
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--violet-color);
 }
 
 .logo_size_small {
@@ -13,6 +16,12 @@
   height: 50px;
 }
 
-.logo__link {
-  display: flex;
+.logo__image_size_small {
+  width: 13px;
+  height: 17px;
+}
+
+.logo__image_size_large {
+  width: 16px;
+  height: 21px;
 }
