@@ -1,0 +1,100 @@
+.token-auth__line {
+  display: block;
+  margin: 0 auto;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--grey-text);
+  opacity: .5;
+  text-align: center;
+  align-self: center;
+  position: relative;
+  width: 315px;
+}
+
+.token-auth__line::before, .token-auth__line::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 118px;
+  border-bottom: 1px solid var(--grey-text);
+  top: calc(100% / 2);
+}
+
+.token-auth__line::before {
+  left: 0;
+}
+
+.token-auth__line::after {
+  right: 0;
+}
+
+.token-auth__buttons {
+  position: relative;
+}
+
+.token-auth__button {
+  width: 100%;
+  padding: 19px 0;
+  margin: 0 auto;
+  background-color: var(--dark-grey-button);
+  border: none;
+  border-radius: 20px;
+  transition: all .3s;
+  cursor: pointer;
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+}
+
+.token-auth__button_hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.token-auth__button:hover {
+  background-color: var(--violet-color);
+}
+
+.token-auth__button:first-of-type {
+  margin-top: 20px;
+}
+
+.token-auth__button:not(:first-of-type) {
+  margin-top: 10px;
+}
+
+.token-auth__button::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 16px;
+  width: 20px;
+  height: 20px;
+  background: center / contain no-repeat;
+}
+
+.token-auth__button_content_apple::before {
+  background-image: url("../../images/apple_icon.svg");
+}
+
+.token-auth__button_content_google::before {
+  background-image: url("../../images/google_icon.svg");
+}
+
+.token-auth__button_content_fb::before {
+  background-image: url("../../images/fb_icon.svg");
+}
+
+.token-auth__other {
+  position: absolute;
+  bottom: 90px;
+  left: 0;
+  width: 100%;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  text-align: center;
+  color: var(--grey-text);
+}

@@ -37,7 +37,7 @@ function App() {
   return (
     <div className="page">
       <Routes>
-        <Route exact path={pathsConfig.main} element={<MainPage/>}/>
+        <Route exact path={pathsConfig.main} element={<MainPage onLogin={handleLogin}/>}/>
         <Route
           path={pathsConfig.register}
           element={<RegisterPage handleRegister={handleRegister}/>}

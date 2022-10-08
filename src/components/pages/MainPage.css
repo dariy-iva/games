@@ -30,3 +30,25 @@
   background: url(../../images/splash-screen_button.svg) no-repeat center var(--violet-color);
   cursor: pointer;
 }
+
+.splash-screen__container {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .splash-screen {
+    padding-top: 154px;
+  }
+
+  .splash-screen__title {
+    display: none;
+  }
+
+  .splash-screen__button {
+    display: none;
+  }
+
+  .splash-screen__container {
+    display: block;
+  }
+}

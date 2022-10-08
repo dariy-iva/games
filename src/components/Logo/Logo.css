@@ -1,19 +1,28 @@
 .logo {
   display: flex;
+  align-items: center;
+}
+
+.logo__link {
+  display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--violet-color);
 }
 
-.logo_size_small {
+.logo__link_size_small {
   width: 40px;
   height: 40px;
   border-radius: 16px;
 }
 
-.logo_size_large {
+.logo__link_size_large {
   width: 50px;
   height: 50px;
+}
+
+.logo__image {
+  object-fit: cover;
 }
 
 .logo__image_size_small {
@@ -24,4 +33,29 @@
 .logo__image_size_large {
   width: 16px;
   height: 21px;
+}
+
+@media (max-width: 1023px) {
+  .logo__link_size_large {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .logo {
+    display: block;
+  }
+
+  .logo__link_size_large {
+    width: fit-content;
+    height: fit-content;
+    background: none;
+    margin: 0 auto;
+  }
+
+  .logo__image_size_large {
+    width: 48px;
+    height: 62px;
+  }
 }

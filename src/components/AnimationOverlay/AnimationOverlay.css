@@ -40,3 +40,9 @@
   animation: translateLines 50s linear 25s infinite;
   z-index: -2;
 }
+
+@media (max-width: 767px) {
+  .overlay_color {
+    background-color: var(--black);
+  }
+}

@@ -5,14 +5,13 @@ import {pathsConfig} from "../../../utils/constants/pathList.js";
 
 export default function HeaderMain({children}) {
   return (
-      <header className="header">
-        <div className="header__menu">
-          <Logo isSmall={false}/>
-          <a href={pathsConfig.main} className="header__text">
-            games
-          </a>
-          {children}
-        </div>
-      </header>
+    <header className="header">
+        <Logo isSmall={false}>
+        <a href={pathsConfig.main} className="header__text">
+          games
+        </a>
+        </Logo>
+      {children}
+    </header>
   );
 }
