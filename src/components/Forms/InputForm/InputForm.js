@@ -4,7 +4,7 @@ import {useLocation} from "react-router-dom";
 import {pathsConfig} from "../../../utils/constants/pathList";
 
 export default function InputForm(props) {
-  const {value, onChange, config, error, notLabel = false, ...otherAttr} = props;
+  const {value, onChange, config, error, notLabel = false, className, ...otherAttr} = props;
   const {label, type, name, placeholder} = config;
   const location = useLocation();
   const isPasswordRecoveryPage = location.pathname === pathsConfig.resetPassword;
@@ -14,7 +14,7 @@ export default function InputForm(props) {
       {label}
       <input
         type={type}
-        className={`input ${notLabel ? 'input_not-label' : ''}`}
+        className={`input ${notLabel ? 'input_not-label' : ''} ${className}`}
         name={name}
         required
         value={value}

@@ -1,5 +1,6 @@
 .register {
-  width: 423px;
+  min-width: 280px;
+  max-width: 423px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -9,7 +10,7 @@
 
 .register__fieldset {
   margin: 0;
-  padding: 0;
+  padding: 10px 0 0;
   border: none;
   display: flex;
   justify-content: space-between;
@@ -37,9 +38,26 @@
   color: rgb(248, 246, 255);
 }
 
-/*@media (max-width: 767px) {*/
-/*  .register {*/
-/*    width: 260px;*/
-/*    align-items: center;*/
-/*  }*/
-/*}*/
+.register__birthday {
+  display: none;
+}
+
+.register__birthday::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+
+@media (max-width: 767px) {
+  .register {
+    justify-content: start;
+    padding: 40px 0 20px;
+  }
+
+  .register__fieldset {
+    display: none;
+  }
+
+  .register__birthday {
+    display: inline-flex;
+  }
+}

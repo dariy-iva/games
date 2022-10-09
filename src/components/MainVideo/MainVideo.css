@@ -15,4 +15,10 @@
   object-fit: fill;
 }
 
+@media (max-width: 767px) {
+  .video {
+    display: none;
+  }
+}
+
 

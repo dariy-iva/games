@@ -10,7 +10,7 @@ export default function SignForm(props) {
     <>
       <form name={name} className="formSign" onSubmit={onSubmit}>
         <fieldset className="formSign__fieldset">{children}</fieldset>
-        <Button type="submit" className={''} text={buttonSubmitText} disabled={!isValid} />
+        <Button type="submit" text={buttonSubmitText} disabled={!isValid} />
       </form>
     </>
   );

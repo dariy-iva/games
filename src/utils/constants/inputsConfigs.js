@@ -1,3 +1,5 @@
+import {nowYear} from "./nowDate";
+
 export const inputsSignFormConfig = {
   name: {
     type: "text",
@@ -43,7 +45,7 @@ export const inputsSignFormConfig = {
     get options() {
       const daysList = [];
       for (let i = 1; i < 32; i++) {
-        daysList.push( i );
+        daysList.push(i);
       }
       return daysList;
     },
@@ -53,15 +55,17 @@ export const inputsSignFormConfig = {
     label: "Year",
     name: "year",
     get options() {
-      const now = new Date();
-      const nowYear = now.getFullYear();
       const yearsList = [];
       for (let i = 0; i < (nowYear - 1950 - 16); i++) {
-        yearsList.push( 1950 + i );
+        yearsList.push(1950 + i);
       }
       return yearsList.reverse();
     },
   },
+  birthday: {
+    type: "date",
+    name: "birthday",
+  }
 };
 
 export const inputsPaymentFormConfig = {

@@ -1,5 +1,6 @@
 .login {
-  width: 423px;
+  min-width: 280px;
+  max-width: 423px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -30,9 +31,9 @@
 /*@media (max-width: 1023px) {*/
 /*}*/
 
-/*@media (max-width: 767px) {*/
-/*  .login {*/
-/*    width: 260px;*/
-/*    align-items: center;*/
-/*  }*/
-/*}*/
+@media (max-width: 767px) {
+  .login {
+    justify-content: start;
+    padding: 40px 0 20px;
+  }
+}

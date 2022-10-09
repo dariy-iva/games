@@ -11,5 +11,10 @@
   border: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+}
+
+@media (max-width: 767px) {
+  .formSign {
+    flex-grow: 1;
+  }
 }

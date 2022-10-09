@@ -6,6 +6,7 @@ import useFormValidator from "../../../hooks/useFormValidator";
 import InputForm from "../../Forms/InputForm/InputForm";
 import SelectFormSign from "../../Forms/Sign/SelectFormSign/SelectFormSign";
 import {inputsSignFormConfig as inputConfig} from "../../../utils/constants/inputsConfigs";
+import {nowDay, nowMonth, nowYear} from "../../../utils/constants/nowDate";
 
 export default function RegisterPage({handleRegister}) {
   const {values, handleChange, errors, isValid} =
@@ -87,6 +88,15 @@ export default function RegisterPage({handleRegister}) {
               error={errors.year || ""}
             />
           </fieldset>
+          <InputForm
+            value={values.birthday || ""}
+            onChange={handleChange}
+            config={inputConfig.birthday}
+            error={errors.birthday || ""}
+            className="register__birthday"
+            min={`${nowYear - 100}-${nowMonth < 10 ? '0' + nowMonth : nowMonth}-${nowDay < 10 ? '0' + nowDay : nowDay}`}
+            max={`${nowYear - 16}-${nowMonth < 10 ? '0' + nowMonth : nowMonth}-${nowDay < 10 ? '0' + nowDay : nowDay}`}
+          />
         </SignForm>
         <p className="register__text">By signing up, your agree to Partie’s &nbsp;
           <a href="/src/components/pages" target="_blank" className="register__link">Terms and

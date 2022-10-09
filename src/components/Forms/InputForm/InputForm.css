@@ -27,7 +27,11 @@
   opacity: .3;
 }
 
-.input:invalid:not(:focus):not(:placeholder-shown) {
+.input:invalid:not(:focus):not(:placeholder-shown):not([type="date"]) {
+  border-color: var(--red-text);
+}
+
+.input[type="date"]:invalid:not(:focus):not([value=""]) {
   border-color: var(--red-text);
 }
 
