@@ -9,7 +9,7 @@
 }
 
 .user-game-config_slim {
-  width: 660px;
+  max-width: 660px;
   justify-content: flex-start;
 }
 
@@ -35,4 +35,15 @@
 .user-game-config__description {
   max-width: 225px;
   margin: 0 0 40px;
+}
+
+@media (max-width: 767px) {
+  .user-game-config {
+    justify-content: start;
+    padding: 56px 0 50px;
+  }
+
+  .user-game-config__description {
+    margin-bottom: 50px;
+  }
 }

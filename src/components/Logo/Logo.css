@@ -44,18 +44,7 @@
 
 @media (max-width: 767px) {
   .logo {
-    display: block;
-  }
-
-  .logo__link_size_large {
-    width: fit-content;
-    height: fit-content;
-    background: none;
-    margin: 0 auto;
-  }
-
-  .logo__image_size_large {
-    width: 48px;
-    height: 62px;
+    /*display: block;*/
+    display: none;
   }
 }

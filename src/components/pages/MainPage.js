@@ -33,6 +33,9 @@ export default function MainPage({onLogin}) {
         <Menu/>
       </HeaderMain>
       <main className="splash-screen">
+        <div className="splash-screen__logo">
+          <p className="splash-screen__name">games</p>
+        </div>
         <h1 className={`splash-screen__title translationDownToCenter ${videoIsOpen ? 'translationCenterToUp' : ''}`}>More Than Matchmaking</h1>
         <button type="button" className={`splash-screen__button translationDownToCenter neon-box-shadow ${videoIsOpen ? 'translationCenterToUp' : ''}`} onClick={handleOpenVideo}/>
         {videoIsOpen && <MainVideo />}

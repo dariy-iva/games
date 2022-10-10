@@ -29,15 +29,7 @@
 
 @media (max-width: 767px) {
   .header {
-    padding-top: 200px;
-    justify-content: center;
-  }
-
-  .header__text {
-    display: inline-block;
-    margin-left: 0;
-    margin-top: 12px;
-    font-size: 36px;
+    display: none;
   }
 }
 

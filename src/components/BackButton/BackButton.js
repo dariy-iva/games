@@ -2,7 +2,7 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import './BackButton.css';
 
-export default function BackButton({className}) {
+export default function BackButton({className, onClick}) {
   const history = useNavigate();
 
   function handleBackButtonClick() {
@@ -10,6 +10,6 @@ export default function BackButton({className}) {
   }
 
   return (
-    <button type="button" className={`back-button ${className}`} onClick={handleBackButtonClick}/>
+    <button type="button" className={`back-button ${className}`} onClick={onClick || handleBackButtonClick}/>
   );
 }

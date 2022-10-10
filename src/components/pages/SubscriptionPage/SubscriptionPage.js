@@ -4,6 +4,7 @@ import HeaderMain from "../../Headers/HeaderMain/HeaderMain";
 import AnimationOverlay from "../../AnimationOverlay/AnimationOverlay";
 import SubscriptionForm from "../../Forms/Subscription/SubscriptionForm";
 import PaymentCardForm from "../../Forms/PaymentCard/PaymentCardForm";
+import BackButton from "../../BackButton/BackButton";
 
 export default function SubscriptionPage({onSubmit}) {
   const colorsForOverlay = ['#6E4AFF', '#D2C867'];
@@ -40,7 +41,7 @@ export default function SubscriptionPage({onSubmit}) {
         {!isPayment && <SubscriptionForm onSubmit={handleSubmitSubscriptionForm}/>}
         {isPayment && <PaymentCardForm/>}
       </section>
-      {isPayment && <button type="button" className="button-back" onClick={handleBackButtonClick}/>}
+      {isPayment && <BackButton className="subscription__back" onClick={handleBackButtonClick}/>}
       {!isPayment && <AnimationOverlay colors={colorsForOverlay}/>}
     </>
   );

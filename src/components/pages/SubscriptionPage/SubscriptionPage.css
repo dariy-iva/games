@@ -33,27 +33,17 @@
   margin: 20px auto 40px;
 }
 
-.button-back {
+.subscription__back {
   width: 52px;
   height: 52px;
-  background-color: rgba(40, 39, 46, .8);
-  border: none;
-  padding: 0;
   margin-bottom: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all .3s;
 }
 
-.button-back:hover {
-  transform: scale(1.1);
-}
-
-.button-back::after {
-  content: "";
+.subscription__back::after {
   width: 24px;
   height: 24px;
-  display: block;
-  margin: auto;
-  background: url("../../../images/arrow_back.svg") center / auto no-repeat;
+}
+
+@media (max-width: 767px) {
+
 }

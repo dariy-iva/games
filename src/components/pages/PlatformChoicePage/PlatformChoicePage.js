@@ -49,7 +49,7 @@ export default function PlatformChoicePage({onSubmit}) {
                 name={platform.name}
                 onChange={handleChangeInput}
               />
-              <span className="user-game-config__text">{platform.label}</span>
+              <span className="platforms__text">{platform.label}</span>
             </label>
           ))}
         </div>

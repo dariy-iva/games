@@ -1,6 +1,7 @@
 .back-button {
   width: 40px;
   height: 40px;
+  padding: 0;
   background-color: rgba(40, 39, 46, .8);
   border: none;
   border-radius: 50%;
@@ -13,9 +14,10 @@
 }
 
 .back-button::after {
-  content: url("../../images/arrow_back.svg");
+  content: "";
   width: 18px;
   height: 18px;
   display: block;
   margin: auto;
+  background: url("../../images/arrow_back.svg") center / auto no-repeat;
 }

@@ -16,5 +16,6 @@
 @media (max-width: 767px) {
   .formSign {
     flex-grow: 1;
+    justify-content: space-between;
   }
 }

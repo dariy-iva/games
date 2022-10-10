@@ -8,6 +8,21 @@
   position: relative;
 }
 
+.splash-screen__logo {
+  display: none;
+  margin-bottom: 154px;
+  padding-top: calc(62px + 12px);
+  background: url("../../images/logo.svg") top center / 48px 62px no-repeat;
+}
+
+.splash-screen__name {
+  margin: 0 auto;
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 900;
+  color: var(--light-grey-text);
+}
+
 .splash-screen__title {
   margin: 0 auto;
   padding: 0 0 40px;
@@ -46,7 +61,12 @@ button.splash-screen__login {
 
 @media (max-width: 767px) {
   .splash-screen {
-    padding-top: 154px;
+    padding: 163px 0 54px;
+    justify-content: start;
+  }
+
+  .splash-screen__logo {
+    display: flex;
   }
 
   .splash-screen__title {
