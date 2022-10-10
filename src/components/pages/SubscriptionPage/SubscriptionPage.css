@@ -33,6 +33,10 @@
   margin: 20px auto 40px;
 }
 
+.subscription__button {
+  margin-top: 20px;
+}
+
 .subscription__back {
   width: 52px;
   height: 52px;
@@ -56,5 +60,9 @@
     margin-top: 18px;
     font-size: 14px;
     line-height: 1.5;
+  }
+
+  .subscription__button {
+    margin-top: auto;
   }
 }

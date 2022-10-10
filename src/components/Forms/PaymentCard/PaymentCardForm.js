@@ -11,6 +11,7 @@ export default function PaymentCardForm({onSubmit}) {
 
   function handleFormSubmit(e) {
     e.preventDefault();
+    onSubmit(values);
   }
 
   function handleChangeCardNumberInput(e) {
