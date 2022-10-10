@@ -1,6 +1,6 @@
 import React from "react";
 import "./PlatformChoicePage.css";
-import Button from "../../Button/Button";
+import SubmitButton from "../../Buttons/SubmitButton/SubmitButton";
 import HeaderMain from "../../Headers/HeaderMain/HeaderMain";
 import AnimationOverlay from "../../AnimationOverlay/AnimationOverlay";
 import UserGameConfigSection from "../../UserGameConfigSection/UserGameConfigSection";
@@ -53,7 +53,7 @@ export default function PlatformChoicePage({onSubmit}) {
             </label>
           ))}
         </div>
-        <Button
+        <SubmitButton
           type='button'
           className={`platforms__button ${checkedItems.length > 0 ? 'platforms__button_visible' : 'platforms__button_hidden'}`}
           onClick={handleCheckedPlatformsSubmit} text='Continue'/>

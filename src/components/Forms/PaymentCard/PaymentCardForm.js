@@ -1,6 +1,6 @@
 import React from "react";
 import "./PaymentCardForm.css";
-import Button from "../../Button/Button";
+import SubmitButton from "../../Buttons/SubmitButton/SubmitButton";
 import InputForm from "../InputForm/InputForm";
 import useFormValidator from "../../../hooks/useFormValidator";
 import {inputsPaymentFormConfig as inputConfig} from "../../../utils/constants/inputsConfigs";
@@ -133,7 +133,7 @@ export default function PaymentCardForm({onSubmit}) {
         </div>
       </fieldset>
 
-      <Button type="submit" className="" text="Confirm" disabled={!isValid}/>
+      <SubmitButton type="submit" className="" text="Confirm" disabled={!isValid}/>
     </form>
   );
 }

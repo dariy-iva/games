@@ -1,6 +1,6 @@
 import React from "react";
 import "./GamesChoicePage.css";
-import Button from "../../Button/Button";
+import SubmitButton from "../../Buttons/SubmitButton/SubmitButton";
 import UserGameConfigSection from "../../UserGameConfigSection/UserGameConfigSection";
 import {gameList} from "../../../utils/constants/gameList.js";
 import HeaderMain from "../../Headers/HeaderMain/HeaderMain";
@@ -70,7 +70,7 @@ export default function GamesChoicePage({onSubmit}) {
               </label>
             ))}
           </div>
-          <Button
+          <SubmitButton
             type='button'
             className={`games__button ${checkedItems.length > 0 ? 'games__button_visible' : 'games__button_hidden'}`}
             text="Continue" onClick={handleCheckedGamesSubmit}/>

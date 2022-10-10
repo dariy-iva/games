@@ -5,7 +5,7 @@ import HeaderSign from "../../Headers/HeaderSign/HeaderSign";
 import InformationWithImage from "../../InformationWithImage/InformationWithImage";
 import SignForm from "../../Forms/Sign/SignForm";
 import InputForm from "../../Forms/InputForm/InputForm";
-import Button from "../../Button/Button";
+import SubmitButton from "../../Buttons/SubmitButton/SubmitButton";
 import useFormValidator from "../../../hooks/useFormValidator";
 import {inputsSignFormConfig as inputConfig} from "../../../utils/constants/inputsConfigs";
 import {pathsConfig} from "../../../utils/constants/pathList";
@@ -36,7 +36,7 @@ export default function PasswordRecoveryPage({handleResetPassword}) {
         {isSubmitPassword && (
           <>
           <InformationWithImage title="Check your email" text={`An email was sent to ${values.email || ''}, tap to link to create new Games password`} />
-          <Button type="button" text="Open email app" onClick={handleOpenMailApp} className="recovery__button" />
+          <SubmitButton type="button" text="Open email app" onClick={handleOpenMailApp} className="recovery__button" />
           </>
         )}
         {!isSubmitPassword && (<SignForm

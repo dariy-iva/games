@@ -2,7 +2,7 @@ import React from "react";
 import {NavLink, useLocation} from "react-router-dom";
 import './HeaderSign.css';
 import Logo from '../../Logo/Logo.js';
-import BackButton from "../../BackButton/BackButton";
+import BackButton from "../../Buttons/BackButton/BackButton";
 import {pathsConfig} from "../../../utils/constants/pathList.js";
 
 export default function HeaderSign() {

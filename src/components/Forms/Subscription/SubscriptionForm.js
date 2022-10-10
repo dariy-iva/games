@@ -1,7 +1,7 @@
 import React from "react";
 import "./SubscriptionForm.css";
 import {subscriptionList} from "../../../utils/constants/subscriptionList";
-import Button from "../../Button/Button";
+import SubmitButton from "../../Buttons/SubmitButton/SubmitButton";
 
 export default function SubscriptionForm({onSubmit}) {
   const [checkedSubscription, setCheckedSubscription] = React.useState('');
@@ -70,8 +70,8 @@ export default function SubscriptionForm({onSubmit}) {
             <li className="subscription-form__description">Unlimited games</li>
             <li className="subscription-form__description">Personal customize your games</li>
           </ul>
-          {!paymentVariantIsOpen && <Button type="button" className="subscription-form__button" text={'Start 30 day trial'} disabled={false}
-                                            onClick={handleFreePeriodButtonClick}/>}
+          {!paymentVariantIsOpen && <SubmitButton type="button" className="subscription-form__button" text={'Start 30 day trial'} disabled={false}
+                                                  onClick={handleFreePeriodButtonClick}/>}
           {paymentVariantIsOpen && (
 
             <fieldset className="subscription-form__fieldset subscription-form__fieldset_content_payment">

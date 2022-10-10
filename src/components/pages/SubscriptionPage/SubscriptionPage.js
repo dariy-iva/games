@@ -4,9 +4,9 @@ import HeaderMain from "../../Headers/HeaderMain/HeaderMain";
 import AnimationOverlay from "../../AnimationOverlay/AnimationOverlay";
 import SubscriptionForm from "../../Forms/Subscription/SubscriptionForm";
 import PaymentCardForm from "../../Forms/PaymentCard/PaymentCardForm";
-import BackButton from "../../BackButton/BackButton";
+import BackButton from "../../Buttons/BackButton/BackButton";
 import InformationWithImage from "../../InformationWithImage/InformationWithImage";
-import Button from "../../Button/Button";
+import SubmitButton from "../../Buttons/SubmitButton/SubmitButton";
 
 export default function SubscriptionPage({onSubmit}) {
   const colorsForOverlay = ['#6E4AFF', '#D2C867'];
@@ -56,8 +56,8 @@ export default function SubscriptionPage({onSubmit}) {
           <>
             <InformationWithImage title="Welcome to the Games"
                                   text="Few words about privacy and something like that and Privacy Policy."/>
-            <Button type="button" text="Start" onClick={handleStartServiceClick} className="subscription__button"
-                    disabled={false}/>
+            <SubmitButton type="button" text="Start" onClick={handleStartServiceClick} className="subscription__button"
+                          disabled={false}/>
           </>}
       </main>
       {isPayment && <BackButton className="subscription__back" onClick={handleBackButtonClick}/>}

@@ -1,7 +1,7 @@
 import React from "react";
-import "./Button.css";
+import "./SubmitButton.css";
 
-export default function Button(props) {
+export default function SubmitButton(props) {
   const {type, text, onClick, className, disabled} = props;
 
   return (
