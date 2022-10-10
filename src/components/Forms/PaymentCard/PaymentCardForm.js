@@ -132,7 +132,7 @@ export default function PaymentCardForm({onSubmit}) {
         </div>
       </fieldset>
 
-      <Button type="submit" className={''} text="Confirm" disabled={!isValid}/>
+      <Button type="submit" className="" text="Confirm" disabled={!isValid}/>
     </form>
   );
 }

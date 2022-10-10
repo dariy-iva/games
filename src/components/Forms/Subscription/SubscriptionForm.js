@@ -70,7 +70,7 @@ export default function SubscriptionForm({onSubmit}) {
             <li className="subscription-form__description">Unlimited games</li>
             <li className="subscription-form__description">Personal customize your games</li>
           </ul>
-          {!paymentVariantIsOpen && <Button type="button" className={''} text={'Start 30 day trial'} disabled={false}
+          {!paymentVariantIsOpen && <Button type="button" className="subscription-form__button" text={'Start 30 day trial'} disabled={false}
                                             onClick={handleFreePeriodButtonClick}/>}
           {paymentVariantIsOpen && (
 

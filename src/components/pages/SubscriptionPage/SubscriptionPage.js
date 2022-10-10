@@ -33,14 +33,14 @@ export default function SubscriptionPage({onSubmit}) {
   return (
     <>
       <HeaderMain/>
-      <section className="subscription">
+      <main className="subscription">
         <h1
           className={`subscription__title ${!isPayment ? 'subscription__title_not-description' : ''}`}>{isPayment ? 'Add a Credit card' : 'Games Subscriptions'}</h1>
         {isPayment &&
           <p className="subscription__text">Few words about privacy and something like that and Privacy Policy.</p>}
         {!isPayment && <SubscriptionForm onSubmit={handleSubmitSubscriptionForm}/>}
         {isPayment && <PaymentCardForm/>}
-      </section>
+      </main>
       {isPayment && <BackButton className="subscription__back" onClick={handleBackButtonClick}/>}
       {!isPayment && <AnimationOverlay colors={colorsForOverlay}/>}
     </>
