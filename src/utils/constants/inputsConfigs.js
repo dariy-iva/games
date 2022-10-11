@@ -64,6 +64,7 @@ export const inputsSignFormConfig = {
   },
   birthday: {
     type: "date",
+    label: "Date of Birth",
     name: "birthday",
   }
 };

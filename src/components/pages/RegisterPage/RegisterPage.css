@@ -16,14 +16,6 @@
   justify-content: space-between;
 }
 
-.register__label {
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 1;
-  color: var(--light-grey-text);
-  margin: 0;
-}
-
 .register__text {
   font-weight: 500;
   font-size: 12px;

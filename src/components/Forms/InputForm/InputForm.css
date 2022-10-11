@@ -47,7 +47,7 @@
   position: relative;
 }
 
-.input__field:not(:last-child) {
+.input__field:not(:last-of-type) {
   padding-bottom: 21px;
 }
 

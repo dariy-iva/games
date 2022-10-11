@@ -10,25 +10,25 @@ import {nowDay, nowMonth, nowYear} from "../../../utils/constants/nowDate";
 
 export default function RegisterPage({handleRegister}) {
   const {values, handleChange, errors, isValid} =
-    useFormValidator( {} );
-  const [activeSelect, setActiveSelect] = React.useState( null );
+    useFormValidator({});
+  const [activeSelect, setActiveSelect] = React.useState(null);
 
-  React.useEffect( () => {
-    window.addEventListener( 'click', handleWindowClick );
-    return () => window.removeEventListener( 'click', handleWindowClick );
-  }, );
+  React.useEffect(() => {
+    window.addEventListener('click', handleWindowClick);
+    return () => window.removeEventListener('click', handleWindowClick);
+  },);
 
   function handleWindowClick(e) {
-    (e.target.id !== 'month' && e.target.id !== 'day' && e.target.id !== 'year') && setActiveSelect( null );
+    (e.target.id !== 'month' && e.target.id !== 'day' && e.target.id !== 'year') && setActiveSelect(null);
   }
 
   function selectOnClick(selectId) {
-    setActiveSelect( selectId );
+    setActiveSelect(selectId);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleRegister( values );
+    handleRegister(values);
   }
 
   return (
@@ -64,7 +64,15 @@ export default function RegisterPage({handleRegister}) {
             error={errors.password || ""}
             minLength="6"
           />
-          <p className="register__label">Date of Birth</p>
+          <InputForm
+            value={values.birthday || ""}
+            onChange={handleChange}
+            config={inputConfig.birthday}
+            error={errors.birthday || ""}
+            className="register__birthday"
+            min={`${nowYear - 100}-${nowMonth < 10 ? '0' + nowMonth : nowMonth}-${nowDay < 10 ? '0' + nowDay : nowDay}`}
+            max={`${nowYear - 16}-${nowMonth < 10 ? '0' + nowMonth : nowMonth}-${nowDay < 10 ? '0' + nowDay : nowDay}`}
+          />
           <fieldset className="register__fieldset">
             <SelectFormSign
               onChange={handleChange}
@@ -88,15 +96,6 @@ export default function RegisterPage({handleRegister}) {
               error={errors.year || ""}
             />
           </fieldset>
-          <InputForm
-            value={values.birthday || ""}
-            onChange={handleChange}
-            config={inputConfig.birthday}
-            error={errors.birthday || ""}
-            className="register__birthday"
-            min={`${nowYear - 100}-${nowMonth < 10 ? '0' + nowMonth : nowMonth}-${nowDay < 10 ? '0' + nowDay : nowDay}`}
-            max={`${nowYear - 16}-${nowMonth < 10 ? '0' + nowMonth : nowMonth}-${nowDay < 10 ? '0' + nowDay : nowDay}`}
-          />
         </SignForm>
         <p className="register__text">By signing up, your agree to Partie’s &nbsp;
           <a href="/src/components/pages" target="_blank" className="register__link">Terms and
