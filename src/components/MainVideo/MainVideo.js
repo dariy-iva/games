@@ -23,7 +23,7 @@ export default function MainVideo() {
     <section className="video translationDownToCenter neon-box-shadow">
       <iframe
         src={`https://www.youtube-nocookie.com/embed/?autoplay=1&hl=en&modestbranding=1&playlist=${videoList.map(item => item.id)}`}
-        className='video__iframe' allow="muted; autoplay; fullscreen">Sorry, your browser does not support this video
+        className='video__iframe' allow="muted; autoplay; fullscreen" title="main-video">Sorry, your browser does not support this video
       </iframe>
     </section>
   );

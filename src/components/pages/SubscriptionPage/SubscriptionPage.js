@@ -20,8 +20,12 @@ export default function SubscriptionPage({onSubmit}) {
         break;
       case 'paypal':
         window.open('https://www.paypal.com');
+        setIsPayment(false);
+        setIsFinishPayment(true);
         onSubmit();
         break;
+      default:
+        return;
     }
   }
 

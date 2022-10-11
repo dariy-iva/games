@@ -53,8 +53,7 @@ export default function PasswordRecoveryPage({handleResetPassword}) {
             pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$"
           />
         </SignForm>)}
-        <a href={pathsConfig.contacts} className="login__text login__link link-hover login__link_path_contact"
-           target="_blank">Need help? Contact
+        <a href={pathsConfig.contacts} className="login__text login__link link-hover login__link_path_contact">Need help? Contact
           Us</a>
       </main>
     </>

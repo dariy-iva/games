@@ -2,7 +2,7 @@
   padding-top: calc(206px + 42px);
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   background: url("../../images/recovery_password_image.png") top center / 217px 206px no-repeat;
 }
 

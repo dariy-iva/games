@@ -47,8 +47,7 @@ export default function LoginPage({handleLogin}) {
             password?</a>
         </SignForm>
 
-        <a href={pathsConfig.contacts} className="login__text login__link link-hover login__link_path_contact"
-           target="_blank">Need help? Contact
+        <a href={pathsConfig.contacts} className="login__text login__link link-hover login__link_path_contact">Need help? Contact
           Us</a>
         <TokenAuthButtons onLogin={handleLogin}/>
       </main>

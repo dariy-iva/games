@@ -8,7 +8,7 @@ export default function SelectFormSign({config, onChange, selectOnClick, activeS
 
   React.useEffect( () => {
     activeSelect === name ? setStateSelect('active') : setStateSelect('');
-  }, [activeSelect]);
+  }, [activeSelect, name]);
 
   function handleSelectClick(e) {
     stateSelect === 'active' ? selectOnClick( null ) : selectOnClick( e.target.id );

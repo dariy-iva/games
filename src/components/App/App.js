@@ -29,8 +29,8 @@ function App() {
     history( pathsConfig.subscription );
   }
 
-  function handleChoiceSubscription(subscriptionData) {
-
+  function handleChoiceSubscriptionAndPayment() {
+    // history( pathsConfig.main );
   }
 
 
@@ -46,7 +46,7 @@ function App() {
         <Route path={pathsConfig.resetPassword} element={<PasswordRecoveryPage handleResetPassword={""}/>}/>
         <Route path={pathsConfig.platformsChoice} element={<PlatformChoicePage onSubmit={handleChoicePlatforms}/>}/>
         <Route path={pathsConfig.gamesChoice} element={<GamesChoicePage onSubmit={handleChoiceGames}/>}/>
-        <Route path={pathsConfig.subscription} element={<SubscriptionPage onSubmit={handleChoiceSubscription}/>}/>
+        <Route path={pathsConfig.subscription} element={<SubscriptionPage onSubmit={handleChoiceSubscriptionAndPayment}/>}/>
       </Routes>
     </div>
   );

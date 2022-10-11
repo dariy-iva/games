@@ -65,7 +65,7 @@ export default function GamesChoicePage({onSubmit}) {
                   name={game.name}
                   onChange={handleChangeInput}
                 />
-                <img src={game.image} className="games__image" alt="image game"/>
+                <img src={game.image} className="games__image" alt="poster"/>
                 <span className="games__title">{game.label}</span>
               </label>
             ))}
