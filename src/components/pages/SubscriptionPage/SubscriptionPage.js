@@ -61,7 +61,7 @@ export default function SubscriptionPage({onSubmit}) {
             <InformationWithImage title="Welcome to the Games"
                                   text="Few words about privacy and something like that and Privacy Policy."/>
             <SubmitButton type="button" text="Start" onClick={handleStartServiceClick} className="subscription__button"
-                          disabled={false}/>
+                          disabled={false} name="Service start button"/>
           </>}
       </main>
       {isPayment && <BackButton className="subscription__back" onClick={handleBackButtonClick}/>}

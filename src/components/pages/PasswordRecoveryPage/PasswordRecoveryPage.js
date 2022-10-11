@@ -26,17 +26,19 @@ export default function PasswordRecoveryPage({handleResetPassword}) {
     const mailDomain = values.email.split('@')[1];
     const link = `https://${mailDomain}`;
     window.open(link);
-    history( pathsConfig.login );
+    history(pathsConfig.login);
   }
 
   return (
     <>
-      <HeaderSign />
+      <HeaderSign/>
       <main className="recovery">
         {isSubmitPassword && (
           <>
-          <InformationWithImage title="Check your email" text={`An email was sent to ${values.email || ''}, tap to link to create new Games password`} />
-          <SubmitButton type="button" text="Open email app" onClick={handleOpenMailApp} className="recovery__button" />
+            <InformationWithImage title="Check your email"
+                                  text={`An email was sent to ${values.email || ''}, tap to link to create new Games password`}/>
+            <SubmitButton type="button" text="Open email app" onClick={handleOpenMailApp} className="recovery__button"
+                          name="Open app button"/>
           </>
         )}
         {!isSubmitPassword && (<SignForm
@@ -53,7 +55,8 @@ export default function PasswordRecoveryPage({handleResetPassword}) {
             pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$"
           />
         </SignForm>)}
-        <a href={pathsConfig.contacts} className="login__text login__link link-hover login__link_path_contact">Need help? Contact
+        <a href={pathsConfig.contacts} className="login__text login__link link-hover login__link_path_contact">Need
+          help? Contact
           Us</a>
       </main>
     </>

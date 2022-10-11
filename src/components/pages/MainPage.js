@@ -20,11 +20,11 @@ export default function MainPage({onLogin}) {
   }
 
   function handleRegisterButtonClick() {
-    history( pathsConfig.register );
+    history(pathsConfig.register);
   }
 
   function handleLoginButtonClick() {
-    history( pathsConfig.login );
+    history(pathsConfig.login);
   }
 
   return (
@@ -36,13 +36,19 @@ export default function MainPage({onLogin}) {
         <div className="splash-screen__logo">
           <p className="splash-screen__name">games</p>
         </div>
-        <h1 className={`splash-screen__title translationDownToCenter ${videoIsOpen ? 'translationCenterToUp' : ''}`}>More Than Matchmaking</h1>
-        <button type="button" className={`splash-screen__button translationDownToCenter neon-box-shadow ${videoIsOpen ? 'translationCenterToUp' : ''}`} onClick={handleOpenVideo}/>
-        {videoIsOpen && <MainVideo />}
+        <h1
+          className={`splash-screen__title translationDownToCenter ${videoIsOpen ? 'translationCenterToUp' : ''}`}>More
+          Than Matchmaking</h1>
+        <button type="button"
+                className={`splash-screen__button translationDownToCenter neon-box-shadow ${videoIsOpen ? 'translationCenterToUp' : ''}`}
+                onClick={handleOpenVideo} aria-label="Open video button"/>
+        {videoIsOpen && <MainVideo/>}
         <div className="splash-screen__container">
-          <SubmitButton type="button" text="Sign up to Games" disabled={false} onClick={handleRegisterButtonClick} className="splash-screen__register" />
-          <SubmitButton type="button" text="Log in" disabled={false} onClick={handleLoginButtonClick} className="splash-screen__login" />
-          <TokenAuthButtons onLogin={onLogin} />
+          <SubmitButton type="button" text="Sign up to Games" disabled={false} onClick={handleRegisterButtonClick}
+                        className="splash-screen__register" name="Sign up"/>
+          <SubmitButton type="button" text="Log in" disabled={false} onClick={handleLoginButtonClick}
+                        className="splash-screen__login" name="Log in"/>
+          <TokenAuthButtons onLogin={onLogin}/>
         </div>
       </main>
       <AnimationOverlay colors={colorsForOverlay} isOverlayColor={true}/>

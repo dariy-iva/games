@@ -71,7 +71,7 @@ export default function SubscriptionForm({onSubmit}) {
             <li className="subscription-form__description">Personal customize your games</li>
           </ul>
           {!paymentVariantIsOpen && <SubmitButton type="button" className="subscription-form__button" text={'Start 30 day trial'} disabled={false}
-                                                  onClick={handleFreePeriodButtonClick}/>}
+                                                  onClick={handleFreePeriodButtonClick} name="Start period button"/>}
           {paymentVariantIsOpen && (
 
             <fieldset className="subscription-form__fieldset subscription-form__fieldset_content_payment">

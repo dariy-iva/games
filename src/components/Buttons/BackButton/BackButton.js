@@ -10,6 +10,6 @@ export default function BackButton({className, onClick}) {
   }
 
   return (
-    <button type="button" className={`back-button ${className}`} onClick={onClick || handleBackButtonClick}/>
+    <button type="button" className={`back-button ${className}`} onClick={onClick || handleBackButtonClick} aria-label="Back button"/>
   );
 }
