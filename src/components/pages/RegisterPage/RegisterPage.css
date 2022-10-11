@@ -34,6 +34,10 @@
   display: none;
 }
 
+.register__birthday:not(:focus):invalid::-webkit-datetime-edit {
+  opacity: .3;
+}
+
 .register__birthday::-webkit-calendar-picker-indicator {
   display: none;
 }
