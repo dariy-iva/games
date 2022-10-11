@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  background: url("../../images/recovery_password_image.png") top center / 217px 206px no-repeat;
+  background: url("../../images/recovery_password_image.webp") top center / 217px 206px no-repeat;
 }
 
 .info__title {
