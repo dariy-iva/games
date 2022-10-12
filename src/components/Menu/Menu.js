@@ -11,7 +11,7 @@ export default function Menu() {
         {menuItems.map( item => (
           <li className="menu__item" key={item.text}>
             <NavLink
-              to={pathsConfig.main}
+              to={pathsConfig.login}
               end
               className={(props) =>
                 props.isActive
