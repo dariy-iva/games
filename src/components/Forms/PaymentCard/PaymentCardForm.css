@@ -15,4 +15,5 @@
   display: grid;
   grid-gap: 17px;
   grid-template-columns: repeat(2, 110px);
+  margin-top: 21px;
 }
