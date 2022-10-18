@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import "./LoginPage.css";
 import HeaderSign from "../../Headers/HeaderSign/HeaderSign";
 import SignForm from "../../Forms/Sign/SignForm";
@@ -43,12 +44,12 @@ export default function LoginPage({handleLogin}) {
             error={errors.password || ""}
             minLength="6"
           />
-          <a href={pathsConfig.resetPassword} className="login__text login__link login__link_path_reset link-hover">Forgot
-            password?</a>
+          <Link to={pathsConfig.resetPassword} className="login__text login__link login__link_path_reset link-hover">Forgot
+            password?</Link>
         </SignForm>
 
-        <a href={pathsConfig.contacts} className="login__text login__link link-hover login__link_path_contact">Need help? Contact
-          Us</a>
+        <Link to={pathsConfig.contacts} className="login__text login__link link-hover login__link_path_contact">Need help? Contact
+          Us</Link>
         <TokenAuthButtons onLogin={handleLogin}/>
       </main>
     </>

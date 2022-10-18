@@ -1,5 +1,5 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import "./PasswordRecoveryPage.css";
 import HeaderSign from "../../Headers/HeaderSign/HeaderSign";
 import InformationWithImage from "../../InformationWithImage/InformationWithImage";
@@ -11,8 +11,7 @@ import {inputsSignFormConfig as inputConfig} from "../../../utils/constants/inpu
 import {pathsConfig} from "../../../utils/constants/pathList";
 
 export default function PasswordRecoveryPage({handleResetPassword}) {
-  const {values, handleChange, errors, isValid} =
-    useFormValidator({});
+  const {values, handleChange, errors, isValid} = useFormValidator({});
   const [isSubmitPassword, setIsSubmitPassword] = React.useState(false);
   const history = useNavigate();
 
@@ -55,9 +54,9 @@ export default function PasswordRecoveryPage({handleResetPassword}) {
             pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$"
           />
         </SignForm>)}
-        <a href={pathsConfig.contacts} className="login__text login__link link-hover login__link_path_contact">Need
+        <Link to={pathsConfig.contacts} className="login__text login__link link-hover login__link_path_contact">Need
           help? Contact
-          Us</a>
+          Us</Link>
       </main>
     </>
   );

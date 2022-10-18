@@ -8,6 +8,7 @@ export const pathsConfig = {
   features: '/features',
   partners: '/partners',
   contacts: '/contacts',
+  terms: '/terms',
   support: '/support',
   subscription: '/subscription',
   feed: '/feed',

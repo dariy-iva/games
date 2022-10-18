@@ -1,5 +1,5 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import './Menu.css';
 import {menuItems} from '../../utils/constants/menuItemMainPageConfig.js'
 import {pathsConfig} from "../../utils/constants/pathList.js";
@@ -25,17 +25,17 @@ export default function Menu() {
       </ul>
       <ul className="menu__list menu__list_content_auth">
         <li className="menu__item">
-          <a href={pathsConfig.login} className="menu__text menu__text_weight_bold">
+          <Link to={pathsConfig.login} className="menu__text menu__text_weight_bold">
             Log In
-          </a>
+          </Link>
         </li>
         <li className="menu__text menu__item">
-          <a
-            href={pathsConfig.register}
+          <Link
+            to={pathsConfig.register}
             className="menu__text menu__text_weight_bold menu__item_active neon-box-shadow"
           >
             Sign Up
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

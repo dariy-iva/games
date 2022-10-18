@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import "./RegisterPage.css";
 import HeaderSign from "../../Headers/HeaderSign/HeaderSign";
 import SignForm from "../../Forms/Sign/SignForm";
@@ -7,6 +8,7 @@ import InputForm from "../../Forms/InputForm/InputForm";
 import SelectFormSign from "../../Forms/Sign/SelectFormSign/SelectFormSign";
 import {inputsSignFormConfig as inputConfig} from "../../../utils/constants/inputsConfigs";
 import {nowDay, nowMonth, nowYear} from "../../../utils/constants/nowDate";
+import {pathsConfig} from "../../../utils/constants/pathList";
 
 export default function RegisterPage({handleRegister}) {
   const {values, handleChange, errors, isValid} =
@@ -98,8 +100,8 @@ export default function RegisterPage({handleRegister}) {
           </fieldset>
         </SignForm>
         <p className="register__text">By signing up, your agree to Partie’s &nbsp;
-          <a href="/src/components/pages" target="_blank" className="register__link">Terms and
-            Conditions</a>, End-User License Agreement and
+          <Link to={pathsConfig.terms} className="register__link">Terms and
+            Conditions</Link>, End-User License Agreement and
           Privacy Policy.</p>
       </main>
     </>
