@@ -1,5 +1,7 @@
 import React from "react";
 import {Route, Routes, useNavigate} from "react-router-dom";
+import {connect} from "react-redux";
+import {setUser, clearUser} from "../../redux/slices/userSlice";
 import './App.css';
 import MainPage from "../pages/MainPage.js";
 import RegisterPage from "../pages/RegisterPage/RegisterPage.js";
@@ -10,29 +12,30 @@ import GamesChoicePage from "../pages/GamesChoicePage/GamesChoicePage";
 import SubscriptionPage from "../pages/SubscriptionPage/SubscriptionPage";
 import {pathsConfig} from "../../utils/constants/pathList.js";
 
-function App() {
+function App(props) {
+  const {user, setUser, clearUser} = props;
+
   const history = useNavigate();
 
   function handleRegister(dataUser) {
-    history( pathsConfig.login );
+    history(pathsConfig.login);
   }
 
   function handleLogin() {
-    history( pathsConfig.platformsChoice );
+    history(pathsConfig.platformsChoice);
   }
 
   function handleChoicePlatforms() {
-    history( pathsConfig.gamesChoice );
+    history(pathsConfig.gamesChoice);
   }
 
   function handleChoiceGames() {
-    history( pathsConfig.subscription );
+    history(pathsConfig.subscription);
   }
 
   function handleChoiceSubscriptionAndPayment() {
-    history( pathsConfig.feed );
+    history(pathsConfig.feed);
   }
-
 
   return (
     <div className="page">
@@ -46,10 +49,16 @@ function App() {
         <Route path={pathsConfig.resetPassword} element={<PasswordRecoveryPage handleResetPassword={""}/>}/>
         <Route path={pathsConfig.platformsChoice} element={<PlatformChoicePage onSubmit={handleChoicePlatforms}/>}/>
         <Route path={pathsConfig.gamesChoice} element={<GamesChoicePage onSubmit={handleChoiceGames}/>}/>
-        <Route path={pathsConfig.subscription} element={<SubscriptionPage onSubmit={handleChoiceSubscriptionAndPayment}/>}/>
+        <Route path={pathsConfig.subscription}
+               element={<SubscriptionPage onSubmit={handleChoiceSubscriptionAndPayment}/>}/>
       </Routes>
     </div>
   );
 }
 
-export default App;
+export default connect(
+  (state) => ({
+    user: state.user.user,
+  }),
+  {setUser, clearUser}
+)(App);
