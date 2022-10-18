@@ -30,7 +30,7 @@ function App() {
   }
 
   function handleChoiceSubscriptionAndPayment() {
-    // history( pathsConfig.main );
+    history( pathsConfig.feed );
   }
 
 

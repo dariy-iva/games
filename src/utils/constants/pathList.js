@@ -10,5 +10,5 @@ export const pathsConfig = {
   contacts: '/contacts',
   support: '/support',
   subscription: '/subscription',
-  payment: '/payment',
+  feed: '/feed',
 }
