@@ -34,7 +34,15 @@
   display: none;
 }
 
-.register__birthday:not(:focus):invalid::-webkit-datetime-edit {
+.input.register__birthday:invalid:not(:focus) {
+  border-color: var(--red-text);
+}
+
+.input.register__birthday:valid:not([value=""]) {
+  background: url("../../../images/valid_input_icon.svg") calc(100% - 24px) / 11px 100% no-repeat;
+}
+
+.register__birthday:not(:focus):invalid::-webkit-datetime-edit, .register__birthday[value=""]::-webkit-datetime-edit {
   opacity: .3;
 }
 

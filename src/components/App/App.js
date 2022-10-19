@@ -1,7 +1,7 @@
 import React from "react";
 import {Route, Routes, useNavigate} from "react-router-dom";
 import {connect} from "react-redux";
-import {setUser, clearUser} from "../../redux/slices/userSlice";
+import {registerUser, setUserEmail, setUserSubscription, clearUserData} from "../../redux/slices/userSlice";
 import './App.css';
 import MainPage from "../pages/MainPage.js";
 import RegisterPage from "../pages/RegisterPage/RegisterPage.js";
@@ -13,16 +13,29 @@ import SubscriptionPage from "../pages/SubscriptionPage/SubscriptionPage";
 import {pathsConfig} from "../../utils/constants/pathList.js";
 
 function App(props) {
-  const {user, setUser, clearUser} = props;
+  const {user, registerUser, setUserEmail, setUserSubscription, clearUserData} = props;
 
   const history = useNavigate();
 
+  function checkUserData(data) {
+    return user.name === data.name && user.password === data.password;
+  }
+
   function handleRegister(dataUser) {
+    registerUser({
+      name: dataUser.name,
+      email: dataUser.email,
+      password: dataUser.password,
+      birthday: dataUser.birthday || '',
+    });
+
     history(pathsConfig.login);
   }
 
-  function handleLogin() {
-    history(pathsConfig.platformsChoice);
+  function handleLogin(dataUser) {
+    checkUserData(dataUser)
+      ? history(pathsConfig.platformsChoice)
+      : '';
   }
 
   function handleChoicePlatforms() {
@@ -58,7 +71,7 @@ function App(props) {
 
 export default connect(
   (state) => ({
-    user: state.user.user,
+    user: state.user,
   }),
-  {setUser, clearUser}
+  {registerUser, setUserEmail, setUserSubscription, clearUserData}
 )(App);

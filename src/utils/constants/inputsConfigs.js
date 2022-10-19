@@ -24,18 +24,18 @@ export const inputsSignFormConfig = {
     label: "Month",
     name: "month",
     options: [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
+      {text: 'January', value: 1},
+      {text: 'February', value: 2},
+      {text: 'March', value: 3},
+      {text: 'April', value: 4},
+      {text: 'May', value: 5},
+      {text: 'June', value: 6},
+      {text: 'July', value: 7},
+      {text: 'August', value: 8},
+      {text: 'September', value: 9},
+      {text: 'October', value: 10},
+      {text: 'November', value: 11},
+      {text: 'December', value: 12},
     ]
   },
   dayBirth: {
@@ -45,7 +45,7 @@ export const inputsSignFormConfig = {
     get options() {
       const daysList = [];
       for (let i = 1; i < 32; i++) {
-        daysList.push(i);
+        daysList.push({text: i, value: i});
       }
       return daysList;
     },
@@ -57,7 +57,7 @@ export const inputsSignFormConfig = {
     get options() {
       const yearsList = [];
       for (let i = 0; i < (nowYear - 1950 - 16); i++) {
-        yearsList.push(1950 + i);
+        yearsList.push({text: 1950 + i, value: 1950 + i});
       }
       return yearsList.reverse();
     },

@@ -27,15 +27,11 @@
   opacity: .3;
 }
 
-.input:invalid:not(:focus):not(:placeholder-shown):not([type="date"]) {
+.input:not(.register__birthday):invalid:not(:focus):not(:placeholder-shown) {
   border-color: var(--red-text);
 }
 
-.input[type="date"]:invalid:not(:focus):not([value=""]) {
-  border-color: var(--red-text);
-}
-
-.input:valid {
+.input:not(.register__birthday):valid {
   background: url("../../../images/valid_input_icon.svg") calc(100% - 24px) / 11px 100% no-repeat;
 }
 

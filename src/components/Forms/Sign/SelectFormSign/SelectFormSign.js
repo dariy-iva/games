@@ -30,10 +30,10 @@ export default function SelectFormSign({config, onChange, selectOnClick, activeS
         <div className="select__container">
           <div className="select__options">
             {options.map( (option, index) => (
-              <div key={option}>
-                <input id={`${name + '-' + index}`} className="select__option" type="radio" name={name} value={option} onChange={onChange}/>
+              <div key={option.text}>
+                <input id={`${name + '-' + index}`} className="select__option" type="radio" name={name} value={option.value} onChange={onChange}/>
                 <label htmlFor={`${name + '-' + index}`} className="select__label"
-                       onClick={handleLabelClick}>{option}</label>
+                       onClick={handleLabelClick}>{option.text}</label>
               </div>
             ) )}
           </div>
