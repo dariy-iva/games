@@ -30,7 +30,8 @@ export default function RegisterPage({handleRegister}) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleRegister(values);
+    console.log(values, isValid)
+    // handleRegister(values);
   }
 
   return (
@@ -74,6 +75,7 @@ export default function RegisterPage({handleRegister}) {
             className="register__birthday"
             min={`${nowYear - 100}-${nowMonth < 10 ? '0' + nowMonth : nowMonth}-${nowDay < 10 ? '0' + nowDay : nowDay}`}
             max={`${nowYear - 16}-${nowMonth < 10 ? '0' + nowMonth : nowMonth}-${nowDay < 10 ? '0' + nowDay : nowDay}`}
+            required={false}
           />
           <fieldset className="register__fieldset">
             <SelectFormSign
