@@ -13,10 +13,12 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     registerUser(state, action) {
-      state.name = action.payload.name;
-      state.email = action.payload.email;
-      state.password = action.payload.password;
-      state.birthday = action.payload.birthday;
+      const {name, email, password, birthday} = action.payload;
+
+      state.name = name;
+      state.email = email;
+      state.password = password;
+      state.birthday = birthday;
     },
     setUserEmail(state, action) {
       state.email = action.payload.email;

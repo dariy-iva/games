@@ -30,6 +30,18 @@
   }
 }
 
+@keyframes animation-border {
+  0% {
+    background-position: 0;
+  }
+  50% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0;
+  }
+}
+
 body {
   font-family: 'Montserrat Alternates', Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;

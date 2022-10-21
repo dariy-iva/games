@@ -11,9 +11,20 @@ import PlatformChoicePage from "../pages/PlatformChoicePage/PlatformChoicePage";
 import GamesChoicePage from "../pages/GamesChoicePage/GamesChoicePage";
 import SubscriptionPage from "../pages/SubscriptionPage/SubscriptionPage";
 import {pathsConfig} from "../../utils/constants/pathList.js";
+import InfoPopup from "../InfoPopup/InfoPopup";
+import {openInfoPopup, closeInfoPopup} from "../../redux/slices/supportSlice";
 
 function App(props) {
-  const {user, registerUser, setUserEmail, setUserSubscription, clearUserData} = props;
+  const {
+    user,
+    registerUser,
+    setUserEmail,
+    setUserSubscription,
+    clearUserData,
+    support,
+    openInfoPopup,
+    closeInfoPopup
+  } = props;
 
   const history = useNavigate();
 
@@ -33,10 +44,13 @@ function App(props) {
   }
 
   function handleLogin(dataUser) {
-    // checkUserData(dataUser)
-    //   ? history(pathsConfig.platformsChoice)
-    //   : '';
-    history(pathsConfig.platformsChoice)
+    const isSuccessCheckUser = checkUserData(dataUser);
+
+    if(isSuccessCheckUser) {
+      history(pathsConfig.platformsChoice)
+    } else {
+      openInfoPopup({status: 'error', text: 'User name or password entered incorrectly'});
+    }
   }
 
   function handleChoicePlatforms() {
@@ -53,6 +67,7 @@ function App(props) {
 
   return (
     <div className="page">
+      <InfoPopup/>
       <Routes>
         <Route exact path={pathsConfig.main} element={<MainPage onLogin={handleLogin}/>}/>
         <Route
@@ -73,6 +88,7 @@ function App(props) {
 export default connect(
   (state) => ({
     user: state.user,
+    support: state.support,
   }),
-  {registerUser, setUserEmail, setUserSubscription, clearUserData}
+  {registerUser, setUserEmail, setUserSubscription, clearUserData, openInfoPopup, closeInfoPopup}
 )(App);

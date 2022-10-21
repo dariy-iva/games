@@ -75,15 +75,15 @@
 }
 
 .token-auth__button_content_apple::before {
-  background-image: url("../../images/apple_icon.svg");
+  background-image: url("../../images/socialIcons/apple_icon.svg");
 }
 
 .token-auth__button_content_google::before {
-  background-image: url("../../images/google_icon.svg");
+  background-image: url("../../images/socialIcons/google_icon.svg");
 }
 
 .token-auth__button_content_fb::before {
-  background-image: url("../../images/fb_icon.svg");
+  background-image: url("../../images/socialIcons/fb_icon.svg");
 }
 
 .token-auth__other {
