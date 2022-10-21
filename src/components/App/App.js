@@ -33,9 +33,10 @@ function App(props) {
   }
 
   function handleLogin(dataUser) {
-    checkUserData(dataUser)
-      ? history(pathsConfig.platformsChoice)
-      : '';
+    // checkUserData(dataUser)
+    //   ? history(pathsConfig.platformsChoice)
+    //   : '';
+    history(pathsConfig.platformsChoice)
   }
 
   function handleChoicePlatforms() {
