@@ -40,7 +40,9 @@ export default function SubscriptionForm({onSubmit}) {
   }, []);
 
   React.useEffect(() => {
-    document.forms['subscription'].requestSubmit()
+    if(checkedPaymentMethod) {
+      document.forms['subscription'].requestSubmit();
+    }
   }, [checkedPaymentMethod]);
 
   return (

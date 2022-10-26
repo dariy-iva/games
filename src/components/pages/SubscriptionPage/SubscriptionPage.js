@@ -3,69 +3,39 @@ import "./SubscriptionPage.css";
 import HeaderMain from "../../Headers/HeaderMain/HeaderMain";
 import AnimationOverlay from "../../AnimationOverlay/AnimationOverlay";
 import SubscriptionForm from "../../Forms/Subscription/SubscriptionForm";
-import PaymentCardForm from "../../Forms/PaymentCard/PaymentCardForm";
-import BackButton from "../../Buttons/BackButton/BackButton";
 import InformationWithImage from "../../InformationWithImage/InformationWithImage";
-import SubmitButton from "../../Buttons/SubmitButton/SubmitButton";
+import StartButton from "../../Buttons/StartButton/StartButton";
 
 export default function SubscriptionPage({onSubmit}) {
   const colorsForOverlay = ['#6E4AFF', '#D2C867'];
-  const [isPayment, setIsPayment] = React.useState(false);
-  const [isFinishPayment, setIsFinishPayment] = React.useState(false);
+  const [paymentIsFinished, setPaymentIsFinished] = React.useState(false);
 
   function handleSubmitSubscriptionForm(data) {
-    switch (data.payment) {
-      case 'card':
-        setIsPayment(true);
-        break;
-      case 'paypal':
-        window.open('https://www.paypal.com');
-        setIsPayment(false);
-        setIsFinishPayment(true);
-        onSubmit();
-        break;
-      default:
-        return;
+    onSubmit({paymentMethod: data.payment, subscription: data.subscription});
+
+    if (data.payment === 'paypal') {
+      setPaymentIsFinished(true);
     }
-  }
-
-  function handleSubmitPaymentForm(data) {
-    setIsPayment(false);
-    setIsFinishPayment(true);
-  }
-
-  function handleBackButtonClick() {
-    setIsPayment(false);
-  }
-
-  function handleStartServiceClick() {
-    onSubmit();
   }
 
   return (
     <>
       <HeaderMain/>
       <main className="subscription">
-        {isPayment &&
-          <>
-            <h1 className="subscription__title">Add a Credit card</h1>
-            <p className="subscription__text">Few words about privacy and something like that and Privacy Policy.</p>
-            <PaymentCardForm onSubmit={handleSubmitPaymentForm}/>
-          </>}
-        {!isPayment && !isFinishPayment && <>
-          <h1 className="subscription__title subscription__title_not-description">Games Subscriptions</h1>
+
+        {!paymentIsFinished && <>
+          <h1 className="subscription__title">Games Subscriptions</h1>
           <SubscriptionForm onSubmit={handleSubmitSubscriptionForm}/>
         </>}
-        {isFinishPayment &&
+        {paymentIsFinished &&
           <>
             <InformationWithImage title="Welcome to the Games"
                                   text="Few words about privacy and something like that and Privacy Policy."/>
-            <SubmitButton type="button" text="Start" onClick={handleStartServiceClick} className="subscription__button"
-                          disabled={false} name="Service start button"/>
+            <StartButton/>
           </>}
       </main>
-      {isPayment && <BackButton className="subscription__back" onClick={handleBackButtonClick}/>}
-      {!isPayment && !isFinishPayment && <AnimationOverlay colors={colorsForOverlay}/>}
+
+      {!paymentIsFinished && <AnimationOverlay colors={colorsForOverlay}/>}
     </>
   );
 }

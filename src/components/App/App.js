@@ -1,7 +1,15 @@
 import React from "react";
 import {Route, Routes, useNavigate} from "react-router-dom";
 import {connect} from "react-redux";
-import {registerUser, setUserEmail, setUserSubscription, clearUserData} from "../../redux/slices/userSlice";
+import {
+  registerUser,
+  setUserSubscription,
+  setUserPaymentMethod,
+  setUserCardData,
+  setUserPlatforms,
+  setUserGames,
+  clearUserData
+} from "../../redux/slices/userSlice";
 import './App.css';
 import MainPage from "../pages/MainPage.js";
 import RegisterPage from "../pages/RegisterPage/RegisterPage.js";
@@ -10,6 +18,7 @@ import PasswordRecoveryPage from '../pages/PasswordRecoveryPage/PasswordRecovery
 import PlatformChoicePage from "../pages/PlatformChoicePage/PlatformChoicePage";
 import GamesChoicePage from "../pages/GamesChoicePage/GamesChoicePage";
 import SubscriptionPage from "../pages/SubscriptionPage/SubscriptionPage";
+import PaymentPage from "../pages/PaymentPage/PaymentPage";
 import {pathsConfig} from "../../utils/constants/pathList.js";
 import InfoPopup from "../InfoPopup/InfoPopup";
 import {openInfoPopup, closeInfoPopup} from "../../redux/slices/supportSlice";
@@ -18,8 +27,11 @@ function App(props) {
   const {
     user,
     registerUser,
-    setUserEmail,
     setUserSubscription,
+    setUserPaymentMethod,
+    setUserCardData,
+    setUserPlatforms,
+    setUserGames,
     clearUserData,
     support,
     openInfoPopup,
@@ -40,29 +52,62 @@ function App(props) {
       birthday: dataUser.birthday || '',
     });
 
+    openInfoPopup({status: 'success', text: 'Registration was successful'});
     history(pathsConfig.login);
   }
 
   function handleLogin(dataUser) {
     const isSuccessCheckUser = checkUserData(dataUser);
 
-    if(isSuccessCheckUser) {
+    if (isSuccessCheckUser) {
       history(pathsConfig.platformsChoice)
     } else {
-      openInfoPopup({status: 'error', text: 'User name or password entered incorrectly'});
+      openInfoPopup({
+        status: 'error',
+        text: 'User name or password entered incorrectly. Please, try again or let us know about the problem.'
+      });
     }
   }
 
-  function handleChoicePlatforms() {
+  function handleChoicePlatforms(data) {
+    setUserPlatforms(data);
     history(pathsConfig.gamesChoice);
   }
 
-  function handleChoiceGames() {
+  function handleChoiceGames(data) {
+    setUserGames(data);
     history(pathsConfig.subscription);
   }
 
-  function handleChoiceSubscriptionAndPayment() {
-    history(pathsConfig.feed);
+  function handleChoiceSubscriptionAndPaymentMethod(data) {
+    const {paymentMethod, subscription} = data;
+
+    setUserPaymentMethod(paymentMethod);
+    setUserSubscription(subscription);
+
+    switch (paymentMethod) {
+      case 'card':
+        history(pathsConfig.payment);
+        break;
+      case 'paypal':
+        window.open('https://www.paypal.com');
+        break;
+      default:
+        return;
+    }
+  }
+
+  function handlePaymentCardSubmit(data) {
+    const {number, name, date, code} = data;
+
+    setUserCardData({
+      cardNumber: number,
+      cardName: name,
+      cardDate: date,
+      cardCode: code,
+    });
+
+    openInfoPopup({status: 'success', text: 'The payment was successful. Thank you for your trust'});
   }
 
   return (
@@ -75,11 +120,13 @@ function App(props) {
           element={<RegisterPage handleRegister={handleRegister}/>}
         />
         <Route path={pathsConfig.login} element={<LoginPage handleLogin={handleLogin}/>}/>
-        <Route path={pathsConfig.resetPassword} element={<PasswordRecoveryPage handleResetPassword={""}/>}/>
+        <Route path={pathsConfig.resetPassword} element={<PasswordRecoveryPage/>}/>
         <Route path={pathsConfig.platformsChoice} element={<PlatformChoicePage onSubmit={handleChoicePlatforms}/>}/>
         <Route path={pathsConfig.gamesChoice} element={<GamesChoicePage onSubmit={handleChoiceGames}/>}/>
         <Route path={pathsConfig.subscription}
-               element={<SubscriptionPage onSubmit={handleChoiceSubscriptionAndPayment}/>}/>
+               element={<SubscriptionPage onSubmit={handleChoiceSubscriptionAndPaymentMethod}/>}/>
+        <Route path={pathsConfig.payment}
+               element={<PaymentPage onSubmit={handlePaymentCardSubmit}/>}/>
       </Routes>
     </div>
   );
@@ -90,5 +137,15 @@ export default connect(
     user: state.user,
     support: state.support,
   }),
-  {registerUser, setUserEmail, setUserSubscription, clearUserData, openInfoPopup, closeInfoPopup}
+  {
+    registerUser,
+    setUserSubscription,
+    setUserPaymentMethod,
+    setUserCardData,
+    setUserPlatforms,
+    setUserGames,
+    clearUserData,
+    openInfoPopup,
+    closeInfoPopup
+  }
 )(App);

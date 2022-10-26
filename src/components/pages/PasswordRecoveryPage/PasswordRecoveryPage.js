@@ -10,14 +10,13 @@ import useFormValidator from "../../../hooks/useFormValidator";
 import {inputsSignFormConfig as inputConfig} from "../../../utils/constants/inputsConfigs";
 import {pathsConfig} from "../../../utils/constants/pathList";
 
-export default function PasswordRecoveryPage({handleResetPassword}) {
+export default function PasswordRecoveryPage() {
   const {values, handleChange, errors, isValid} = useFormValidator({});
   const [isSubmitPassword, setIsSubmitPassword] = React.useState(false);
   const history = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
-    // handleResetPassword( values );
     setIsSubmitPassword(true);
   }
 

@@ -32,7 +32,7 @@ export default function PlatformChoicePage({onSubmit}) {
   }
 
   function handleCheckedPlatformsSubmit() {
-    onSubmit();
+    onSubmit(checkedItems);
   }
 
   return (

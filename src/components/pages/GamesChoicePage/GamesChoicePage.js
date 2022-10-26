@@ -27,7 +27,15 @@ export default function GamesChoicePage({onSubmit}) {
   }
 
   function handleCheckedGamesSubmit() {
-    onSubmit();
+    const checkedItemsIdList = [];
+
+    games.forEach(game => {
+      if (checkedItems.includes(game.name)) {
+        checkedItemsIdList.push(game.id);
+      }
+    })
+
+    onSubmit(checkedItemsIdList);
   }
 
   function filterGames(string) {

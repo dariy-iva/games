@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
   name: '',
@@ -6,6 +6,13 @@ const initialState = {
   password: '',
   birthday: '',
   subscription: '',
+  paymentMethod: '',
+  cardNumber: '',
+  cardName: '',
+  cardDate: '',
+  cardCode: '',
+  platforms: [],
+  gamesIdList: [],
 };
 
 export const userSlice = createSlice({
@@ -20,21 +27,55 @@ export const userSlice = createSlice({
       state.password = password;
       state.birthday = birthday;
     },
-    setUserEmail(state, action) {
-      state.email = action.payload.email;
-    },
+
     setUserSubscription(state, action) {
-      state.user.subscription = action.payload.subscription;
+      state.subscription = action.payload;
     },
+
+    setUserPaymentMethod(state, action) {
+      state.paymentMethod = action.payload;
+    },
+
+    setUserCardData(state, action) {
+      const {cardNumber, cardName, cardDate, cardCode} = action;
+
+      state.cardNumber = cardNumber;
+      state.cardName = cardName;
+      state.cardDate = cardDate;
+      state.cardCode = cardCode;
+    },
+
+    setUserPlatforms(state, action) {
+      state.platforms = action.payload;
+    },
+
+    setUserGames(state, action) {
+      state.gamesIdList = action.payload;
+    },
+
     clearUserData(state) {
-      state.user.name = '';
-      state.user.email = '';
-      state.user.password = '';
-      state.user.birthday = '';
-      state.user.subscription = '';
+      state.name = '';
+      state.email = '';
+      state.password = '';
+      state.birthday = '';
+      state.subscription = '';
+      state.paymentMethod = '';
+      state.cardNumber = '';
+      state.cardName = '';
+      state.cardDate = '';
+      state.cardCode = '';
     },
+
   },
 });
 
-export const { registerUser, setUserEmail, setUserSubscription, clearUserData } = userSlice.actions;
+export const {
+  registerUser,
+  setUserSubscription,
+  setUserPaymentMethod,
+  setUserCardData,
+  setUserPlatforms,
+  setUserGames,
+  clearUserData
+} = userSlice.actions;
 export default userSlice.reducer;

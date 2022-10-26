@@ -1,0 +1,9 @@
+.start-button {
+  margin-top: 20px;
+}
+
+@media (max-width: 767px) {
+  .start-button {
+    margin-top: auto;
+  }
+}

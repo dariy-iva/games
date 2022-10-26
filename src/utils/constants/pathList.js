@@ -11,5 +11,6 @@ export const pathsConfig = {
   terms: '/terms',
   support: '/support',
   subscription: '/subscription',
+  payment: '/payment',
   feed: '/feed',
 }

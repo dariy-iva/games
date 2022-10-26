@@ -11,7 +11,16 @@ export default function PaymentCardForm({onSubmit}) {
 
   function handleFormSubmit(e) {
     e.preventDefault();
-    onSubmit(values);
+    const splitDate = values.date.split('/');
+
+    const formData = {
+      number: values.number.replace(/[^\d]/g, ''),
+      name: values.name,
+      date: `${'20' + splitDate[1]}-${splitDate[0]}`,
+      code: values.code
+    }
+
+    onSubmit(formData);
   }
 
   function handleChangeCardNumberInput(e) {

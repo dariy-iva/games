@@ -31,7 +31,11 @@ export default function RegisterPage({handleRegister}) {
   function handleSubmit(e) {
     e.preventDefault();
     if (values.day && values.month && values.year) {
-      values.birthday = `${values.year}-${values.month > 9 ? values.month : '0' + values.month}-${values.day > 9 ? values.day : '0' + values.day}`
+      values.birthday = `${values.year}-${values.month > 9
+        ? values.month
+        : '0' + values.month}-${values.day > 9
+          ? values.day
+          : '0' + values.day}`
     }
     handleRegister(values);
   }
