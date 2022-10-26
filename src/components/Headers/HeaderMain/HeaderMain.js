@@ -8,7 +8,7 @@ export default function HeaderMain({children}) {
   return (
     <header className="header">
         <Logo isSmall={false}>
-        <Link to={pathsConfig.main} className="header__text">
+        <Link to={pathsConfig.start} className="header__text">
           games
         </Link>
         </Logo>

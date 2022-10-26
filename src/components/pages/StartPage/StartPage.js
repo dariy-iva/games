@@ -1,15 +1,15 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
-import './MainPage.css';
-import HeaderMain from "../Headers/HeaderMain/HeaderMain.js";
-import Menu from "../Menu/Menu.js";
-import MainVideo from "../MainVideo/MainVideo";
-import TokenAuthButtons from "../TokenAuthButtons/TokenAuthButtons";
-import SubmitButton from "../Buttons/SubmitButton/SubmitButton";
-import AnimationOverlay from "../AnimationOverlay/AnimationOverlay.js";
-import {pathsConfig} from "../../utils/constants/pathList.js";
+import './StartPage.css';
+import HeaderMain from "../../Headers/HeaderMain/HeaderMain.js";
+import Menu from "../../Menu/Menu.js";
+import MainVideo from "../../MainVideo/MainVideo";
+import TokenAuthButtons from "../../TokenAuthButtons/TokenAuthButtons";
+import SubmitButton from "../../Buttons/SubmitButton/SubmitButton";
+import AnimationOverlay from "../../AnimationOverlay/AnimationOverlay.js";
+import {pathsConfig} from "../../../utils/constants/pathList.js";
 
-export default function MainPage({onLogin}) {
+export default function StartPage({onLogin}) {
   const history = useNavigate();
 
   const colorsForOverlay = ["#6E4AFF", "#9C42AB"];

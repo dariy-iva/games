@@ -1,5 +1,5 @@
 export const pathsConfig = {
-  main: '/',
+  start: '/',
   register: '/signup',
   login: '/signin',
   resetPassword: '/recovery',

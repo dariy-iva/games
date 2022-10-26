@@ -11,7 +11,8 @@ import {
   clearUserData
 } from "../../redux/slices/userSlice";
 import './App.css';
-import MainPage from "../pages/MainPage.js";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import StartPage from "../pages/StartPage/StartPage.js";
 import RegisterPage from "../pages/RegisterPage/RegisterPage.js";
 import LoginPage from "../pages/LoginPage/LoginPage.js";
 import PasswordRecoveryPage from '../pages/PasswordRecoveryPage/PasswordRecoveryPage.js';
@@ -114,19 +115,46 @@ function App(props) {
     <div className="page">
       <InfoPopup/>
       <Routes>
-        <Route exact path={pathsConfig.main} element={<MainPage onLogin={handleLogin}/>}/>
+        <Route exact path={pathsConfig.start} element={<StartPage onLogin={handleLogin}/>}/>
         <Route
           path={pathsConfig.register}
           element={<RegisterPage handleRegister={handleRegister}/>}
         />
         <Route path={pathsConfig.login} element={<LoginPage handleLogin={handleLogin}/>}/>
         <Route path={pathsConfig.resetPassword} element={<PasswordRecoveryPage/>}/>
-        <Route path={pathsConfig.platformsChoice} element={<PlatformChoicePage onSubmit={handleChoicePlatforms}/>}/>
-        <Route path={pathsConfig.gamesChoice} element={<GamesChoicePage onSubmit={handleChoiceGames}/>}/>
-        <Route path={pathsConfig.subscription}
-               element={<SubscriptionPage onSubmit={handleChoiceSubscriptionAndPaymentMethod}/>}/>
-        <Route path={pathsConfig.payment}
-               element={<PaymentPage onSubmit={handlePaymentCardSubmit}/>}/>
+
+        <Route
+          path={pathsConfig.platformsChoice}
+          element={
+            <ProtectedRoute>
+              <PlatformChoicePage onSubmit={handleChoicePlatforms}/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path={pathsConfig.gamesChoice}
+          element={
+            <ProtectedRoute>
+              <GamesChoicePage onSubmit={handleChoiceGames}/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path={pathsConfig.subscription}
+          element={
+            <ProtectedRoute>
+              <SubscriptionPage onSubmit={handleChoiceSubscriptionAndPaymentMethod}/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path={pathsConfig.payment}
+          element={
+            <ProtectedRoute>
+              <PaymentPage onSubmit={handlePaymentCardSubmit}/>
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </div>
   );

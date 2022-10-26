@@ -11,7 +11,7 @@
   display: none;
   margin-bottom: 154px;
   padding-top: calc(62px + 12px);
-  background: url("../../images/logo.svg") top center / 48px 62px no-repeat;
+  background: url("../../../images/logo.svg") top center / 48px 62px no-repeat;
 }
 
 .splash-screen__name {
@@ -41,7 +41,7 @@
   height: 78px;
   border: 0;
   border-radius: 50%;
-  background: url(../../images/splash-screen_button.svg) no-repeat center var(--violet-color);
+  background: url(../../../images/splash-screen_button.svg) no-repeat center var(--violet-color);
   cursor: pointer;
 }
 
