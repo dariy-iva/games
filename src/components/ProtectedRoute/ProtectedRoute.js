@@ -3,14 +3,14 @@ import {Navigate} from "react-router-dom";
 import {connect} from "react-redux";
 import {pathsConfig} from "../../utils/constants/pathList";
 
-function ProtectedRoute({user, children}) {
-  const loggedIn = (user.name && user.password);
+function ProtectedRoute({users, children}) {
+  const loggedIn = (users.currentUser.name && users.currentUser.password);
 
   return loggedIn ? children : <Navigate to={pathsConfig.login}/>;
 }
 
 export default connect(
   (state) => ({
-    user: state.user,
+    users: state.users,
   }),
 )(ProtectedRoute);

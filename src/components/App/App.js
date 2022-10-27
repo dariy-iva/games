@@ -2,14 +2,14 @@ import React from "react";
 import {Route, Routes, useNavigate} from "react-router-dom";
 import {connect} from "react-redux";
 import {
-  registerUser,
-  setUserSubscription,
-  setUserPaymentMethod,
-  setUserCardData,
-  setUserPlatforms,
-  setUserGames,
-  clearUserData
-} from "../../redux/slices/userSlice";
+  updateUserSubscription,
+  updateUserPlatforms,
+  updateUserGames,
+  clearCurrentUser,
+  setCurrentUser,
+  addUser,
+  getUsersList,
+} from "../../redux/slices/usersSlice";
 import './App.css';
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import StartPage from "../pages/StartPage/StartPage.js";
@@ -23,36 +23,41 @@ import PaymentPage from "../pages/PaymentPage/PaymentPage";
 import MainPage from "../pages/MainPage/MainPage";
 import {pathsConfig} from "../../utils/constants/pathList.js";
 import InfoPopup from "../InfoPopup/InfoPopup";
-import {openInfoPopup, closeInfoPopup} from "../../redux/slices/supportSlice";
+import {openInfoPopup, closeInfoPopup } from "../../redux/slices/supportSlice";
 
 function App(props) {
   const {
-    user,
-    registerUser,
-    setUserSubscription,
-    setUserPaymentMethod,
-    setUserCardData,
-    setUserPlatforms,
-    setUserGames,
-    clearUserData,
+    users,
+    updateUserSubscription,
+    updateUserPlatforms,
+    updateUserGames,
+    clearCurrentUser,
+    setCurrentUser,
     support,
     openInfoPopup,
-    closeInfoPopup
+    closeInfoPopup,
+    addUser,
+    getUsersList,
   } = props;
 
   const history = useNavigate();
 
+  function getUserByName(name) {
+    return users.usersList.find(user => user.name === name) || null;
+  }
+
   function checkUserData(data) {
-    return user.name === data.name && user.password === data.password;
+    const {name, password} = data;
+    const currentUser = getUserByName(name);
+
+    return !currentUser ? false : currentUser.password === password;
   }
 
   function handleRegister(dataUser) {
-    registerUser({
-      name: dataUser.name,
+    addUser({name: dataUser.name,
       email: dataUser.email,
       password: dataUser.password,
-      birthday: dataUser.birthday || '',
-    });
+      birthday: dataUser.birthday || ''});
 
     openInfoPopup({status: 'success', text: 'Registration was successful'});
     history(pathsConfig.login);
@@ -62,7 +67,8 @@ function App(props) {
     const isSuccessCheckUser = checkUserData(dataUser);
 
     if (isSuccessCheckUser) {
-      history(pathsConfig.platformsChoice)
+      setCurrentUser(getUserByName(dataUser.name));
+      history(pathsConfig.platformsChoice);
     } else {
       openInfoPopup({
         status: 'error',
@@ -72,20 +78,19 @@ function App(props) {
   }
 
   function handleChoicePlatforms(data) {
-    setUserPlatforms(data);
+    updateUserPlatforms(data);
     history(pathsConfig.gamesChoice);
   }
 
   function handleChoiceGames(data) {
-    setUserGames(data);
+    updateUserGames(data);
     history(pathsConfig.subscription);
   }
 
-  function handleChoiceSubscriptionAndPaymentMethod(data) {
+  function handleChoiceSubscription(data) {
     const {paymentMethod, subscription} = data;
 
-    setUserPaymentMethod(paymentMethod);
-    setUserSubscription(subscription);
+    updateUserSubscription(subscription);
 
     switch (paymentMethod) {
       case 'card':
@@ -102,22 +107,23 @@ function App(props) {
   function handlePaymentCardSubmit(data) {
     const {number, name, date, code} = data;
 
-    setUserCardData({
-      cardNumber: number,
-      cardName: name,
-      cardDate: date,
-      cardCode: code,
-    });
-
-    openInfoPopup({status: 'success', text: 'The payment was successful. Thank you for your trust'});
+    if (number, name, date, code) {
+      openInfoPopup({status: 'success', text: 'The payment was successful. Thank you for your trust'});
+    } else {
+      openInfoPopup({status: 'error', text: 'Sorry, payment failed'});
+    }
   }
+
+  React.useEffect(() => {
+    getUsersList();
+  }, [])
 
   return (
     <div className="page">
       <InfoPopup/>
       <Routes>
-        <Route exact path={pathsConfig.start} element={
-          (user.name && user.password) ? <StartPage onLogin={handleLogin}/> : <MainPage/>}>
+        <Route exact path={pathsConfig.main} element={
+          !(users.currentUser.name && users.currentUser.password) ? <StartPage onLogin={handleLogin}/> : <MainPage/>}>
           <Route
             path={pathsConfig.feed}
             element={
@@ -192,7 +198,7 @@ function App(props) {
           path={pathsConfig.subscription}
           element={
             <ProtectedRoute>
-              <SubscriptionPage onSubmit={handleChoiceSubscriptionAndPaymentMethod}/>
+              <SubscriptionPage onSubmit={handleChoiceSubscription}/>
             </ProtectedRoute>
           }
         />
@@ -212,18 +218,18 @@ function App(props) {
 
 export default connect(
   (state) => ({
-    user: state.user,
+    users: state.users,
     support: state.support,
   }),
   {
-    registerUser,
-    setUserSubscription,
-    setUserPaymentMethod,
-    setUserCardData,
-    setUserPlatforms,
-    setUserGames,
-    clearUserData,
+    updateUserSubscription,
+    updateUserPlatforms,
+    updateUserGames,
+    clearCurrentUser,
     openInfoPopup,
-    closeInfoPopup
+    closeInfoPopup,
+    setCurrentUser,
+    addUser,
+    getUsersList,
   }
 )(App);

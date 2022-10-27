@@ -1,5 +1,5 @@
 export const pathsConfig = {
-  start: '/',
+  main: '/',
   register: '/signup',
   login: '/signin',
   resetPassword: '/recovery',
@@ -12,7 +12,6 @@ export const pathsConfig = {
   support: '/support',
   subscription: '/subscription',
   payment: '/payment',
-  main: '/main',
   feed: '/feed',
   profile: '/profile',
   parties: '/parties',

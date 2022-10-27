@@ -1,0 +1,54 @@
+.people {
+  padding-left: 20px;
+}
+
+.people__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.people__title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.3;
+  letter-spacing: -0.408px;
+  color: var(--dark-grey-text);
+}
+
+.people__button {
+  position: relative;
+  padding: 0;
+  width: 22px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: initial;
+  cursor: pointer;
+  transition: transform .3s;
+}
+
+.people__button::after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+  height: 17px;
+  mask-image: url("../../images/collapse-menu_icon.svg");
+  -webkit-mask-image: url("../../images/collapse-menu_icon.svg");
+  background-color: var(--dark-grey-text);
+  transition: background-color .3s;
+}
+
+.people__button_collapse {
+  transform: rotate(180deg);
+}
+
+.people__button:hover::after {
+  background-color: var(--grey-text);
+}
+
+.people__list {
+
+}
