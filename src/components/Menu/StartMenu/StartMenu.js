@@ -1,14 +1,14 @@
 import React from "react";
 import {Link, NavLink} from "react-router-dom";
-import './Menu.css';
-import {menuItems} from '../../utils/constants/menuItemMainPageConfig.js'
-import {pathsConfig} from "../../utils/constants/pathList.js";
+import './StartMenu.css';
+import {startMenuItems} from '../../../utils/constants/menuItemsConfig.js'
+import {pathsConfig} from "../../../utils/constants/pathList.js";
 
-export default function Menu() {
+export default function StartMenu() {
   return (
     <nav className="menu">
       <ul className="menu__list menu__list_content_nav">
-        {menuItems.map( item => (
+        {startMenuItems.map( item => (
           <li className="menu__item" key={item.text}>
             <NavLink
               to={pathsConfig.login}

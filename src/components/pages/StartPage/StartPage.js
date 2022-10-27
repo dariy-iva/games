@@ -2,7 +2,7 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import './StartPage.css';
 import HeaderMain from "../../Headers/HeaderMain/HeaderMain.js";
-import Menu from "../../Menu/Menu.js";
+import StartMenu from "../../Menu/StartMenu/StartMenu.js";
 import MainVideo from "../../MainVideo/MainVideo";
 import TokenAuthButtons from "../../TokenAuthButtons/TokenAuthButtons";
 import SubmitButton from "../../Buttons/SubmitButton/SubmitButton";
@@ -30,7 +30,7 @@ export default function StartPage({onLogin}) {
   return (
     <>
       <HeaderMain>
-        <Menu/>
+        <StartMenu/>
       </HeaderMain>
       <main className="splash-screen">
         <div className="splash-screen__logo">

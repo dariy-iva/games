@@ -12,5 +12,10 @@ export const pathsConfig = {
   support: '/support',
   subscription: '/subscription',
   payment: '/payment',
+  main: '/main',
   feed: '/feed',
+  profile: '/profile',
+  parties: '/parties',
+  chats: '/chats',
+  notifications: '/notifications'
 }

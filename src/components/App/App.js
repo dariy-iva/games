@@ -20,6 +20,7 @@ import PlatformChoicePage from "../pages/PlatformChoicePage/PlatformChoicePage";
 import GamesChoicePage from "../pages/GamesChoicePage/GamesChoicePage";
 import SubscriptionPage from "../pages/SubscriptionPage/SubscriptionPage";
 import PaymentPage from "../pages/PaymentPage/PaymentPage";
+import MainPage from "../pages/MainPage/MainPage";
 import {pathsConfig} from "../../utils/constants/pathList.js";
 import InfoPopup from "../InfoPopup/InfoPopup";
 import {openInfoPopup, closeInfoPopup} from "../../redux/slices/supportSlice";
@@ -115,12 +116,58 @@ function App(props) {
     <div className="page">
       <InfoPopup/>
       <Routes>
-        <Route exact path={pathsConfig.start} element={<StartPage onLogin={handleLogin}/>}/>
+        <Route exact path={pathsConfig.start} element={
+          (user.name && user.password) ? <StartPage onLogin={handleLogin}/> : <MainPage/>}>
+          <Route
+            path={pathsConfig.feed}
+            element={
+              // <ProtectedRoute>
+                <div>123</div>
+              // </ProtectedRoute>
+            }
+          />
+          <Route
+            path={pathsConfig.parties}
+            element={
+              // <ProtectedRoute>
+                <div>123</div>
+              // </ProtectedRoute>
+            }
+          />
+          <Route
+            path={pathsConfig.chats}
+            element={
+              // <ProtectedRoute>
+                <div>123</div>
+              // </ProtectedRoute>
+            }
+          />
+          <Route
+            path={pathsConfig.notifications}
+            element={
+              // <ProtectedRoute>
+                <div>123</div>
+              // </ProtectedRoute>
+            }
+          />
+          <Route
+            path={pathsConfig.profile}
+            element={
+              // <ProtectedRoute>
+                <div>123</div>
+              // </ProtectedRoute>
+            }
+          />
+          )}
+        </Route>
+
         <Route
           path={pathsConfig.register}
           element={<RegisterPage handleRegister={handleRegister}/>}
         />
+
         <Route path={pathsConfig.login} element={<LoginPage handleLogin={handleLogin}/>}/>
+
         <Route path={pathsConfig.resetPassword} element={<PasswordRecoveryPage/>}/>
 
         <Route
@@ -131,6 +178,7 @@ function App(props) {
             </ProtectedRoute>
           }
         />
+
         <Route
           path={pathsConfig.gamesChoice}
           element={
@@ -139,6 +187,7 @@ function App(props) {
             </ProtectedRoute>
           }
         />
+
         <Route
           path={pathsConfig.subscription}
           element={
@@ -147,6 +196,7 @@ function App(props) {
             </ProtectedRoute>
           }
         />
+
         <Route
           path={pathsConfig.payment}
           element={

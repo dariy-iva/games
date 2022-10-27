@@ -1,8 +1,10 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
+  id: '',
   name: '',
   email: '',
+  avatar: '',
   password: '',
   birthday: '',
   subscription: '',
@@ -13,6 +15,8 @@ const initialState = {
   cardCode: '',
   platforms: [],
   gamesIdList: [],
+  friendsIdList: [],
+  level: '',
 };
 
 export const userSlice = createSlice({
@@ -26,6 +30,8 @@ export const userSlice = createSlice({
       state.email = email;
       state.password = password;
       state.birthday = birthday;
+
+      state.level = 1;
     },
 
     setUserSubscription(state, action) {
