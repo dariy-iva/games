@@ -2,13 +2,13 @@ import React from "react";
 import {Route, Routes, useNavigate} from "react-router-dom";
 import {connect} from "react-redux";
 import {
+  getUsersList,
+  addUser,
+  setCurrentUser,
   updateUserSubscription,
   updateUserPlatforms,
   updateUserGames,
   clearCurrentUser,
-  setCurrentUser,
-  addUser,
-  getUsersList,
 } from "../../redux/slices/usersSlice";
 import './App.css';
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";

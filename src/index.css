@@ -67,6 +67,7 @@ body {
   --dark-blue-color: #184292;
   --red-color: #EB4335;
   --green-color: #077d07;
+  --lime-color: #43CE62;
   --yellow-color: #D2C867;
   background-color: var(--black);
 }

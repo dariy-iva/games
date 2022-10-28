@@ -1,8 +1,24 @@
 .people {
   padding-left: 20px;
+  /*max-height: calc(100vh - 20px);*/
+  /*overflow: auto;*/
+}
+
+.people__collapse {
+  overflow: hidden;
+  translate: 0;
+  opacity: 1;
+  transition: all .8s ease;
+}
+
+.people__collapse_collapsed {
+  opacity: 0;
+  max-width: 0;
+  translate: 500px;
 }
 
 .people__header {
+  margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,6 +31,7 @@
   line-height: 1.3;
   letter-spacing: -0.408px;
   color: var(--dark-grey-text);
+  max-width: 300px;
 }
 
 .people__button {
@@ -50,5 +67,109 @@
 }
 
 .people__list {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
 
+.people__friend {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  max-width: 100%;
+  min-width: 100%;
+  list-style-type: none;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--grey-text);
+  transition: all .8s ease;
+  cursor: pointer;
+}
+
+.people__friend::after {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  content: '';
+  transition: background-color .3s;
+  border-radius: 30px;
+  z-index: -1;
+}
+
+.people__friend:hover::after {
+  background-color: var(--dark-grey-bcg)
+}
+
+.people__friend_collapsed {
+  max-width: 50px;
+  min-width: 50px;
+}
+
+.people__avatar {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  object-position: center;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.people__online {
+  position: relative;
+}
+
+.people__online::after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: var(--black);
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.people__online::before {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-color: var(--lime-color);
+  z-index: 2;
+  border-radius: 50%;
+}
+
+.people__info {
+  min-width: calc(100% - 50px - 16px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.people__name {
+  margin: 0;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.people__level {
+  margin: 0;
+  font-weight: 400;
+  opacity: 0.5;
+  max-width: 100%;
 }
