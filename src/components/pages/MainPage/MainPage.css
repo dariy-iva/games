@@ -6,3 +6,13 @@
   flex-grow: 1;
   box-sizing: border-box;
 }
+
+@media (max-width: 767px) {
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 15px 0 69px;
+  }
+}

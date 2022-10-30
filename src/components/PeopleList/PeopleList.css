@@ -102,7 +102,7 @@
 }
 
 .people__friend:hover::after {
-  background-color: var(--dark-grey-bcg)
+  background-color: var(--dark-grey-bcg);
 }
 
 .people__friend_collapsed {
@@ -112,19 +112,9 @@
 
 .people__avatar {
   position: relative;
-  display: block;
-  width: 50px;
-  height: 50px;
-  object-position: center;
-  object-fit: cover;
-  border-radius: 50%;
 }
 
-.people__online {
-  position: relative;
-}
-
-.people__online::after {
+.people__avatar::after {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -137,7 +127,7 @@
   border-radius: 50%;
 }
 
-.people__online::before {
+.people__avatar::before {
   position: absolute;
   bottom: 2px;
   right: 2px;
@@ -147,6 +137,31 @@
   height: 12px;
   background-color: var(--lime-color);
   z-index: 2;
+  border-radius: 50%;
+}
+
+.people__image {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  object-position: center;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.people__image_invite {
+  min-width: 50px;
+  background: url("../../images/add_friend_icon.svg") center / 23px 18px no-repeat;
+}
+
+.people__image_invite::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  background-color: var(--violet-color);
+  opacity: .2;
   border-radius: 50%;
 }
 
@@ -172,4 +187,38 @@
   font-weight: 400;
   opacity: 0.5;
   max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .people {
+    order: -1;
+    padding-left: 0;
+  }
+
+  .people__header {
+    display: none;
+  }
+
+  .people__list {
+    overflow: auto;
+    flex-direction: initial;
+    align-items: center;
+  }
+
+  .people__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .people__friend {
+    max-width: fit-content;
+    min-width: fit-content;
+  }
+
+  .people__friend:hover::after {
+    background-color: initial;
+  }
+
+  .people__info {
+    display: none;
+  }
 }

@@ -23,7 +23,7 @@ import PaymentPage from "../pages/PaymentPage/PaymentPage";
 import MainPage from "../pages/MainPage/MainPage";
 import {pathsConfig} from "../../utils/constants/pathList.js";
 import InfoPopup from "../InfoPopup/InfoPopup";
-import {openInfoPopup, closeInfoPopup } from "../../redux/slices/supportSlice";
+import {openInfoPopup, closeInfoPopup} from "../../redux/slices/supportSlice";
 
 function App(props) {
   const {
@@ -54,10 +54,12 @@ function App(props) {
   }
 
   function handleRegister(dataUser) {
-    addUser({name: dataUser.name,
+    addUser({
+      name: dataUser.name,
       email: dataUser.email,
       password: dataUser.password,
-      birthday: dataUser.birthday || ''});
+      birthday: dataUser.birthday || ''
+    });
 
     openInfoPopup({status: 'success', text: 'Registration was successful'});
     history(pathsConfig.login);
@@ -107,7 +109,7 @@ function App(props) {
   function handlePaymentCardSubmit(data) {
     const {number, name, date, code} = data;
 
-    if (number, name, date, code) {
+    if (number && name && date && code) {
       openInfoPopup({status: 'success', text: 'The payment was successful. Thank you for your trust'});
     } else {
       openInfoPopup({status: 'error', text: 'Sorry, payment failed'});
@@ -122,51 +124,6 @@ function App(props) {
     <div className="page">
       <InfoPopup/>
       <Routes>
-        <Route exact path={pathsConfig.main} element={
-          !(users.currentUser.name && users.currentUser.password) ? <StartPage onLogin={handleLogin}/> : <MainPage/>}>
-          <Route
-            path={pathsConfig.feed}
-            element={
-              // <ProtectedRoute>
-                <div>123</div>
-              // </ProtectedRoute>
-            }
-          />
-          <Route
-            path={pathsConfig.parties}
-            element={
-              // <ProtectedRoute>
-                <div>123</div>
-              // </ProtectedRoute>
-            }
-          />
-          <Route
-            path={pathsConfig.chats}
-            element={
-              // <ProtectedRoute>
-                <div>123</div>
-              // </ProtectedRoute>
-            }
-          />
-          <Route
-            path={pathsConfig.notifications}
-            element={
-              // <ProtectedRoute>
-                <div>123</div>
-              // </ProtectedRoute>
-            }
-          />
-          <Route
-            path={pathsConfig.profile}
-            element={
-              // <ProtectedRoute>
-                <div>123</div>
-              // </ProtectedRoute>
-            }
-          />
-          )}
-        </Route>
-
         <Route
           path={pathsConfig.register}
           element={<RegisterPage handleRegister={handleRegister}/>}
@@ -175,6 +132,51 @@ function App(props) {
         <Route path={pathsConfig.login} element={<LoginPage handleLogin={handleLogin}/>}/>
 
         <Route path={pathsConfig.resetPassword} element={<PasswordRecoveryPage/>}/>
+
+        <Route exact path={pathsConfig.main} element={
+          !(users.currentUser.name && users.currentUser.password) ? <StartPage onLogin={handleLogin}/> : <MainPage/>}>
+          <Route
+            path={pathsConfig.feed}
+            element={
+              <ProtectedRoute>
+                <div>123</div>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={pathsConfig.parties}
+            element={
+              <ProtectedRoute>
+                <div>123</div>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={pathsConfig.chats}
+            element={
+              <ProtectedRoute>
+                <div>123</div>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={pathsConfig.notifications}
+            element={
+              <ProtectedRoute>
+                <div>123</div>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={pathsConfig.profile}
+            element={
+              <ProtectedRoute>
+                <div>123</div>
+              </ProtectedRoute>
+            }
+          />
+          )}
+        </Route>
 
         <Route
           path={pathsConfig.platformsChoice}

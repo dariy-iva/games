@@ -8,7 +8,7 @@ export default function StartButton() {
   const history = useNavigate();
 
   function handleStartServiceClick() {
-    history(pathsConfig.main);
+    history(pathsConfig.feed);
   }
 
   return (
