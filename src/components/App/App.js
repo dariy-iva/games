@@ -21,6 +21,7 @@ import GamesChoicePage from "../pages/GamesChoicePage/GamesChoicePage";
 import SubscriptionPage from "../pages/SubscriptionPage/SubscriptionPage";
 import PaymentPage from "../pages/PaymentPage/PaymentPage";
 import MainPage from "../pages/MainPage/MainPage";
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import {pathsConfig} from "../../utils/constants/pathList.js";
 import InfoPopup from "../InfoPopup/InfoPopup";
 import {openInfoPopup, closeInfoPopup} from "../../redux/slices/supportSlice";
@@ -213,6 +214,8 @@ function App(props) {
             </ProtectedRoute>
           }
         />
+
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );
