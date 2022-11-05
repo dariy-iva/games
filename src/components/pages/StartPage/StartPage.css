@@ -41,7 +41,7 @@
   height: 78px;
   border: 0;
   border-radius: 50%;
-  background: url(../../../images/splash-screen_button.svg) no-repeat center var(--violet-color);
+  background: url(../../../images/buttons/splash-screen_button.svg) no-repeat center var(--violet-color);
   cursor: pointer;
 }
 

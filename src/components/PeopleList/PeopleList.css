@@ -52,8 +52,8 @@
   display: inline-block;
   width: 100%;
   height: 17px;
-  mask-image: url("../../images/collapse-menu_icon.svg");
-  -webkit-mask-image: url("../../images/collapse-menu_icon.svg");
+  mask-image: url("../../images/buttons/collapse-friends_button.svg");
+  -webkit-mask-image: url("../../images/buttons/collapse-friends_button.svg");
   background-color: var(--dark-grey-text);
   transition: background-color .3s;
 }
@@ -152,7 +152,7 @@
 
 .people__image_invite {
   min-width: 50px;
-  background: url("../../images/add_friend_icon.svg") center / 23px 18px no-repeat;
+  background: url("../../images/buttons/add_friend_button.svg") center / 23px 18px no-repeat;
 }
 
 .people__image_invite::after {
@@ -200,7 +200,8 @@
   }
 
   .people__list {
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
     flex-direction: initial;
     align-items: center;
   }

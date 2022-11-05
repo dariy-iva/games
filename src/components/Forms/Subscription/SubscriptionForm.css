@@ -54,7 +54,7 @@
 }
 
 .subscription-form__variant[status="checked"]::before {
-  background: url("../../../images/checked_icon_black.svg") center / auto no-repeat;
+  background: url("../../../images/checked_icon.svg") center / auto no-repeat;
 }
 
 .subscription-form__variant[status="not-checked"]::before {
@@ -103,8 +103,9 @@
   content: '';
   display: inline-block;
   width: 14px;
-  height: 14px;
-  background: url("../../../images/checked_icon_yellow.svg") center / auto no-repeat;
+  height: 11px;
+  mask-image: url("../../../images/checked_icon.svg");
+  background-color: var(--yellow-color);
   margin-right: 20px;
 }
 
@@ -136,14 +137,14 @@
 .subscription-form__payment-method_content_card::before {
   width: 24px;
   height: 17px;
-  background: url("../../../images/credit-card_icon.svg") center / auto no-repeat;
+  background: url("../../../images/socialIcons/credit-card_icon.svg") center / auto no-repeat;
   top: 18px;
 }
 
 .subscription-form__payment-method_content_paypal::before {
   width: 19px;
   height: 22px;
-  background: url("../../../images/paypal_icon.svg") center / auto no-repeat;
+  background: url("../../../images/socialIcons/paypal_icon.svg") center / auto no-repeat;
   top: 15px;
 }
 

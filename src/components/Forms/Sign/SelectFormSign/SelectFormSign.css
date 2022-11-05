@@ -135,9 +135,12 @@
  }
 
 .select__option:checked + label::after {
-  content: url("../../../../images/checked_icon_white.svg");
+  content: "";
+  display: inline-block;
+  mask-image: url("../../../../images/checked_icon.svg");
+  background-color: var(--white);
   width: 13px;
-  height: 15px;
+  height: 11px;
   margin-left: auto;
   margin-right: 14px;
 }
