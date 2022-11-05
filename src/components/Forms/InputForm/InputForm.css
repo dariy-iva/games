@@ -32,7 +32,7 @@
 }
 
 .input:not(.register__birthday):valid {
-  background: url("../../../images/valid_input_icon.svg") calc(100% - 24px) / 11px 100% no-repeat;
+  background: url("../../../images/valid_input_icon.svg") calc(100% - 24px) / 15px 13px no-repeat;
 }
 
 .input__field {

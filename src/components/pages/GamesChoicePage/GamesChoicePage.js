@@ -77,6 +77,7 @@ export default function GamesChoicePage({onSubmit}) {
                 <span className="games__title">{game.label}</span>
               </label>
             ))}
+            {!games.length && <span className="user-game-config__text">No games with this name found</span>}
           </div>
           <SubmitButton
             type='button'

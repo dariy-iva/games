@@ -39,7 +39,7 @@
 }
 
 .input.register__birthday:valid:not([value=""]) {
-  background: url("../../../images/valid_input_icon.svg") calc(100% - 24px) / 11px 100% no-repeat;
+  background: url("../../../images/valid_input_icon.svg") calc(100% - 24px) / 15px 13px no-repeat;
 }
 
 .register__birthday:not(:focus):invalid::-webkit-datetime-edit, .register__birthday[value=""]::-webkit-datetime-edit {
