@@ -8,7 +8,6 @@ import {
   updateUserSubscription,
   updateUserPlatforms,
   updateUserGames,
-  clearCurrentUser,
 } from "../../redux/slices/usersSlice";
 import './App.css';
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -22,9 +21,11 @@ import SubscriptionPage from "../pages/SubscriptionPage/SubscriptionPage";
 import PaymentPage from "../pages/PaymentPage/PaymentPage";
 import MainPage from "../pages/MainPage/MainPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
-import {pathsConfig} from "../../utils/constants/pathList.js";
 import InfoPopup from "../InfoPopup/InfoPopup";
-import {openInfoPopup, closeInfoPopup} from "../../redux/slices/supportSlice";
+import {pathsConfig} from "../../utils/constants/pathList.js";
+import {InfoPopupContext} from "../../context/InfoPopupContext";
+import {infoPopupStatus, infoPopupText} from "../../utils/constants/textConstants";
+import {vendorLinks} from "../../utils/constants/vendorLinks";
 
 function App(props) {
   const {
@@ -32,16 +33,22 @@ function App(props) {
     updateUserSubscription,
     updateUserPlatforms,
     updateUserGames,
-    clearCurrentUser,
     setCurrentUser,
-    support,
-    openInfoPopup,
-    closeInfoPopup,
     addUser,
     getUsersList,
   } = props;
 
   const history = useNavigate();
+
+  const [infoPopup, setInfoPopup] = React.useState({isOpen: false, status: '', text: ''});
+
+  function openInfoPopup(status, text) {
+    setInfoPopup({
+      isOpen: true,
+      status: status,
+      text: text,
+    })
+  }
 
   function getUserByName(name) {
     return users.usersList.find(user => user.name === name) || null;
@@ -62,7 +69,7 @@ function App(props) {
       birthday: dataUser.birthday || ''
     });
 
-    openInfoPopup({status: 'success', text: 'Registration was successful'});
+    openInfoPopup(infoPopupStatus.success, infoPopupText.successRegistration)
     history(pathsConfig.login);
   }
 
@@ -73,10 +80,7 @@ function App(props) {
       setCurrentUser(getUserByName(dataUser.name));
       history(pathsConfig.platformsChoice);
     } else {
-      openInfoPopup({
-        status: 'error',
-        text: 'User name or password entered incorrectly. Please, try again or let us know about the problem.'
-      });
+      openInfoPopup(infoPopupStatus.error, infoPopupText.errorLogin);
     }
   }
 
@@ -100,7 +104,7 @@ function App(props) {
         history(pathsConfig.payment);
         break;
       case 'paypal':
-        window.open('https://www.paypal.com');
+        window.open(vendorLinks.paypal.link);
         break;
       default:
         return;
@@ -111,9 +115,9 @@ function App(props) {
     const {number, name, date, code} = data;
 
     if (number && name && date && code) {
-      openInfoPopup({status: 'success', text: 'The payment was successful. Thank you for your trust'});
+      openInfoPopup(infoPopupStatus.success, infoPopupText.successPayment);
     } else {
-      openInfoPopup({status: 'error', text: 'Sorry, payment failed'});
+      openInfoPopup(infoPopupStatus.error, infoPopupText.errorPayment);
     }
   }
 
@@ -122,117 +126,115 @@ function App(props) {
   }, [])
 
   return (
-    <div className="page">
-      <InfoPopup/>
-      <Routes>
-        <Route
-          path={pathsConfig.register}
-          element={<RegisterPage handleRegister={handleRegister}/>}
-        />
-
-        <Route path={pathsConfig.login} element={<LoginPage handleLogin={handleLogin}/>}/>
-
-        <Route path={pathsConfig.resetPassword} element={<PasswordRecoveryPage/>}/>
-
-        <Route exact path={pathsConfig.main} element={
-          !(users.currentUser.name && users.currentUser.password) ? <StartPage onLogin={handleLogin}/> : <MainPage/>}>
+    <InfoPopupContext.Provider value={{infoPopup, setInfoPopup}}>
+      <div className="page">
+        <InfoPopup/>
+        <Routes>
           <Route
-            path={pathsConfig.feed}
+            path={pathsConfig.register}
+            element={<RegisterPage handleRegister={handleRegister}/>}
+          />
+
+          <Route path={pathsConfig.login} element={<LoginPage handleLogin={handleLogin}/>}/>
+
+          <Route path={pathsConfig.resetPassword} element={<PasswordRecoveryPage/>}/>
+
+          <Route exact path={pathsConfig.main} element={
+            !(users.currentUser.name && users.currentUser.password) ? <StartPage onLogin={handleLogin}/> : <MainPage/>}>
+            <Route
+              path={pathsConfig.feed}
+              element={
+                <ProtectedRoute>
+                  <div>123</div>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path={pathsConfig.parties}
+              element={
+                <ProtectedRoute>
+                  <div>123</div>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path={pathsConfig.chats}
+              element={
+                <ProtectedRoute>
+                  <div>123</div>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path={pathsConfig.notifications}
+              element={
+                <ProtectedRoute>
+                  <div>123</div>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path={pathsConfig.profile}
+              element={
+                <ProtectedRoute>
+                  <div>123</div>
+                </ProtectedRoute>
+              }
+            />
+            )}
+          </Route>
+
+          <Route
+            path={pathsConfig.platformsChoice}
             element={
               <ProtectedRoute>
-                <div>123</div>
+                <PlatformChoicePage onSubmit={handleChoicePlatforms}/>
               </ProtectedRoute>
             }
           />
+
           <Route
-            path={pathsConfig.parties}
+            path={pathsConfig.gamesChoice}
             element={
               <ProtectedRoute>
-                <div>123</div>
+                <GamesChoicePage onSubmit={handleChoiceGames}/>
               </ProtectedRoute>
             }
           />
+
           <Route
-            path={pathsConfig.chats}
+            path={pathsConfig.subscription}
             element={
               <ProtectedRoute>
-                <div>123</div>
+                <SubscriptionPage onSubmit={handleChoiceSubscription}/>
               </ProtectedRoute>
             }
           />
+
           <Route
-            path={pathsConfig.notifications}
+            path={pathsConfig.payment}
             element={
               <ProtectedRoute>
-                <div>123</div>
+                <PaymentPage onSubmit={handlePaymentCardSubmit}/>
               </ProtectedRoute>
             }
           />
-          <Route
-            path={pathsConfig.profile}
-            element={
-              <ProtectedRoute>
-                <div>123</div>
-              </ProtectedRoute>
-            }
-          />
-          )}
-        </Route>
 
-        <Route
-          path={pathsConfig.platformsChoice}
-          element={
-            <ProtectedRoute>
-              <PlatformChoicePage onSubmit={handleChoicePlatforms}/>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path={pathsConfig.gamesChoice}
-          element={
-            <ProtectedRoute>
-              <GamesChoicePage onSubmit={handleChoiceGames}/>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path={pathsConfig.subscription}
-          element={
-            <ProtectedRoute>
-              <SubscriptionPage onSubmit={handleChoiceSubscription}/>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path={pathsConfig.payment}
-          element={
-            <ProtectedRoute>
-              <PaymentPage onSubmit={handlePaymentCardSubmit}/>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </div>
+          <Route path="*" element={<NotFoundPage/>}/>
+        </Routes>
+      </div>
+    </InfoPopupContext.Provider>
   );
 }
 
 export default connect(
   (state) => ({
     users: state.users,
-    support: state.support,
   }),
   {
     updateUserSubscription,
     updateUserPlatforms,
     updateUserGames,
-    clearCurrentUser,
-    openInfoPopup,
-    closeInfoPopup,
     setCurrentUser,
     addUser,
     getUsersList,

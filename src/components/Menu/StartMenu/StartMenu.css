@@ -30,16 +30,18 @@
   padding: 16px 38px;
   background-color: var(--violet-color);
   border-radius: 40px;
+  line-height: 1.2;
 }
 
 .menu__text {
+  display: inline-block;
   color: var(--light-grey-text);
   font-size: 15px;
-  line-height: 1.2;
   text-decoration: none;
 }
 
 .menu__text:not(.menu__item_active) {
+  line-height: 2;
   transition: text-shadow .3s, color .3s;
 }
 
