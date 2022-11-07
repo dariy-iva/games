@@ -78,7 +78,11 @@ function App(props) {
 
     if (isSuccessCheckUser) {
       setCurrentUser(getUserByName(dataUser.name));
-      history(pathsConfig.platformsChoice);
+
+      const nextPath = users.currentUser.platforms.length
+        ? pathsConfig.feed
+        : pathsConfig.platformsChoice;
+      history(nextPath);
     } else {
       openInfoPopup(infoPopupStatus.error, infoPopupText.errorLogin);
     }

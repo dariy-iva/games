@@ -41,6 +41,11 @@
   z-index: -2;
 }
 
+.overlay__animation_first {
+  animation: firstTranslateLines 25s linear 1 forwards;
+  z-index: -5;
+}
+
 @media (max-width: 767px) {
   .overlay_color {
     background-color: var(--black);
