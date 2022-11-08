@@ -77,10 +77,12 @@ function App(props) {
   function handleLogin(dataUser) {
     const isSuccessCheckUser = checkUserData(dataUser);
 
-    if (isSuccessCheckUser) {
-      setCurrentUser(getUserByName(dataUser.name));
 
-      const nextPath = users.currentUser?.platforms.length
+    if (isSuccessCheckUser) {
+      const user = getUserByName(dataUser.name);
+      setCurrentUser(user);
+      
+      const nextPath = user.platforms.length
         ? pathsConfig.feed
         : pathsConfig.platformsChoice;
       history(nextPath);
