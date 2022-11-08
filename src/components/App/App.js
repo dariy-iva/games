@@ -20,6 +20,7 @@ import GamesChoicePage from "../pages/GamesChoicePage/GamesChoicePage";
 import SubscriptionPage from "../pages/SubscriptionPage/SubscriptionPage";
 import PaymentPage from "../pages/PaymentPage/PaymentPage";
 import MainPage from "../pages/MainPage/MainPage";
+import FeedSection from "../FeedSection/FeedSection";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import InfoPopup from "../InfoPopup/InfoPopup";
 import {pathsConfig} from "../../utils/constants/pathList.js";
@@ -79,7 +80,7 @@ function App(props) {
     if (isSuccessCheckUser) {
       setCurrentUser(getUserByName(dataUser.name));
 
-      const nextPath = users.currentUser.platforms.length
+      const nextPath = users.currentUser?.platforms.length
         ? pathsConfig.feed
         : pathsConfig.platformsChoice;
       history(nextPath);
@@ -149,7 +150,7 @@ function App(props) {
               path={pathsConfig.feed}
               element={
                 <ProtectedRoute>
-                  <div>123</div>
+                  <FeedSection/>
                 </ProtectedRoute>
               }
             />

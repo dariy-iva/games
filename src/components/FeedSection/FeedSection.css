@@ -1,0 +1,26 @@
+.feed {
+  display: flex;
+  flex-direction: column;
+}
+
+.feed__menu {
+  min-height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.feed__add-post {
+  padding: 8px 14px;
+  height: max-content;
+  border: none;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--black);
+  background-color: var(--yellow-color);
+
+  cursor: pointer;
+}
