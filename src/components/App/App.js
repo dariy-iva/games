@@ -81,7 +81,7 @@ function App(props) {
     if (isSuccessCheckUser) {
       const user = getUserByName(dataUser.name);
       setCurrentUser(user);
-      
+
       const nextPath = user.platforms.length
         ? pathsConfig.feed
         : pathsConfig.platformsChoice;

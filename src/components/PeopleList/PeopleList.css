@@ -1,5 +1,5 @@
 .people {
-  padding-left: 20px;
+  padding: 0 8px;
   /*max-height: calc(100vh - 20px);*/
   /*overflow: auto;*/
 }
