@@ -1,5 +1,6 @@
 .people {
   padding: 0 8px;
+  overflow-x: hidden;
   /*max-height: calc(100vh - 20px);*/
   /*overflow: auto;*/
 }
