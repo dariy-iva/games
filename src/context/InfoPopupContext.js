@@ -1,3 +1,4 @@
 import React from "react";
 
-export const InfoPopupContext = React.createContext();
+export const SetInfoPopupContext = React.createContext();
+export const GetInfoPopupContext = React.createContext();

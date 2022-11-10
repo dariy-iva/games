@@ -32,6 +32,11 @@ export const postsSlice = createSlice({
       })
     },
 
+    updatePostItems(state, action) {
+      const payload = action.payload;
+      state.postItemsList = state.postItemsList.map(item => item.id === payload.id ? payload : item);
+    },
+
     setCurrentPost(state, action) {
       state.currentPost = action.payload;
     },
@@ -46,6 +51,7 @@ export const postsSlice = createSlice({
 export const {
   getPostItemsList,
   addPost,
+  updatePostItems,
   setCurrentPost,
   clearCurrentUser,
 } = postsSlice.actions;

@@ -1,10 +1,11 @@
 import React from "react";
 import './Post.css';
 import {connect} from "react-redux";
+import {updatePostItems} from "../../redux/slices/postsSlice";
 import {convertDateToText} from "../../utils/convertDateToText";
 import {GamesContext} from "../../context/GamesContext";
 
-function Post({post, users}) {
+function Post({post, users, updatePostItems}) {
   const {
     authorId,
     time,
@@ -18,9 +19,10 @@ function Post({post, users}) {
 
   const author = getUserById(authorId);
   const game = selectedGameId ? getGameById(selectedGameId) : '';
+  const isLiked = likesUserId.includes(users.currentUser.id);
 
   const likesElementClassName = `post__social-item post__social-item_content_likes
-            ${likesUserId.includes(users.currentUser.id)
+            ${isLiked
     ? 'post__social-item_content_likes-active'
     : ''}`;
 
@@ -32,16 +34,31 @@ function Post({post, users}) {
     return gamesList.find(game => game.id === id);
   }
 
+
+  function handleToggleLike(e) {
+    e.stopPropagation();
+    const updatePost = JSON.parse(JSON.stringify(post));
+    if (isLiked) {
+      updatePost.likesUserId.splice(updatePost.likesUserId.indexOf(users.currentUser.id), 1);
+    } else {
+      updatePost.likesUserId.push(users.currentUser.id);
+    }
+    updatePostItems(updatePost);
+  }
+
+  function handlePostClick() {
+  }
+
   return (
-    <article className="post">
+    <article className="post" onClick={handlePostClick}>
       <div className="post__header">
         <img src={author.avatar} alt="user avatar" className="post__user-avatar"/>
         <div className="post__info">
           <p className="post__user-name">{author.name}</p>
           <span className="post__text post__time">
-                        {game && <span className="post__game">{game.label}</span>}
+            {game && <span className="post__game">{game.label}</span>}
             {convertDateToText(time)}
-                      </span>
+          </span>
         </div>
       </div>
       <p className="post__text post__main-text">{text}</p>
@@ -50,9 +67,13 @@ function Post({post, users}) {
         <button
           type="button"
           className={likesElementClassName}
-          aria-label="like">
+          aria-label="like"
+          onClick={handleToggleLike}
+        >
         </button>
-        <span className="post__text post__num">{likesUserId.length}</span>
+        <span className={`post__text post__num ${isLiked ? 'post__num_active' : ''}`}>
+          {likesUserId.length}
+        </span>
         <button
           type="button"
           className="post__social-item post__social-item_content_comments"
@@ -67,6 +88,7 @@ function Post({post, users}) {
 export default connect(
   (state) => ({
     users: state.users,
+    posts: state.posts,
   }),
-  {}
+  {updatePostItems}
 )(Post);
