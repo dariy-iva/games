@@ -20,13 +20,13 @@ export function convertDateToText(unixTime) {
   } else if (diffTime < 10800) {
     return `${Math.round(diffTime / 3600)}h`
   } else if (dateDay === nowDay && dateMonth === nowMonth && dateYear === nowYear) {
-    return `today in ${dateHours}:${dateMinutes}`
+    return `today at ${dateHours}:${dateMinutes}`
   } else if((nowDay - dateDay) === 1 && dateMonth === nowMonth && dateYear === nowYear) {
-    return `yesterday in ${dateHours}:${dateMinutes}`
+    return `yesterday at ${dateHours}:${dateMinutes}`
   } else if (dateYear === nowYear) {
-    return `${dateDay} ${dateMonthText} in ${dateHours}:${dateMinutes}`
+    return `${dateDay} ${dateMonthText} at ${dateHours}:${dateMinutes}`
   } else {
-    return `${dateDay} ${dateMonthText} ${dateYear} in ${dateHours}:${dateMinutes}`
+    return `${dateDay} ${dateMonthText} ${dateYear} at ${dateHours}:${dateMinutes}`
   }
 
 }

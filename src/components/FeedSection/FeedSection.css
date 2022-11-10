@@ -10,17 +10,11 @@
   align-items: center;
 }
 
-.feed__add-post {
-  padding: 8px 14px;
-  height: max-content;
-  border: none;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 13px;
-  line-height: 1.3;
-  text-align: center;
-  color: var(--black);
-  background-color: var(--yellow-color);
-
-  cursor: pointer;
+.posts__list {
+  margin: 20px 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

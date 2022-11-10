@@ -1,4 +1,4 @@
-.popup {
+.info-popup {
   position: fixed;
   right: 20px;
   bottom: 20px;
@@ -12,12 +12,12 @@
   transition: visibility .5s, opacity .5s;
 }
 
-.popup_visible {
+.info-popup_visible {
   visibility: visible;
   opacity: 1;
 }
 
-.popup__content {
+.info-popup__content {
   position: relative;
   width: 100%;
   min-height: 100%;
@@ -29,7 +29,7 @@
   box-sizing: border-box;
 }
 
-.popup__content::after {
+.info-popup__content::after {
   content: '';
   position: absolute;
   z-index: -1;
@@ -45,13 +45,13 @@
   animation: animation-border 3s ease infinite;
 }
 
-.popup__img-status {
+.info-popup__img-status {
   width: 60px;
   height: 60px;
   align-self: center;
 }
 
-.popup__info {
+.info-popup__info {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -59,7 +59,7 @@
   color: var(--light-grey-text);
 }
 
-.popup__title {
+.info-popup__title {
   max-width: calc(100% - 10px);
   margin: 0;
   font-size: 18px;
@@ -68,14 +68,14 @@
   opacity: .8;
 }
 
-.popup__text {
+.info-popup__text {
   margin: 0;
   font-size: 15px;
   line-height: 1.2;
   flex-grow: 1;
 }
 
-.popup__reset-button {
+.info-popup__reset-button {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -84,54 +84,16 @@
   box-sizing: border-box;
   padding: 0;
   border: none;
-  background: url("../../images/buttons/close_button.svg") center / contain no-repeat;
+  background: url("../../../images/buttons/close_button.svg") center / contain no-repeat;
   cursor: pointer;
   opacity: .6;
   transition: transform .3s;
 }
 
-.popup__reset-button:hover {
+.info-popup__reset-button:hover {
   transform: scale(1.2);
 }
-
 
 @media (max-width: 767px) {
 
 }
-
-/*.popup {*/
-/*  padding: 10px;*/
-/*  box-sizing: border-box;*/
-/*  background-color: var(--color-bcg-dark-gray);*/
-/*  border: 1px solid var(--black);*/
-/*  border-radius: 5px;*/
-/*  visibility: hidden;*/
-/*  opacity: 0;*/
-/*  transition: visibility .4s, opacity .4s;*/
-/*}*/
-
-/*.popup_opened {*/
-/*  visibility: visible;*/
-/*  opacity: 1;*/
-/*}*/
-
-/*.popup__text {*/
-/*  font-size: 12px;*/
-/*  line-height: 1.4;*/
-/*  font-weight: normal;*/
-/*  margin: auto;*/
-/*}*/
-
-/*.popup__reset-button {*/
-/*  position: absolute;*/
-/*  top: 0;*/
-/*  right: 0;*/
-/*  left: 0;*/
-/*  bottom: 0;*/
-/*  width: 100%;*/
-/*  background: url(../../images/button__close.svg) no-repeat center;*/
-/*  background-size: 15px 15px;*/
-/*  background-position: top 3px right 3px;*/
-/*  border: none;*/
-/*  cursor: pointer;*/
-/*}*/

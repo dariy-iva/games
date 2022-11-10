@@ -1,6 +1,6 @@
 .people {
   padding: 0 8px;
-  overflow-x: hidden;
+  overflow: hidden;
   /*max-height: calc(100vh - 20px);*/
   /*overflow: auto;*/
 }
@@ -100,7 +100,7 @@
   content: '';
   transition: background-color .3s;
   border-radius: 30px;
-  z-index: -1;
+  z-index: -3;
 }
 
 .people__friend:hover::after {
@@ -125,7 +125,7 @@
   width: 16px;
   height: 16px;
   background-color: var(--black);
-  z-index: 1;
+  z-index: -1;
   border-radius: 50%;
 }
 
@@ -138,11 +138,11 @@
   width: 12px;
   height: 12px;
   background-color: var(--lime-color);
-  z-index: 2;
   border-radius: 50%;
 }
 
 .people__image {
+  z-index: -2;
   position: relative;
   display: block;
   width: 50px;

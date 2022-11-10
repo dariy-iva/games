@@ -22,11 +22,14 @@ import PaymentPage from "../pages/PaymentPage/PaymentPage";
 import MainPage from "../pages/MainPage/MainPage";
 import FeedSection from "../FeedSection/FeedSection";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
-import InfoPopup from "../InfoPopup/InfoPopup";
+import InfoPopup from "../popups/InfoPopup/InfoPopup";
+import AddPostPopup from "../popups/AddPostPopup/AddPostPopup";
 import {pathsConfig} from "../../utils/constants/pathList.js";
 import {InfoPopupContext} from "../../context/InfoPopupContext";
+import {GamesContext} from "../../context/GamesContext";
 import {infoPopupStatus, infoPopupText} from "../../utils/constants/textConstants";
 import {vendorLinks} from "../../utils/constants/vendorLinks";
+import {gameList} from "../../utils/constants/gameList";
 
 function App(props) {
   const {
@@ -42,6 +45,7 @@ function App(props) {
   const history = useNavigate();
 
   const [infoPopup, setInfoPopup] = React.useState({isOpen: false, status: '', text: ''});
+  const gamesList = gameList;
 
   function openInfoPopup(status, text) {
     setInfoPopup({
@@ -130,107 +134,112 @@ function App(props) {
 
   React.useEffect(() => {
     getUsersList();
-  }, [])
+  }, []);
 
   return (
-    <InfoPopupContext.Provider value={{infoPopup, setInfoPopup}}>
-      <div className="page">
-        <InfoPopup/>
-        <Routes>
-          <Route
-            path={pathsConfig.register}
-            element={<RegisterPage handleRegister={handleRegister}/>}
-          />
-
-          <Route path={pathsConfig.login} element={<LoginPage handleLogin={handleLogin}/>}/>
-
-          <Route path={pathsConfig.resetPassword} element={<PasswordRecoveryPage/>}/>
-
-          <Route exact path={pathsConfig.main} element={
-            !(users.currentUser.name && users.currentUser.password) ? <StartPage onLogin={handleLogin}/> : <MainPage/>}>
+    <GamesContext.Provider value={gamesList}>
+      <InfoPopupContext.Provider value={{infoPopup, setInfoPopup}}>
+        <div className="page">
+          <Routes>
             <Route
-              path={pathsConfig.feed}
+              path={pathsConfig.register}
+              element={<RegisterPage handleRegister={handleRegister}/>}
+            />
+
+            <Route path={pathsConfig.login} element={<LoginPage handleLogin={handleLogin}/>}/>
+
+            <Route path={pathsConfig.resetPassword} element={<PasswordRecoveryPage/>}/>
+
+            <Route exact path={pathsConfig.main} element={
+              !(users.currentUser.name && users.currentUser.password) ? <StartPage onLogin={handleLogin}/> :
+                <MainPage/>}>
+              <Route
+                path={pathsConfig.feed}
+                element={
+                  <ProtectedRoute>
+                    <FeedSection/>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path={pathsConfig.parties}
+                element={
+                  <ProtectedRoute>
+                    <div>123</div>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path={pathsConfig.chats}
+                element={
+                  <ProtectedRoute>
+                    <div>123</div>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path={pathsConfig.notifications}
+                element={
+                  <ProtectedRoute>
+                    <div>123</div>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path={pathsConfig.profile}
+                element={
+                  <ProtectedRoute>
+                    <div>123</div>
+                  </ProtectedRoute>
+                }
+              />
+              )}
+            </Route>
+
+            <Route
+              path={pathsConfig.platformsChoice}
               element={
                 <ProtectedRoute>
-                  <FeedSection/>
+                  <PlatformChoicePage onSubmit={handleChoicePlatforms}/>
                 </ProtectedRoute>
               }
             />
+
             <Route
-              path={pathsConfig.parties}
+              path={pathsConfig.gamesChoice}
               element={
                 <ProtectedRoute>
-                  <div>123</div>
+                  <GamesChoicePage onSubmit={handleChoiceGames}/>
                 </ProtectedRoute>
               }
             />
+
             <Route
-              path={pathsConfig.chats}
+              path={pathsConfig.subscription}
               element={
                 <ProtectedRoute>
-                  <div>123</div>
+                  <SubscriptionPage onSubmit={handleChoiceSubscription}/>
                 </ProtectedRoute>
               }
             />
+
             <Route
-              path={pathsConfig.notifications}
+              path={pathsConfig.payment}
               element={
                 <ProtectedRoute>
-                  <div>123</div>
+                  <PaymentPage onSubmit={handlePaymentCardSubmit}/>
                 </ProtectedRoute>
               }
             />
-            <Route
-              path={pathsConfig.profile}
-              element={
-                <ProtectedRoute>
-                  <div>123</div>
-                </ProtectedRoute>
-              }
-            />
-            )}
-          </Route>
 
-          <Route
-            path={pathsConfig.platformsChoice}
-            element={
-              <ProtectedRoute>
-                <PlatformChoicePage onSubmit={handleChoicePlatforms}/>
-              </ProtectedRoute>
-            }
-          />
+            <Route path="*" element={<NotFoundPage/>}/>
+          </Routes>
 
-          <Route
-            path={pathsConfig.gamesChoice}
-            element={
-              <ProtectedRoute>
-                <GamesChoicePage onSubmit={handleChoiceGames}/>
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path={pathsConfig.subscription}
-            element={
-              <ProtectedRoute>
-                <SubscriptionPage onSubmit={handleChoiceSubscription}/>
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path={pathsConfig.payment}
-            element={
-              <ProtectedRoute>
-                <PaymentPage onSubmit={handlePaymentCardSubmit}/>
-              </ProtectedRoute>
-            }
-          />
-
-          <Route path="*" element={<NotFoundPage/>}/>
-        </Routes>
-      </div>
-    </InfoPopupContext.Provider>
+          <InfoPopup/>
+          <AddPostPopup/>
+        </div>
+      </InfoPopupContext.Provider>
+    </GamesContext.Provider>
   );
 }
 
