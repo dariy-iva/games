@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {updatePostItems} from "../../redux/slices/postsSlice";
 import {convertDateToText} from "../../utils/convertDateToText";
 import {GamesContext} from "../../context/GamesContext";
+import {SetImagePopupContext} from "../../context/ImagePopupContext";
 
 function Post({post, users, updatePostItems}) {
   const {
@@ -16,6 +17,7 @@ function Post({post, users, updatePostItems}) {
     kidsId
   } = post;
   const gamesList = React.useContext(GamesContext);
+  const setImagePopup = React.useContext(SetImagePopupContext);
 
   const author = getUserById(authorId);
   const game = selectedGameId ? getGameById(selectedGameId) : '';
@@ -46,13 +48,21 @@ function Post({post, users, updatePostItems}) {
     updatePostItems(updatePost);
   }
 
-  function handlePostClick() {
+  function handleOpenImage(e) {
+    e.stopPropagation();
+    setImagePopup({isOpen: true, imageSrc: imgFile});
   }
+
+  function handlePostClick() {}
 
   return (
     <article className="post" onClick={handlePostClick}>
       <div className="post__header">
-        <img src={author.avatar} alt="user avatar" className="post__user-avatar"/>
+        <img
+          src={author.avatar}
+          alt="user avatar"
+          className="post__user-avatar"
+        />
         <div className="post__info">
           <p className="post__user-name">{author.name}</p>
           <span className="post__text post__time">
@@ -62,7 +72,12 @@ function Post({post, users, updatePostItems}) {
         </div>
       </div>
       <p className="post__text post__main-text">{text}</p>
-      {imgFile && <img src={imgFile} alt="poster" className="post__image"/>}
+      {imgFile && <img
+        src={imgFile}
+        alt="poster"
+        className="post__image"
+        onClick={handleOpenImage}
+      />}
       <div className="post__social">
         <button
           type="button"

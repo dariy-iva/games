@@ -1,0 +1,40 @@
+.image-popup {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .9);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .4s, opacity .4s;
+}
+
+.image-popup.image-popup_opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+.image-popup__photo-box {
+  position: relative;
+  margin: auto;
+}
+
+.image-popup__image {
+  max-width: 75vw;
+  max-height: 75vh;
+}
+
+.image-popup__button-close {
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  padding: 0;
+  width: 25px;
+  height: 25px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: url("../../../images/buttons/close_button.svg") center / contain no-repeat;
+}
