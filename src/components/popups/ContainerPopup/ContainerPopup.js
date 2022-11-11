@@ -1,19 +1,33 @@
 import React from "react";
 import './ContainerPopup.css';
 
-export default function ContainerPopup({isOpen, title, children}) {
+export default function ContainerPopup(props) {
+  const {isOpen, isImage = false, onClose, children} = props;
 
-  const popupClass = `popup ${isOpen && "popup_opened"}`;
+  function handleClosePopupByClickOverlay(e) {
+    if (e.target.classList.contains('popup_opened')) {
+      onClose();
+    }
+  }
+
+  React.useEffect(() => {
+    const closePopupByEscape = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", closePopupByEscape);
+    return () => document.removeEventListener("keydown", closePopupByEscape);
+  }, []);
+
+  const popupClass = `popup ${isOpen ? "popup_opened" : ''} ${isImage ? 'popup_content_image' : 'popup_content_form'}`;
+  const popupContainerClass = `popup__container ${isImage ? '' : 'popup__container_with-form'}`;
 
   return (
-    <div className={popupClass}>
-      <div className="popup__container">
-        <h2 className="popup__title">{title}</h2>
+    <div className={popupClass} onClick={handleClosePopupByClickOverlay}>
+      <div className={popupContainerClass}>
         {children}
-        <button
-          type="button"
-          className="popup__button-close link-hover"
-          aria-label="close popup"></button>
       </div>
     </div>
   );
