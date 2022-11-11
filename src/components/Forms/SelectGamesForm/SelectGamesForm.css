@@ -1,0 +1,152 @@
+.form-games {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: calc(40px + 86px);
+  position: relative;
+  width: 100%;
+}
+
+.form-games__search {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.form-games__search::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: url("../../../images/search_icon.svg");
+}
+
+.form-games__input-search {
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--dark-color-bcg);
+  margin-bottom: 28px;
+  padding: 15px 15px 15px 50px;
+  box-sizing: border-box;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.3;
+  color: var(--grey-text);
+}
+
+.form-games__input-search:focus {
+  outline: 1px solid var(--violet-color);
+}
+
+.form-games__input-search::placeholder {
+  color: var(--grey-text);
+  opacity: .3;
+}
+
+.form-games__items {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.form-games__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 150px;
+  cursor: pointer;
+  position: relative;
+}
+
+.form-games__item::after, .form-games__item::before {
+  content: '';
+  position: absolute;
+  opacity: 0;
+  transition: all .3s;
+}
+
+.form-games__item::after {
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--violet-color);
+}
+
+.form-games__item::before {
+  top: calc((32px - 11px) / 2 + 10px);
+  right: calc((32px - 13px) / 2 + 10px);
+  width: 13px;
+  height: 11px;
+  mask-image: url("../../../images/checked_icon.svg");
+  background-color: var(--white);
+  z-index: 11;
+}
+
+.form-games__item[status="checked"]::after, .form-games__item[status="checked"]::before {
+  opacity: 1;
+}
+
+.form-games__image {
+  width: 150px;
+  height: 200px;
+  border-radius: 16px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: all .3s;
+}
+
+.form-games__item:hover .form-games__image {
+  transform: scale(1.05);
+}
+
+.form-games__label {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--grey-text);
+  opacity: .5;
+  transition: all .3s;
+}
+
+.form-games__item:hover .form-games__label {
+  opacity: 1;
+}
+
+.form-games_input-check {
+  display: none;
+}
+
+.form-games__button {
+  position: fixed;
+  bottom: 40px;
+  min-width: 146px;
+}
+
+.form-games__button_visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.form-games__button_hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@media (max-width: 767px) {
+  .form-games__items {
+    gap: 20px 15px;
+  }
+}

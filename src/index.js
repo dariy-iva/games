@@ -9,15 +9,13 @@ import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <CustomProvider>
-        <BrowserRouter>
-          <App/>
-        </BrowserRouter>
-      </CustomProvider>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <CustomProvider>
+      <BrowserRouter>
+        <App/>
+      </BrowserRouter>
+    </CustomProvider>
+  </Provider>,
   document.getElementById('root')
 );
 
