@@ -5,6 +5,7 @@
   align-items: center;
   flex-grow: 1;
   position: relative;
+  overflow: hidden;
 }
 
 .splash-screen__logo {
