@@ -30,6 +30,8 @@
 }
 
 .popup__container_with-form {
+  max-height: 80vh;
+  overflow: auto;
   width: 464px;
   padding: 20px;
   background-color: var(--black);

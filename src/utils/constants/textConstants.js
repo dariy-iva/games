@@ -10,3 +10,7 @@ export const infoPopupText = {
   successPayment: 'The payment was successful. Thank you for your trust',
   errorPayment: 'Sorry, payment failed'
 }
+
+export const inputErrors = {
+  formatImageError: 'Only uploading images is allowed. Check the file format.'
+}

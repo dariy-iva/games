@@ -3,24 +3,28 @@ import "./SelectGamesForm.css";
 import SubmitButton from "../../Buttons/SubmitButton/SubmitButton";
 import {GamesContext} from "../../../context/GamesContext";
 
-export default function SelectGamesForm({onSubmit, isMultipleSelect}) {
+export default function SelectGamesForm(props) {
+  const {onSubmit, isMultipleSelect, selectedGames} = props;
 
   const gamesList = React.useContext(GamesContext);
+
   const [filteredGames, setFilteredGames] = React.useState(gamesList);
-  const [checkedItemsId, setCheckedItemsId] = React.useState([]);
+  const [checkedItemsId, setCheckedItemsId] = React.useState(selectedGames || []);
   const [searchValue, setSearchValue] = React.useState('');
 
   function handleChangeInput(e) {
     const targetId = +e.target.id.split('-')[1];
 
-    if (e.target.checked) {
-      setCheckedItemsId(isMultipleSelect ? [targetId, ...checkedItemsId] : [targetId]);
-    } else {
+    if (checkedItemsId.includes(targetId)) {
       setCheckedItemsId(checkedItemsId.filter(item => item !== targetId));
+    } else {
+      isMultipleSelect
+        ? setCheckedItemsId([targetId, ...checkedItemsId])
+        : setCheckedItemsId([targetId]);
     }
   }
 
-  function checkItemStatus(itemId) {
+  function getItemStatus(itemId) {
     return checkedItemsId.includes(itemId) ? 'checked' : 'not-checked';
   }
 
@@ -30,7 +34,8 @@ export default function SelectGamesForm({onSubmit, isMultipleSelect}) {
 
   function handleCheckedGamesSubmit(e) {
     e.preventDefault();
-    onSubmit(checkedItemsId);
+    const data = isMultipleSelect ? checkedItemsId : checkedItemsId[0];
+    onSubmit(data);
   }
 
   function filterGames(string) {
@@ -44,7 +49,7 @@ export default function SelectGamesForm({onSubmit, isMultipleSelect}) {
   }, [searchValue]);
 
   return (
-    <form name="select-games" className="form-games">
+    <form name={`${isMultipleSelect ? 'select-games' : 'select-game'}`} className="form-games">
       <label className="form-games__search">
         <input
           value={searchValue}
@@ -59,16 +64,22 @@ export default function SelectGamesForm({onSubmit, isMultipleSelect}) {
       </label>
       <fieldset className="form-games__items">
         {filteredGames.map(game => (
-          <label className={`form-games__item`} key={game.name}
-                 status={checkItemStatus(game.id)}>
+          <label
+            className={`form-games__item`}
+            key={game.name}
+            status={getItemStatus(game.id)}>
             <input
               type="checkbox"
               className="form-games_input-check"
               name={game.name}
+              checked={checkedItemsId.includes(game.id)}
               id={`game-${game.id}`}
               onChange={handleChangeInput}
             />
-            <img src={game.image} className="form-games__image" alt={`game ${game.label} poster`}/>
+            <img
+              src={game.image}
+              className="form-games__image"
+              alt={`game ${game.label} poster`}/>
             <span className="form-games__label">{game.label}</span>
           </label>
         ))}

@@ -1,6 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {postItemsList} from "../../utils/constants/postItemsList";
-import girlImage from "../../images/postPosters/girl.webp";
 
 const initialState = {
   postItemsList: [],

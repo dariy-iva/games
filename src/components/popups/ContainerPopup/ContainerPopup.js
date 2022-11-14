@@ -10,22 +10,22 @@ export default function ContainerPopup(props) {
     }
   }
 
-  React.useEffect(() => {
-    const closePopupByEscape = (e) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
-    };
+  function handleClosePopupByEscape(e) {
+    if (e.key === "Escape") {
+      onClose();
+    }
+  }
 
-    document.addEventListener("keydown", closePopupByEscape);
-    return () => document.removeEventListener("keydown", closePopupByEscape);
+  React.useEffect(() => {
+    document.addEventListener("keydown", handleClosePopupByEscape);
+    return () => document.removeEventListener("keydown", handleClosePopupByEscape);
   }, []);
 
   const popupClass = `popup ${isOpen ? "popup_opened" : ''} ${isImage ? 'popup_content_image' : 'popup_content_form'}`;
   const popupContainerClass = `popup__container ${isImage ? '' : 'popup__container_with-form'}`;
 
   return (
-    <div className={popupClass} onClick={handleClosePopupByClickOverlay}>
+    <div className={popupClass} onMouseDown={handleClosePopupByClickOverlay}>
       <div className={popupContainerClass}>
         {children}
       </div>

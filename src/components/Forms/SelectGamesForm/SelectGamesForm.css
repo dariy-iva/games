@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: calc(40px + 86px);
   position: relative;
   width: 100%;
 }
@@ -49,7 +48,7 @@
 
 .form-games__items {
   margin: 0;
-  padding: 0;
+  padding: 0 0 calc(54px + 20px);
   border: none;
   outline: none;
   display: flex;
@@ -130,7 +129,7 @@
 }
 
 .form-games__button {
-  position: fixed;
+  position: sticky;
   bottom: 40px;
   min-width: 146px;
 }
@@ -138,6 +137,7 @@
 .form-games__button_visible {
   visibility: visible;
   opacity: 1;
+  z-index: 20;
 }
 
 .form-games__button_hidden {
@@ -148,5 +148,6 @@
 @media (max-width: 767px) {
   .form-games__items {
     gap: 20px 15px;
+    padding-bottom: 54px;
   }
 }

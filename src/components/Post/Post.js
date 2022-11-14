@@ -18,6 +18,7 @@ function Post({post, users, updatePostItems}) {
   } = post;
   const gamesList = React.useContext(GamesContext);
   const setImagePopup = React.useContext(SetImagePopupContext);
+  const [dateText, setDateText] = React.useState(convertDateToText(time));
 
   const author = getUserById(authorId);
   const game = selectedGameId ? getGameById(selectedGameId) : '';
@@ -55,6 +56,25 @@ function Post({post, users, updatePostItems}) {
 
   function handlePostClick() {}
 
+  React.useEffect(() => {
+    let timer;
+    if (dateText.includes('now') || dateText.includes('min')) {
+      timer = setInterval(() => {
+        setDateText(convertDateToText(time));
+      }, 60000);
+    } else if (dateText.includes(' h')) {
+      timer = setInterval(() => {
+        setDateText(convertDateToText(time));
+      }, 1800000);
+    }
+
+    return () => {
+      if (timer) {
+        clearInterval(timer);
+      }
+    };
+  })
+
   return (
     <article className="post" onClick={handlePostClick}>
       <div className="post__header">
@@ -67,7 +87,7 @@ function Post({post, users, updatePostItems}) {
           <p className="post__user-name">{author.name}</p>
           <span className="post__text post__time">
             {game && <span className="post__game">{game.label}</span>}
-            {convertDateToText(time)}
+            {dateText}
           </span>
         </div>
       </div>

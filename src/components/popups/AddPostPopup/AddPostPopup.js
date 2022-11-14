@@ -1,71 +1,99 @@
 import React from "react";
 import './AddPostPopup.css';
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-import SubmitMiniButton from "../../Buttons/SubmitMiniButton/SubmitMiniButton";
+import SelectGamesForm from "../../Forms/SelectGamesForm/SelectGamesForm";
+import AddPostForm from "../../Forms/AddPostForm/AddPostForm";
+import {GetAddPostPopupContext, SetAddPostPopupContext} from "../../../context/AddPostPopupContext";
+import {GamesContext} from "../../../context/GamesContext";
+import {connect} from "react-redux";
+import {addPost} from "../../../redux/slices/postsSlice";
 
-export default function AddPostPopup({isOpen = false}) {
-  const [selectedGameId, setSelectedGameId] = React.useState([]);
-  const [selectedImageSrc, setSelectedImageSrc] = React.useState('');
+function AddPostPopup({users, addPost}) {
+  const addPostPopup = React.useContext(GetAddPostPopupContext);
+  const setAddPostPopup = React.useContext(SetAddPostPopupContext);
+  const {isOpen} = addPostPopup;
+  const gamesList = React.useContext(GamesContext);
+
   const [selectGameIsOpen, setSelectGameIsOpen] = React.useState(false);
-  const [isPublicPost, setIsPublicPost] = React.useState(true);
-
-  function handlePublicityChange() {
-    setIsPublicPost(!isPublicPost)
-  }
-
-  function handleImageChange(e) {
-    console.log(URL.createObjectURL(e.target.files[0]))
-    setSelectedImageSrc(URL.createObjectURL(e.target.files[0]))
-  }
+  const [selectedGame, setSelectedGame] = React.useState(null);
 
   function handleClosePopup(e) {
-
+    setAddPostPopup({isOpen: false});
+    setSelectGameIsOpen(false);
+    setSelectedGame(null);
+    document.forms['add-post-form'].reset();
   }
 
-  React.useEffect(() => {
+  function toggleSelectGameStatus() {
+    setSelectGameIsOpen(!selectGameIsOpen);
+  }
 
-  }, [])
+  function handleReselectGame() {
+    setSelectedGame(null);
+    setSelectGameIsOpen(false);
+  }
+
+  function handleSelectGame(selectedItemId) {
+    const newSelectedGame = gamesList.find(game => game.id === selectedItemId);
+
+    setSelectedGame(newSelectedGame);
+    setSelectGameIsOpen(false);
+  }
+
+  function handleAddPostSubmit(dataPost) {
+    const {text, isPublic, imageSrc} = dataPost;
+
+    addPost({
+      authorId: users.currentUser.id,
+      selectedGameId: selectedGame?.id || '',
+      text: text,
+      isPublic: isPublic,
+      file: imageSrc
+    });
+
+    handleClosePopup();
+  }
 
   return (
-    <PopupWithForm isOpen={isOpen} title="New post" onClose={handleClosePopup}>
-        <form name="add-post-form" className="add-post">
+    <PopupWithForm
+      isOpen={isOpen}
+      title={selectGameIsOpen ? "Choose a game" : "New post"}
+      onClose={handleClosePopup}>
+
+      {selectGameIsOpen && (
+        <div className="select-game">
           <button
             type="button"
-            className="add-post__game-button"
-            aria-label="select a game">
-            {'Select a Game (Optional)'}
+            className="select-game__button select-game__button_do_back link-hover"
+            onClick={toggleSelectGameStatus}
+            aria-label="back to form"/>
+          <button
+            type="button"
+            className="select-game__button select-game__button_do_reselect"
+            onClick={handleReselectGame}
+            aria-label="deselect">
+            None
           </button>
-          <textarea
-            name="add-post-text"
-            maxLength="500"
-            minLength="5"
-            placeholder="What’s new?"
-            required rows="5"
-            autoFocus={true}
-            className="add-post__text">
-        </textarea>
-          {selectedImageSrc && <img src={selectedImageSrc} alt="poster"/>}
-          <fieldset className="add-post__publishing">
-            <label className="add-post__label-photo link-hover">
-              <input
-                name="add-post-image"
-                type="file"
-                onChange={handleImageChange}
-                className="add-post__input-photo"/>
-            </label>
-            <label className={`add-post__label-public link-hover ${isPublicPost ? '' : 'add-post__label-public_unchecked'}`}>
-              <input
-                name="add-post-public"
-                type="checkbox"
-                checked={isPublicPost}
-                onChange={handlePublicityChange}
-                className="add-post__input-public"/>
-              {isPublicPost ? 'Public post' : 'Followers only'}
-            </label>
-            <SubmitMiniButton type="submit" text="Post" disabled={true} className="add-post__submit-button"/>
-
-          </fieldset>
-        </form>
+          <SelectGamesForm
+            onSubmit={handleSelectGame}
+            isMultipleSelect={false}
+            selectedGames={selectedGame ? [selectedGame.id] : []}/>
+        </div>
+      )}
+      <div className={`add-post-form-container ${!selectGameIsOpen ? 'add-post-form-container_opened' : ''}`}>
+        <AddPostForm
+          selectedGame={selectedGame}
+          onSelectGameClick={toggleSelectGameStatus}
+          onSubmit={handleAddPostSubmit}
+        />
+      </div>
     </PopupWithForm>
   );
 }
+
+export default connect(
+  (state) => ({
+    users: state.users,
+  }),
+  {addPost}
+)(AddPostPopup);
